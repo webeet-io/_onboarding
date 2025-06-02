@@ -1,3 +1,5 @@
+# 👾 Communication
+
 Discord is our main tool for internal communication at Webeet — not email. It’s where we work, coordinate, and stay connected across teams and time zones.
 
 If you’re new to Discord, take a few minutes to get familiar with the basics. It’s fast, flexible, and fun — as long as we all use it the right way.
