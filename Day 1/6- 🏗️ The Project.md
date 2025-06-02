@@ -56,3 +56,6 @@ Cyber interns will rotate through **four specialized teams**, gaining exposure t
 
 **Who is this for?**
 This platform is for modern home seekers—families, expats, young professionals—who want clarity and control in choosing **where** to live. Whether it’s safety, green space, or commute time, users get insights aligned to *their values* rather than cookie-cutter filters.
+
+---
+Next: [👾 Communication](https://github.com/webeet-io/_onboarding/blob/main/Day%201/7-%20%F0%9F%91%BE%20Communication.md)
