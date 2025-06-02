@@ -4,8 +4,9 @@ If you’re new to Discord, take a few minutes to get familiar with the basics. 
 
 <details>
   <summary><strong>Quick Tutorial (for beginners)</strong></summary>
-    
-    https://www.youtube.com/watch?v=z5c6Bc-S0TI&t=744s&ab_channel=Howfinity
+  
+  [How to Use Discord - 2024 Update](https://www.youtube.com/watch?v=z5c6Bc-S0TI&t=744s&ab_channel=Howfinity)
+  
 </details>
     
 
