@@ -115,7 +115,11 @@ It helps keep context clear and makes threads easier to follow.
 
 This is a `code format` (made by using ` twice, at the beginning and end)
 
-```This is a code block, create by using ` 3 times at the beginning and 3 times at the end```
+```
+
+This is a code block, create by using ` 3 times at the beginning and 3 times at the end
+
+```
 
 
 <details>
