@@ -63,3 +63,7 @@ Energy is the currency of great teams. Bring it.
 Be curious. Be supportive. Celebrate small wins. Offer thoughtful feedback. Show gratitude. Help a teammate who’s stuck.
 
 Everyone here is balancing growth, learning, deadlines—and sometimes imposter syndrome. Your attitude shapes the vibe. Be someone others are grateful to work with.
+
+-----
+Next: [👥 Who We Are](https://github.com/webeet-io/_onboarding/blob/main/Day%201/1-%20%F0%9F%A7%AD%20Our%20Principles.md)
+
