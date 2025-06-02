@@ -103,3 +103,99 @@ At webeet.io, I bring in my current Knowledge and experience and further extend
 
 Add me on [Linkedin](https://www.linkedin.com/in/dr-stefan-hofbauer-ab4411/) 😊
 </details>
+
+<details>
+<summary><strong>Elis (e.) Hnatiuk | Engineering Team Lead</strong></summary>
+<br>
+         
+<img width="100px" src="https://github.com/user-attachments/assets/ee899287-9846-45a4-8daa-58dcc4e95c09" alt="Elis (e.) Hnatiuk" style="margin: 10px"/>
+
+<br>
+<br>
+
+<p>
+I am a multidisciplinary professional with a passion for both technology and the arts. My path into engineering leadership has been shaped by over a decade as a digital and video performance artist.
+</p>
+
+<p>
+Before joining Webeet, I directed productions at LICHTHOF Theater, co-founded Kyiv Collage Practice—a hybrid learning community—and led collaborative art projects across more than seven countries. 
+</p>
+
+<p>
+My experience ranges from mentoring creatives to managing multidisciplinary teams, all while navigating fast-paced, high-stakes environments.
+</p>
+
+<p>
+At Webeet, I lead engineering squads with empathy and precision, helping junior developers grow through structure, feedback, and shared ownership. I believe building software is a creative act.
+</p>
+
+
+Add me on [Linkedin](https://www.linkedin.com/in/e-hnatiuk/) 😊
+</details>
+
+<details>
+<summary><strong>Tom Bunzel | Engineering Team Lead</strong></summary>
+<br>
+         
+<img width="100px" src="https://github.com/user-attachments/assets/c125a325-c924-4a20-a84f-18e2cc742f99" alt="Tom Bunzel" style="margin: 10px"/>
+
+<br>
+<br>
+
+<p>
+I am a Software Engineering Team Lead at Webeet with a background as diverse as the teams I lead—from UAV systems in the military to the live performance stage as a multi-instrumentalist. 
+</p>
+
+<p>
+My career has been shaped by environments that demand precision, creativity, and adaptability—all qualities I now bring to the world of software development.
+</p>
+
+<p>
+As a freelance musician, I’ve organized and executed hundreds of live performances and studio sessions, mastering multiple instruments and managing complex technical setups under pressure. 
+</p>
+
+<p>
+In the military, I operated advanced UAV systems in high-stakes missions, developing strong problem-solving skills, situational awareness, and a disciplined approach to teamwork and execution.
+</p>
+
+<p>
+At Webeet, I guide engineering squads through real-world product development, focusing on collaboration, quality, and continuous learning. I believe great code is like great music—it requires structure, flow, and a shared rhythm across the team. I’m here to help junior developers build that rhythm and grow into confident, capable professionals.
+</p>
+
+
+Add me on [Linkedin](https://www.linkedin.com/in/bunzeltom/) 😊
+</details>
+
+
+<details>
+<summary><strong>Kajetan (Kai) Hanausek | Data Team Lead</strong></summary>
+<br>
+         
+<img width="100px" src="https://github.com/user-attachments/assets/da29273b-7d5a-4bf6-9023-05c0f765f2b3" alt="Kajetan (Kai) Hanausek" style="margin: 10px"/>
+
+<br>
+<br>
+
+<p>
+I am the Data Team Lead at Webeet, with over a decade of experience in risk analytics, fraud detection, and data-driven decision-making. 
+</p>
+
+<p>
+My background spans 13 years at PayPal, where I worked across operations, investigation, and SQL training—combining deep analytical skills with a strong focus on collaboration and mentoring.
+</p>
+
+<p>
+During my time at PayPal, I analyzed thousands of accounts to detect fraud, money laundering, and account takeovers—work that directly reduced financial losses and improved system reliability. I also led SQL training sessions that upskilled entire teams, showing my belief in shared knowledge and continuous growth.
+</p>
+
+<p>
+At Webeet, I guide data interns and junior professionals as they step into their first real-world projects. My focus is on building clear thinking, solid analytical foundations, and a sense of ownership from day one. I believe data is powerful—but only when it’s understood, challenged, and used to drive action. That’s the mindset I bring to every project and every teammate.
+</p>
+
+
+Add me on [Linkedin](https://www.linkedin.com/in/kajetanhanausek/) 😊
+</details>
+
+
+
+
