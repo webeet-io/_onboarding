@@ -57,7 +57,7 @@ Add me on [Linkedin](https://www.linkedin.com/in/mayer-starkman/) 😊
 <summary><strong>Anastasiia Piterskaia | Head of Data</strong></summary>
 <br>
          
-<img width="100px" src="https://github.com/user-attachments/assets/0341ac20-0231-4b15-b39c-e409dfb4adaa" alt="Mayer Starkman" style="margin: 10px"/>
+<img width="100px" src="https://github.com/user-attachments/assets/0341ac20-0231-4b15-b39c-e409dfb4adaa" alt="Anastasiia Piterskaia" style="margin: 10px"/>
 
 <br>
 <br>
