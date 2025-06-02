@@ -171,3 +171,4 @@ When sharing code on Discord, make it easy for others to read and respond:
 Stick to writing. It’s **searchable, accessible, and respectful** of everyone’s time and noise level. Use voice/video only when it’s clearly better for the topic.
 
 ---
+Next: [🐈‍⬛ GitHub](https://github.com/webeet-io/_onboarding/blob/main/Day%201/8-%20%F0%9F%90%88%E2%80%8D%E2%AC%9B%20GitHub.md)
