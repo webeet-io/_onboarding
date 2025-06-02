@@ -4,12 +4,15 @@ We are a team of professionals deeply passionate about the intersection of educa
 
 <details>
 <summary><strong>David Rajcher | Founder, CEO</strong></summary>
-
-<img width="100px" src="https://github.com/user-attachments/assets/8517a682-e3ea-44bb-a032-7fe7efb86a4d" alt="david rajcher"
-         style="display: block; margin: 20px auto;" />
-
-  >
 <br>
+         
+<img 
+         width="100px" 
+         src="https://github.com/user-attachments/assets/8517a682-e3ea-44bb-a032-7fe7efb86a4d" 
+         alt="david rajcher
+         style="display: block; margin: 10px" />
+  >
+
 I am the <strong>Founder and CEO of Webeet</strong>, where I lead our mission to bridge the gap between education and industry. With nearly 20 years of experience at the intersection of **technology, leadership, and learning**, I’ve dedicated my career to building products, teams, and systems that unlock potential—especially for those just starting out.
 
 Before launching Webeet, I served as **Program Director for Software Engineering at Masterschool**, where I helped hundreds of students launch their careers. That experience showed me the transformative power of hands-on learning—and the frustrating bottleneck many face trying to land their first opportunity.
