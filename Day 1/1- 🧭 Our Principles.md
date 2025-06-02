@@ -48,6 +48,8 @@ Improvement isn’t an event—it’s a habit.
 
 Whether you're writing better code, designing a sharper dashboard, or running smoother standups, we believe in **iterating forward every single day**. One percent better may not feel big today, but over time, it changes everything.
 
+![image](https://github.com/user-attachments/assets/94ce02d5-52fa-4ab3-9b1e-14ea04ef52e0)
+
 ---
 
 ### 5. Spread Positivity
