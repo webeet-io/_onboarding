@@ -65,5 +65,4 @@ Be curious. Be supportive. Celebrate small wins. Offer thoughtful feedback. Show
 Everyone here is balancing growth, learning, deadlines—and sometimes imposter syndrome. Your attitude shapes the vibe. Be someone others are grateful to work with.
 
 -----
-Next: [👥 Who We Are]([https://github.com/webeet-io/_onboarding/blob/main/Day%201/1-%20%F0%9F%A7%AD%20Our%20Principles.md](https://github.com/webeet-io/_onboarding/blob/main/Day%201/2-%20%F0%9F%91%A5%20Who%20We%20Are.md))
-
+Next: [👥 Who We Are](https://github.com/webeet-io/_onboarding/blob/main/Day%201/2-%20%F0%9F%91%A5%20Who%20We%20Are.md)
