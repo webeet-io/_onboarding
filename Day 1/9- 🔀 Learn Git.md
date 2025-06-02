@@ -22,3 +22,15 @@ We highly recommend this beginner-friendly course to build your Git foundation:
 It’s interactive, beginner-safe, and will give you exactly what you need to be confident working in GitHub. Take it seriously—this is a **must-have skill** in today’s tech world.
 
 This course is **completely free** and does **not require any tracking or payments**. Just make sure to select the **free tier**, which gives you full access to everything you need for onboarding and beyond—no upgrades necessary.
+
+---
+
+### 🔭 Next Steps
+
+After you go through the git tutorial, you have officially finished Day #1 at webeet.io, congraz! 🎉
+
+Nothing else to do. 
+
+Your lead will invite you to the opening session of day #2 where you will start diving deeper into the technical aspects of your domain. All you need to do after finished the git tutorial (above) is to show up for day #2.
+
+Welcome to the team, and we will see you on day #2 ⚡️
