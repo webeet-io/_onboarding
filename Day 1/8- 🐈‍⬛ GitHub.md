@@ -51,3 +51,6 @@ Fill out the short form with your:
 Once you submit, we’ll invite you to the organization and repositories. You’ll get a notification via email—accept it, and you’re in!
 
 Welcome to GitHub. You’re officially working like a pro.
+
+-----
+Next: [🔀 Learn Git](https://github.com/webeet-io/_onboarding/blob/main/Day%201/9-%20%F0%9F%94%80%20Learn%20Git.md)
