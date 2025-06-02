@@ -16,7 +16,7 @@ Below is the list of lessons included in your onboarding.
 
 ### The Why
 
-- [⭐️ About Webeet](https://github.com/webeet-io/_onboarding/blob/main/Day%201/0-%20%E2%AD%90%EF%B8%8F%20About%20Webeet.md)
+- [⭐️ About Webeet](https://github.com/webeet-io/_onboarding/blob/main/Day%201/0-%20%E2%AD%90%EF%B8%8F%20About%20Webeet.md) (👈 Start here)
 - [🧭 Our Principles](https://github.com/webeet-io/_onboarding/blob/main/Day%201/1-%20%F0%9F%A7%AD%20Our%20Principles.md)
 - [👥 Who We Are](https://github.com/webeet-io/_onboarding/blob/main/Day%201/2-%20%F0%9F%91%A5%20Who%20We%20Are.md)
 
