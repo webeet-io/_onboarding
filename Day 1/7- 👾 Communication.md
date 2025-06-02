@@ -113,18 +113,17 @@ If you’re replying to a specific part of a message, **quote it using code form
 
 It helps keep context clear and makes threads easier to follow.
 
-- **Example `Code Format`**
+<details>
+  <summary>Example `Code Format`</summary>
+    <img width="860" alt="image (9)" src="https://github.com/user-attachments/assets/00b2b3ec-74a8-49ce-8343-27187840d642" />
+
+</details>
     
-    ![image.png](attachment:bc5878a4-618d-451d-8daa-ece9ec519efd:image.png)
-    
-- Example Code Block:
-    
-    ```jsx
-    This is a Code Block
-    ```
-    
-    ![image.png](attachment:d86c5733-d91e-428c-9c30-3d36781c6624:image.png)
-    
+<details>
+  <summary>Example Code Block:</summary>
+  <img width="725" alt="image (10)" src="https://github.com/user-attachments/assets/61f4cb20-ae9a-453b-bc21-0bb77f3aabf3" />
+
+</details>    
 
 ---
 
