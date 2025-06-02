@@ -1,0 +1,141 @@
+Discord is our main tool for internal communication at Webeet — not email. It’s where we work, coordinate, and stay connected across teams and time zones.
+
+If you’re new to Discord, take a few minutes to get familiar with the basics. It’s fast, flexible, and fun — as long as we all use it the right way.
+
+<details>
+  <summary><strong>Quick Tutorial (for beginners)</strong></summary>
+    
+    https://www.youtube.com/watch?v=z5c6Bc-S0TI&t=744s&ab_channel=Howfinity
+</details>
+    
+
+---
+
+### **⚒️ How we use Discord at Webeet**
+
+Discord is powerful, but only works if we keep things organized. That means: 
+
+1. Clear messages
+2. The right channels
+3. And always use **threads, always.**
+
+---
+
+### **🧵 Use Threads — Always**
+
+Threads are how we keep conversations readable. Every new topic in a channel should be started as a thread, not as a freeform message in the main chat.
+
+Before posting, **scan the channel** to see if someone already brought up the topic. If not:
+
+1. Post a **clear title** in the channel
+2. Immediately continue the conversation **inside the thread**
+
+Avoid posting a title and then writing the rest as separate messages—people might miss your update.
+
+---
+
+### **🧹 Keep Messages Clean and Thoughtful**
+
+- **Write the full message** before hitting send (don’t send it in parts).
+- **Structure with bullet points or numbers** to make it easier to read.
+- **Tag only** the people who need to see it
+- If you're unsure — write it first in your notes
+
+---
+
+### **🧘‍♂️ Be Clear in Your Messages**
+
+Respect your teammates' time and mental load by being direct and specific in your messages. Avoid vague messages like “Can we talk?” or “I need something.” Instead, share:
+
+- **What you need** – Be clear about the topic or request.
+- **How urgent it is** – Does it need to happen today? This week?
+- **How long it will take** – Is it a quick 5-minute sync, or a deeper 30-minute discussion?
+
+This helps others prioritize and respond effectively without back-and-forth. Example:
+
+> “Hey, I’d like to get your feedback on my latest PR. It’s not urgent, but ideally this week. Shouldn’t take more than 10 minutes—can I grab a slot tomorrow?”
+> 
+
+---
+
+### **📺 Use the Right Channels**
+
+We have dedicated channels for different topics. Keeping conversations in the right place helps everyone stay organized and find information faster. Here’s how we use them:
+
+- **#announcement** – Team-wide updates and important news.
+    - 🔒 *Only admins should post here.*
+- **#general** – For useful resources, opportunities, meetups and anything else the team can benefit from.
+- **#random** – Memes, fun stuff, and off-topic chat. Keep it light.
+- **#gratitude** – Shout out a teammate, celebrate a win, or spread some positive vibes 💜
+- **#team-engineering / #team-data / #team-security** – Your domain-specific space. Day-to-day updates, support requests, and technical threads.
+- **#project-[name]** – Project-specific cross-domain collaboration. Use threads for each major topic or task.
+
+---
+
+### **🚦Quick Emoji Reactions = Instant Signals**
+
+Use these to reply fast:
+
+- 👀 Seen
+- 🔧 Working on it
+- ✅ Done
+- 💡 Good idea
+- ❤️ Love it
+
+---
+
+### **❞ Quote & Reply Clearly**
+
+If you’re replying to a specific part of a message, **quote it using code format or blockquote (`>` or ```)**. 
+
+It helps keep context clear and makes threads easier to follow.
+
+- **Example `Code Format`**
+    
+    ![image.png](attachment:bc5878a4-618d-451d-8daa-ece9ec519efd:image.png)
+    
+- Example Code Block:
+    
+    ```jsx
+    This is a Code Block
+    ```
+    
+    ![image.png](attachment:d86c5733-d91e-428c-9c30-3d36781c6624:image.png)
+    
+
+---
+
+### **💻 Sharing Code**
+
+When sharing code on Discord, make it easy for others to read and respond:
+
+- **Use code blocks**
+    
+    For small snippets or single lines, use inline backticks like this ` … ` (`…`)
+    
+    For multiple lines, use triple backticks:
+    
+    ```
+    
+    your code here
+    
+    ```
+    
+    ```
+    This is a result of ```
+    ```
+    
+- **Don’t paste long code into Discord**
+    
+    If the code lives in a repo, **link directly to the relevant lines on GitHub** instead of pasting the entire block. It keeps the channel clean and lets others see the code in context.
+    
+
+(More on how we use GitHub later.)
+
+---
+
+### **📚 Prefer Text Over Recordings**
+
+Stick to writing. It’s **searchable, accessible, and respectful** of everyone’s time and noise level. Use voice/video only when it’s clearly better for the topic.
+
+---
