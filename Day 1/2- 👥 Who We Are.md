@@ -51,3 +51,29 @@ At Webeet.io, I am committed to building cutting-edge solutions that empower sta
          
 Add me on [Linkedin](https://www.linkedin.com/in/mayer-starkman/) 😊
 </details>
+
+
+<details>
+<summary><strong>Anastasiia Piterskaia | Head of Data</strong></summary>
+<br>
+         
+<img width="100px" src="https://github.com/user-attachments/assets/0341ac20-0231-4b15-b39c-e409dfb4adaa" alt="Mayer Starkman" style="margin: 10px"/>
+
+<br>
+<br>
+
+<p>
+I am a seasoned data professional with over seven years of experience in analytics and business intelligence.</p>
+
+<p>
+I’ve led data teams at renowned gaming companies like Playrix and Plarium, where I developed advanced segmentation models, automated key reporting systems, and optimized customer retention strategies.
+<p>
+My passion for education has driven me to mentor aspiring data analysts and develop courses at Masterschool, helping students master essential skills.
+</p>
+
+<p>
+         At webeet.io, I focus on crafting data-driven solutions that empower startups to make smarter, faster decisions.
+</p>
+
+Add me on [Linkedin](https://www.linkedin.com/in/mayer-starkman/) 😊
+</details>
