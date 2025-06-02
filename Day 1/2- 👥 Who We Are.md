@@ -29,3 +29,25 @@ At Webeet, I focus on long-term vision, team culture, and making sure every proj
 
 [Linkedin](https://www.linkedin.com/in/david-rajcher/)
 </details>
+
+<details>
+<summary><strong>Mayer Starkman | Head of R&D</strong></summary>
+<br>
+         
+<img width="100px" src="https://github.com/user-attachments/assets/14a0550c-3740-4b65-8df6-e5c99464455a" alt="Mayer Starkman" style="margin: 10px"/>
+
+<br>
+<br>
+
+<p>
+I am an experienced software engineer with a passion for technology that began at the age of 16. Over the years, I’ve developed into a full-stack developer with expertise in backend engineering and team leadership.
+</p>
+
+<p>
+My career has been shaped by roles where I’ve led technical teams to deliver secure, scalable, and high-performance applications. With experience in CI/CD pipelines, cloud-based architectures, and modern development practices, I aim to foster an environment of continuous improvement and innovation.</p>
+
+<p>
+At Webeet.io, I am committed to building cutting-edge solutions that empower startups to achieve their goals while driving technical excellence within our engineering teams.</p>
+         
+[Linkedin](https://www.linkedin.com/in/mayer-starkman/)
+</details>
