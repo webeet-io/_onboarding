@@ -45,3 +45,6 @@ He’s responsible for making sure projects run smoothly, standards are high, an
 Whether you're in **Data**, **Engineering**, or **Security**, you are a **Junior Professional in training**. Your job is to learn by doing—working on real client projects under the mentorship of your domain lead. 
 
 You’ll be expected to communicate clearly, ask questions, take ownership, and grow through feedback. This structure is designed to give you both **support and responsibility**. Every leader above you is here to help you succeed.
+
+------
+Next: [🤝 Meetings](https://github.com/webeet-io/_onboarding/blob/main/Day%201/4-%20%F0%9F%A4%9D%20Meetings.md)
