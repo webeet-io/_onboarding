@@ -32,7 +32,7 @@ He’s responsible for making sure projects run smoothly, standards are high, an
     
     Stefan leads the entire Cybersecurity track. He ensures that interns get meaningful exposure to real-world security challenges—like penetration testing, audits, and risk assessments—while keeping quality and ethics high. **He’s your anchor in all things security**.
 
-- **Head of Engineering - Mayer Starkman (as the Head of R&D)**
+- 🏗️ **Head of Engineering - Mayer Starkman (as the Head of R&D)**
     
     - 🧑‍💻 **Elis & Tom – Engineering Leads**
     
