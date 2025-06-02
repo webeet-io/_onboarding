@@ -1,4 +1,4 @@
-# ⭐️ About Webeet.md
+# ⭐️ About Webeet
 
 ### 🔭 Our Mission
 
