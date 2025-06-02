@@ -12,15 +12,15 @@ We are a team of professionals deeply passionate about the intersection of educa
 <br>
 
 <p>
-I am the <strong>Founder and CEO of Webeet</strong>, where I lead our mission to bridge the gap between education and industry. With nearly 20 years of experience at the intersection of **technology, leadership, and learning**, I’ve dedicated my career to building products, teams, and systems that unlock potential—especially for those just starting out.
+I am the <strong>Founder and CEO of Webeet</strong>, where I lead our mission to bridge the gap between education and industry. With nearly 20 years of experience at the intersection of <strong>technology, leadership, and learning</strong), I’ve dedicated my career to building products, teams, and systems that unlock potential—especially for those just starting out.
 </p>
 
 <p>
-Before launching Webeet, I served as **Program Director for Software Engineering at Masterschool**, where I helped hundreds of students launch their careers. That experience showed me the transformative power of hands-on learning—and the frustrating bottleneck many face trying to land their first opportunity.
+Before launching Webeet, I served as <strong>Program Director for Software Engineering at Masterschool</strong>, where I helped hundreds of students launch their careers. That experience showed me the transformative power of hands-on learning—and the frustrating bottleneck many face trying to land their first opportunity.
 </p>
 
 <p>
-So I built Webeet: a studio where early-stage startups get the digital services they need, and **Junior Professionals in Engineering, Data, and Cybersecurity** gain their first real experience on impactful projects. I’m passionate about **designing structures that help people grow**, whether it’s a new product architecture or a professional development track.
+So I built Webeet: a studio where early-stage startups get the digital services they need, and <strong>Junior Professionals in Engineering, Data, and Cybersecurity</strong> gain their first real experience on impactful projects. I’m passionate about <strong>designing structures that help people grow</strong>, whether it’s a new product architecture or a professional development track.
 </p>
          
 <p>
