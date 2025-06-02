@@ -16,19 +16,19 @@ Below is the list of lessons included in your onboarding.
 
 ### The Why
 
-- [⭐️ About Webeet]()
-- [🧭 Our Principles]()
-- [👥 Who We Are]()
+- [⭐️ About Webeet](https://github.com/webeet-io/_onboarding/blob/main/Day%201/0-%20%E2%AD%90%EF%B8%8F%20About%20Webeet.md)
+- [🧭 Our Principles](https://github.com/webeet-io/_onboarding/blob/main/Day%201/1-%20%F0%9F%A7%AD%20Our%20Principles.md)
+- [👥 Who We Are](https://github.com/webeet-io/_onboarding/blob/main/Day%201/2-%20%F0%9F%91%A5%20Who%20We%20Are.md)
 
 ### The What
 
-- [🎓 Roles]()
-- [🤝 Meetings]()
-- [💭 Feedback]()
-- [🏗️ The Project]()
+- [🎓 Roles](https://github.com/webeet-io/_onboarding/blob/main/Day%201/3-%20%F0%9F%8E%93%20Roles.md)
+- [🤝 Meetings](https://github.com/webeet-io/_onboarding/blob/main/Day%201/4-%20%F0%9F%A4%9D%20Meetings.md)
+- [💭 Feedback](https://github.com/webeet-io/_onboarding/blob/main/Day%201/5-%20%F0%9F%92%AD%20Feedback.md)
+- [🏗️ The Project](https://github.com/webeet-io/_onboarding/blob/main/Day%201/6-%20%F0%9F%8F%97%EF%B8%8F%20The%20Project.md)
 
 ### The How
 
-- [👾 Discord]()
-- [🐈‍⬛ GitHub]()
-- [🔀 Learn Git]()
+- [👾 Communication](https://github.com/webeet-io/_onboarding/blob/main/Day%201/7-%20%F0%9F%91%BE%20Communication.md)
+- [🐈‍⬛ GitHub](https://github.com/webeet-io/_onboarding/blob/main/Day%201/8-%20%F0%9F%90%88%E2%80%8D%E2%AC%9B%20GitHub.md)
+- [🔀 Learn Git](https://github.com/webeet-io/_onboarding/blob/main/Day%201/9-%20%F0%9F%94%80%20Learn%20Git.md)
