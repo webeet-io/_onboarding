@@ -35,6 +35,26 @@ Before posting, **scan the channel** to see if someone already brought up the to
 
 Avoid posting a title and then writing the rest as separate messages—people might miss your update.
 
+<details>
+  <summary>Thread in a channel</summary>
+
+  You can see that Mayer created a thread, and then all message (all related communication) is contained within the thread, making it easier to track updates.
+
+  When Pressing on a thread, you can see all the relevant communication (the example below).
+  
+  <img width="783" alt="threads" src="https://github.com/user-attachments/assets/048fb799-e230-4ac6-a6f7-e333e1913a68" />
+
+</details>
+
+<details>
+  <Summary>Entrying a thread</Summary>
+
+  You can see the title of the thread ("Populating the backlog"), and inside all the relevant communication (below the title).
+  
+  <img width="730" alt="poplating the thread" src="https://github.com/user-attachments/assets/09520f5c-8f7d-4a35-82a9-2684d43ea2f4" />
+  
+</details>
+
 ---
 
 ### **🧹 Keep Messages Clean and Thoughtful**
