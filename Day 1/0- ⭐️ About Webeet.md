@@ -39,3 +39,6 @@ What began as a side initiative with one senior, two students, and a single Noti
 What started as a small experiment has now evolved into a **fully functioning company** with a dedicated team supporting all three major domains: **Engineering, Data, and Cybersecurity**.
 
 We’ve delivered **27 projects** with over **20 companies** so far—and we’re just getting started.
+
+-------
+Next: [🧭 Our Principles](https://github.com/webeet-io/_onboarding/blob/main/Day%201/1-%20%F0%9F%A7%AD%20Our%20Principles.md)
