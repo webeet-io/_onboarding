@@ -196,6 +196,9 @@ At Webeet, I guide data interns and junior professionals as they step into their
 Add me on [Linkedin](https://www.linkedin.com/in/kajetanhanausek/) 😊
 </details>
 
+------
+Next: [🎓 Roles](https://github.com/webeet-io/_onboarding/blob/main/Day%201/3-%20%F0%9F%8E%93%20Roles.md)
+
 
 
 
