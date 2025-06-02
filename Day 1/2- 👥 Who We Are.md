@@ -27,7 +27,7 @@ So I built Webeet: a studio where early-stage startups get the digital services 
 At Webeet, I focus on long-term vision, team culture, and making sure every project we take on delivers value—to our clients, and to the professionals we’re helping launch.
 </p>
 
-[Linkedin](https://www.linkedin.com/in/david-rajcher/)
+Add me on [Linkedin](https://www.linkedin.com/in/david-rajcher/) 😊
 </details>
 
 <details>
@@ -49,5 +49,5 @@ My career has been shaped by roles where I’ve led technical teams to deliver s
 <p>
 At Webeet.io, I am committed to building cutting-edge solutions that empower startups to achieve their goals while driving technical excellence within our engineering teams.</p>
          
-[Linkedin](https://www.linkedin.com/in/mayer-starkman/)
+Add me on [Linkedin](https://www.linkedin.com/in/mayer-starkman/) 😊
 </details>
