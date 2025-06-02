@@ -26,3 +26,6 @@ We believe that meetings are often a **necessary evil**. They're useful when use
 - **Be present**. No phones. No multitasking. If you’re in the room, be *in* the room. If you’re not needed—skip it.
 
 Meetings at Webeet are not where work happens. They are a moment to align **so we can go do the real work better**.
+
+------
+Next: [💭 Feedback](https://github.com/webeet-io/_onboarding/blob/main/Day%201/5-%20%F0%9F%92%AD%20Feedback.md)
