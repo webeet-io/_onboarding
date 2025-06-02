@@ -2,13 +2,16 @@
 
 ## **Smarter Real Estate Discovery through Map Layers**
 
-**What are we building?**
+### **What are we building?**
+
 We’re building a **map-based platform** that helps people find the best places to live—not just based on listings, but on what matters *most* to them. By layering data like **crime rates, greenery, transportation, schools, and noise**, users can explore and compare neighborhoods that match their personal preferences.
 
-**Why is this different?**
+### **Why is this different?**
+
 Most real estate platforms force users to filter properties and hope the location fits. Our approach flips that: we **start with the place**, letting users explore areas first—then surface listings that align with what they care about. We want people to choose *where* to live before choosing *what* to live in.
 
-**What makes this AI-first?**
+### **What makes this AI-first?**
+
 This platform is designed from the ground up to be AI-first. Instead of manually toggling filters, users can **describe what they’re looking for in plain language**—
 
 > *“I want a quiet, green area with low crime, good public transport, and a short commute to the city.”*
