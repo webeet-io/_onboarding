@@ -75,5 +75,31 @@ My passion for education has driven me to mentor aspiring data analysts and deve
          At webeet.io, I focus on crafting data-driven solutions that empower startups to make smarter, faster decisions.
 </p>
 
-Add me on [Linkedin](https://www.linkedin.com/in/mayer-starkman/) 😊
+Add me on [Linkedin](https://www.linkedin.com/in/anastasiia-piterskaia-737b16195/) 😊
+</details>
+
+<details>
+<summary><strong>Dr. Stefan Hofbauer | Head of Security</strong></summary>
+<br>
+         
+<img width="100px" src="https://github.com/user-attachments/assets/bacd83f7-0839-4846-933e-11924fa79ae4" alt="Dr. Stefan Hofbauer" style="margin: 10px"/>
+
+<br>
+<br>
+
+<p>
+I am an IT & security expert with 20 years of experience in IT, of which the last 7 years working in private sector roles as well as Consultant in different Domains.</p>
+
+<p>
+My experience ranges from Information Security Management, BCM coordination, Risk Management as well as classic IT and IT infrastructure.
+</p>
+
+<p>
+Besides that, I am also certified as an ISO 27001 Manager and Auditor taking part in Audits. For 4 years I have been teaching IT and IT Security lectures in different universities and universities of applied science.</p>
+
+<p>
+At webeet.io, I bring in my current Knowledge and experience and further extend it to build IT Security Systems for education and Mentoring students to be able to achieve higher goals.</p>
+
+
+Add me on [Linkedin](https://www.linkedin.com/in/dr-stefan-hofbauer-ab4411/) 😊
 </details>
