@@ -113,16 +113,19 @@ If you’re replying to a specific part of a message, **quote it using code form
 
 It helps keep context clear and makes threads easier to follow.
 
+This is a `code format` (made by using ` twice, at the beginning and end)
+
+```This is a code block, create by using ` 3 times at the beginning and 3 times at the end```
+
+
 <details>
   <summary>Example `Code Format`</summary>
-  This is a `code format`
     <img width="860" alt="image (9)" src="https://github.com/user-attachments/assets/00b2b3ec-74a8-49ce-8343-27187840d642" />
 
 </details>
     
 <details>
   <summary>Example Code Block:</summary>
-  ```This is a code block```
   
   <img width="725" alt="image (10)" src="https://github.com/user-attachments/assets/61f4cb20-ae9a-453b-bc21-0bb77f3aabf3" />
 
