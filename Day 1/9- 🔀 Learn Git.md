@@ -13,25 +13,32 @@ Think of Git as the **“undo + time machine + multiplayer mode”** of software
 
 ---
 
-### 🎓 **Get Started with Git**
+## 👉 Learn the fundamentals of git:
 
-We highly recommend this beginner-friendly course to build your Git foundation:
+<details>
+  
+<summary>For Data and Cyber</summary>
 
-> 👉 Learn the fundamentals of git:
-> 
-> 1. For Data and Cyber: [Net Ninja's Git Tutorial](https://www.youtube.com/playlist?list=PL4cUxeGkcC9goXbgTDQ0n_4TBzOO0ocPR)
->
-> It’s interactive, beginner-safe, and will give you exactly what you need to be confident working in GitHub. Take it seriously—this is a **must have skill** in today’s tech world.
-> 
-> 2. For Software Engineering: [Boot.Dev's Learn Git Course](https://www.boot.dev/courses/learn-git)
-> 
-> You don't have to finish all of it, you will during the first week of the onboarding).
-> 
-> This course is **completely free** and does **not require any tracking or payments**. Just make sure to select the **free tier**, which gives you full access to everything you need for onboarding and beyond—no upgrades necessary.
+[Net Ninja's Git Tutorial](https://www.youtube.com/playlist?list=PL4cUxeGkcC9goXbgTDQ0n_4TBzOO0ocPR) 
+
+It’s interactive, beginner-safe, and will give you exactly what you need to be confident working in GitHub. Take it seriously—this is a **must have skill** in today’s tech world.
+ 
+</details>
+
+<details>
+  
+<summary>For Software Engineering</summary> 
+
+[Boot.Dev's Learn Git Course](https://www.boot.dev/courses/learn-git)
+ 
+You don't have to finish all of it, you will during the first week of the onboarding).
+ 
+This course is **completely free** and does **not require any tracking or payments**. Just make sure to select the **free tier**, which gives you full access to everything you need for onboarding and beyond—no upgrades necessary.
+</details>
 
 ---
 
-### 🔭 Next Steps
+## 🔭 Next Steps
 
 After you go through the git tutorial, you have officially finished Day #1 at webeet.io, congraz! 🎉
 
