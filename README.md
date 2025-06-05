@@ -8,7 +8,9 @@ You're about to begin your **Webeet Studio onboarding**—a short but meaningful
 
 At Webeet, we're passionate about two things: **technology** and **education**.
 
-We believe that the best way to learn is by doing—and that junior talent, when supported and trusted, can deliver real impact. That's why our studio is designed to be both a **launchpad for interns and junior professionals** and a **reliable partner for startups** at the earliest stages of their journey. We bridge the gap: delivering essential digital services while giving aspiring professionals a meaningful first step into the industry.
+We believe that the best way to learn is by doing—and that junior talent, when supported and trusted, can deliver real impact. That's why our studio is designed to be both a **launchpad for interns and junior professionals** and a **reliable partner for startups** at the earliest stages of their journey. 
+
+🌉 **We bridge the gap: delivering essential digital services while giving aspiring professionals a meaningful first step into the industry.**
 
 Your time here won’t just be about tasks and tickets. It’s about growth, ownership, and shared purpose.
 
