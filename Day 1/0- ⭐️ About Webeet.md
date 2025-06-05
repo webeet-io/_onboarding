@@ -2,11 +2,8 @@
 
 ### 🔭 Our Mission
 
-<aside>
-
-**Bridge Between Training and Industry**
-
-</aside>
+> 🌁
+> **Bridge Between Training and Industry**
 
 At Webeet, we believe that talent doesn’t grow in isolation—it grows in motion, through collaboration, feedback, and the rhythm of real work.
 
