@@ -17,7 +17,12 @@ Think of Git as the **“undo + time machine + multiplayer mode”** of software
 
 We highly recommend this beginner-friendly course to build your Git foundation:
 
-[👉 Learn the fundamentals of git](https://www.youtube.com/playlist?list=PL4cUxeGkcC9goXbgTDQ0n_4TBzOO0ocPR)
+> 👉 Learn the fundamentals of git:
+> 
+> [Data and Cyber](https://www.youtube.com/playlist?list=PL4cUxeGkcC9goXbgTDQ0n_4TBzOO0ocPR)
+> 
+> [Software Engineering](https://www.boot.dev/courses/learn-git) (Don't finish all, you will during the first week of the onboarding)
+
 
 It’s interactive, beginner-safe, and will give you exactly what you need to be confident working in GitHub. Take it seriously—this is a **must-have skill** in today’s tech world.
 
