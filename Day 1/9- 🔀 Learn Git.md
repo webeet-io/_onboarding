@@ -17,17 +17,17 @@ Think of Git as the **“undo + time machine + multiplayer mode”** of software
 
 <details>
   
-<summary>For Data and Cyber</summary>
+<summary><h3>For Data and Cyber</h3></summary>
 
 [Net Ninja's Git Tutorial](https://www.youtube.com/playlist?list=PL4cUxeGkcC9goXbgTDQ0n_4TBzOO0ocPR) 
 
-It’s interactive, beginner-safe, and will give you exactly what you need to be confident working in GitHub. Take it seriously—this is a **must have skill** in today’s tech world.
+It’s interactive, beginner-safe, and will give you exactly what you need to be confident working in GitHub. Take it seriously—this is a **must-have skill** in today’s tech world.
  
 </details>
 
 <details>
   
-<summary>For Software Engineering</summary> 
+<summary><h3>For Software Engineering</h3></summary> 
 
 [Boot.Dev's Learn Git Course](https://www.boot.dev/courses/learn-git)
  
