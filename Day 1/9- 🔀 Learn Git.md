@@ -19,14 +19,13 @@ We highly recommend this beginner-friendly course to build your Git foundation:
 
 > 👉 Learn the fundamentals of git:
 > 
-> 1. [Data and Cyber](https://www.youtube.com/playlist?list=PL4cUxeGkcC9goXbgTDQ0n_4TBzOO0ocPR)
+> 1. For Data and Cyber: [Net Ninja's Git Tutorial](https://www.youtube.com/playlist?list=PL4cUxeGkcC9goXbgTDQ0n_4TBzOO0ocPR)
+>
+> It’s interactive, beginner-safe, and will give you exactly what you need to be confident working in GitHub. Take it seriously—this is a **must have skill** in today’s tech world.
 > 
-> 2. [Software Engineering](https://www.boot.dev/courses/learn-git) (Don't finish all, you will during the first week of the onboarding)
-
-
-It’s interactive, beginner-safe, and will give you exactly what you need to be confident working in GitHub. Take it seriously—this is a **must-have skill** in today’s tech world.
-
-This course is **completely free** and does **not require any tracking or payments**. Just make sure to select the **free tier**, which gives you full access to everything you need for onboarding and beyond—no upgrades necessary.
+> 2. For Software Engineering: [Boot.Dev's Learn Git Course](https://www.boot.dev/courses/learn-git) (Don't finish all, you will during the first week of the onboarding)
+> 
+> This course is **completely free** and does **not require any tracking or payments**. Just make sure to select the **free tier**, which gives you full access to everything you need for onboarding and beyond—no upgrades necessary.
 
 ---
 
