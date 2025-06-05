@@ -25,11 +25,11 @@ You’ll find the full day-by-day breakdown of your onboarding plan below. Each 
 
 | **Day** | **Focus Area** |
 |--------|----------------|
-| **Day 1 (Friday, June 6)** | Welcome + Tools Setup |
-| **Day 2 (Tuesday, June 10)** | Git & GitHub Fundamentals |
-| **Day 3 (Wednesday, June 11)** | Python Basics for Data Work |
-| **Day 4 (Thursday, June 12)** | PostgreSQL Practice |
-| **Day 5 (Friday, June 13)** | ETL & Integration |
+| **Day 0 (Friday, June 6)** | Welcome + Tools Setup |
+| **Day 1 (Tuesday, June 10)** | Git & GitHub Fundamentals |
+| **Day 2 (Wednesday, June 11)** | Python Basics for Data Work |
+| **Day 3 (Thursday, June 12)** | PostgreSQL Practice |
+| **Day 4 (Friday, June 13)** | ETL & Integration |
 
 
 🔎 **More detailed daily agendas and exercises can be found in the `daily_tasks/day-X/` folders.**
