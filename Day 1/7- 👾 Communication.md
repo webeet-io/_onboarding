@@ -4,6 +4,14 @@ Discord is our main tool for internal communication at Webeet — not email. It�
 
 If you’re new to Discord, take a few minutes to get familiar with the basics. It’s fast, flexible, and fun — as long as we all use it the right way.
 
+### 👉 If you haven't joined yet, press here to join: https://discord.gg/4MkS6JAZ
+
+> Once you’re in:
+> 
+> - Set your nickname to your full name (e.g., Emma Johnson)
+> - Say hello in #introductions so we know you joined
+
+
 <details>
   <summary><strong>Quick Tutorial (for beginners)</strong></summary>
   
