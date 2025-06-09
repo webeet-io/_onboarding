@@ -28,10 +28,6 @@ export default defineConfig({
           autogenerate: { directory: "onboarding/swe/resources" },
         },
         {
-          label: "Portfolio Project",
-          autogenerate: { directory: "onboarding/swe/portfolio-project" },
-        },
-        {
           label: "Day by day",
           autogenerate: { directory: "onboarding/swe/day-by-day" },
         },
