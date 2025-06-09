@@ -5,8 +5,6 @@ sidebar:
 description: Starting point in your software engineering journey with webeet.
 ---
 
-# Learning Our Stack: amparo-fastify
-
 `amparo-fastify` is a utility library designed to streamline error handling in Fastify applications. It helps replace verbose `try...catch` blocks and manual error responses with a set of concise, declarative functions. The core goal is to produce standardized, structured error responses throughout the API.
 
 ---
