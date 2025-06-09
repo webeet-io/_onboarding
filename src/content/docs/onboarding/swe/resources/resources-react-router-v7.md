@@ -92,12 +92,12 @@ By default, when using the framework mode, React Router v7 enables **Server-Side
 
 ### Docs for Further Reading
 
-  - [**Official React Router Docs**](https://reactrouter.com/en/main)
-  - [**Server-Side Rendering with React Router**](https://www.google.com/search?q=https://reactrouter.com/en/main/guides/ssr)
-  - [**Remix's `action` function**](https://remix.run/docs/en/main/route/action) (The original concept)
-  - [**Remix's `loader` function**](https://remix.run/docs/en/main/route/loader) (The original concept)
-  - [**What's New in React Router v6.4**](https://remix.run/blog/react-router-v6.4) (Blog Post introducing these features)
-  - [**React Router v7 Tutorial (YouTube)**](https://www.google.com/search?q=https://www.youtube.com/watch%3Fv%3DL2kzUg6s2lA)
+  - [**Official React Router Docs**](https://reactrouter.com/home)
+  - [**Server-Side Rendering with React Router**](https://blog.logrocket.com/server-side-rendering-react-router-v7/#:~:text=Static%20site%20generation%20in%20React,Book%20list) (Blog Post)
+  - [**Remix's `action` function**](https://remix.run/docs/en/main/route/action)
+  - [**Remix's `loader` function**](https://remix.run/docs/en/main/route/loader)
+  - [**What's New in React Router v6.4**](https://www.syncfusion.com/blogs/post/whats-new-react-router-7/amp) (Blog Post)
+  - [**React Router v7 Tutorial (YouTube)**](https://www.youtube.com/watch?v=h7MTWLv3xvw)
 
 <!-- end list -->
 
