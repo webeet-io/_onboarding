@@ -1,5 +1,7 @@
 ---
 title: Fastify
+sidebar:
+  order: 1
 description: High-Speed, Low-Overhead Backend Development.
 ---
 
@@ -19,15 +21,15 @@ A Fastify server is simple to initialize. You import the library, create an inst
 
 ```javascript
 // server.js
-import Fastify from 'fastify';
+import Fastify from "fastify";
 
 const fastify = Fastify({
-  logger: true // Enables built-in logging
+  logger: true, // Enables built-in logging
 });
 
 // Declare a route
-fastify.get('/', async (request, reply) => {
-  return { hello: 'world' };
+fastify.get("/", async (request, reply) => {
+  return { hello: "world" };
 });
 
 // Run the server!
@@ -40,11 +42,11 @@ const start = async () => {
   }
 };
 start();
-````
+```
 
 In this example, a simple `GET` route on `/` is created, which automatically serializes the returned JavaScript object into a JSON response.
 
------
+---
 
 #### **2. Schema-Based Validation**
 
@@ -52,8 +54,8 @@ One of Fastify's most powerful features is built-in data validation using JSON S
 
 ```javascript
 // server.js (continued)
-import { z } from 'zod';
-import { zodToJsonSchema } from 'zod-to-json-schema';
+import { z } from "zod";
+import { zodToJsonSchema } from "zod-to-json-schema";
 
 // 1. Define your Zod schema
 const postSchema = z.object({
@@ -62,30 +64,34 @@ const postSchema = z.object({
 });
 
 // 2. Define the route with the validation schema
-fastify.post('/posts', {
-  schema: {
-    body: zodToJsonSchema(postSchema), // Validate the request body
+fastify.post(
+  "/posts",
+  {
+    schema: {
+      body: zodToJsonSchema(postSchema), // Validate the request body
+    },
   },
-}, async (request, reply) => {
-  // request.body is guaranteed to be valid according to the schema
-  const { title, content } = request.body;
+  async (request, reply) => {
+    // request.body is guaranteed to be valid according to the schema
+    const { title, content } = request.body;
 
-  // Logic to create a new post...
-  // const newPost = await createPost({ title, content });
+    // Logic to create a new post...
+    // const newPost = await createPost({ title, content });
 
-  reply.code(201); // Set HTTP status code for "Created"
-  return { success: true, title };
-});
+    reply.code(201); // Set HTTP status code for "Created"
+    return { success: true, title };
+  },
+);
 ```
 
 If a request is made to `POST /posts` with a body that doesn't match the `postSchema`, Fastify will automatically send back a `400 Bad Request` response with details about the validation errors, without your route handler ever running.
 
------
+---
 
 ### **Docs for Further Reading**
 
-  * [**Official Fastify Website**](https://www.fastify.io/)
-  * [**Fastify Documentation - Getting Started**](https://fastify.dev/docs/latest/Guides/Getting-Started/)
-  * [**Routes and Validation Explained**](https://www.fastify.io/docs/latest/Reference/Validation-and-Serialization/)
+- [**Official Fastify Website**](https://www.fastify.io/)
+- [**Fastify Documentation - Getting Started**](https://fastify.dev/docs/latest/Guides/Getting-Started/)
+- [**Routes and Validation Explained**](https://www.fastify.io/docs/latest/Reference/Validation-and-Serialization/)
 
 <!-- end list -->
