@@ -24,6 +24,6 @@ This section covers all the core technologies you will be working with, includin
 
 We highly encourage you to use these materials as you progress through the project plan. They are designed to support your learning every step of the way.
 
-Please don't hesitate to reach out to your mentor if you have any questions.
+Please don't hesitate to reach out to your Lead if you have any questions.
 
 Happy coding!
