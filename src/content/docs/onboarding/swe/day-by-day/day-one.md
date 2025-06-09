@@ -1,4 +1,12 @@
 ---
-title: First Steps
+title: Day One
 description: Starting point in your software engineering journey with webeet.
 ---
+
+### **Project Setup & UI Scaffolding**
+- **Goal:** Get the project running locally and build the main layout.
+- **Tasks:**
+    1.  Complete local environment setup (Node.js, Git).
+    2.  Initialize a new React project using Vite.
+    3.  Create a clean project folder structure (e.g., `components`, `pages`, `store`).
+    4.  Build the static `Layout`, `ProfileHeader`, and `PostGallery` components with placeholder content and styling.
