@@ -103,7 +103,3 @@ By default, when using the framework mode, React Router v7 enables **Server-Side
 - [**React Router v7 Tutorial (YouTube)**](https://www.youtube.com/watch?v=h7MTWLv3xvw)
 
 <!-- end list -->
-
-```
-
-```
