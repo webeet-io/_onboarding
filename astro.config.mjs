@@ -7,7 +7,7 @@ import expressiveCode from "astro-expressive-code";
 export default defineConfig({
   integrations: [
     expressiveCode({
-      themes: ["catppuccin-latte", "catppuccin-latte"],
+      themes: ["catppuccin-frappe"],
     }),
 
     starlight({
@@ -41,4 +41,3 @@ export default defineConfig({
     }),
   ],
 });
-
