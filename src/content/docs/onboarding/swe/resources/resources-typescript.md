@@ -1,4 +1,4 @@
 ---
-title: Typescript
-description: Overview of React Router v7.
+title: TypeScript
+description: Overview of TypeScript.
 ---
