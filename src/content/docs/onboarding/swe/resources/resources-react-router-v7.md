@@ -5,7 +5,7 @@ sidebar:
 description: Overview of React Router v7.
 ---
 
-> **React Router v7** can be used to handle functionalities traditionally associated with a backend, effectively blurring the lines between client-side and server-side development. This is achieved through its new _"framework mode,"_ which incorporates features from the powerful full-stack framework, **Remix**. While it doesn't replace the need for a dedicated backend in all scenarios, it offers a robust solution for building full-stack React applications with a unified routing system.
+> **React Router v7** can be used to handle functionalities traditionally associated with a backend, effectively blurring the lines between client-side and server-side development. This is achieved through its new _"framework mode,"_ which incorporates features from the powerful full-stack framework, **React Router v7**. While it doesn't replace the need for a dedicated backend in all scenarios, it offers a robust solution for building full-stack React applications with a unified routing system.
 >
 > The key to React Router v7's backend capabilities lies in its data loading and mutation features, primarily through **`loader`** and **`action`** functions. These functions are defined on your routes and execute on the server, allowing you to fetch data and handle form submissions before your components even render on the client.
 

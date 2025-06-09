@@ -35,7 +35,7 @@ description: Starting point in your software engineering journey with webeet.
   - [ ] Create `*.test.tsx` files for critical components like `PostCard.tsx`, `Header.tsx`, and `HighlightBubble.tsx`.
   - [ ] Write tests to verify components render correctly based on props. Test the "like" button interaction in `PostCard` by mocking the Zustand store.
 
-- **Test Remix Loaders**
+- **Test rrv7 Loaders**
   - [ ] Write integration tests for key `loader` functions (e.g., in `home.tsx`).
   - [ ] Mock the Axios service to control the API responses and test how the loader handles both successful data fetching and API errors.
   - [ ] Run all frontend tests via `bun test`.

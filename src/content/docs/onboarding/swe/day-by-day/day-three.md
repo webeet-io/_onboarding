@@ -7,7 +7,7 @@ description: Day three of your software engineering journey with webeet.
 
 ## Frontend Project Setup
 
-**Focus**: Initialize the Remix frontend project in a separate repository and configure it with the necessary tools for data fetching, validation, and state management.
+**Focus**: Initialize the rrv7 frontend project in a separate repository and configure it with the necessary tools for data fetching, validation, and state management.
 
 ---
 
@@ -18,9 +18,9 @@ description: Day three of your software engineering journey with webeet.
   - [ ] Create a new directory for the frontend application (separate from the backend).
   - [ ] Initialize a new Git repository (`git init`).
 
-- **Initialize Remix Project with Bun**
+- **Initialize rrv7 Project with npx**
 
-  - [ ] Use `bun create remix` to bootstrap a new Remix project.
+  - [ ] Use `npx create-react-router@latest my-react-router-app` to bootstrap a new rrv7 project.
   - [ ] When prompted, select Bun as the server runtime.
 
 - **Install Dependencies**

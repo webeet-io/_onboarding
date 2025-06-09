@@ -7,7 +7,7 @@ description: Starting point in your software engineering journey with webeet.
 
 ## Building the Home Page
 
-**Focus**: Create the main `/home` page, fetch data from the backend's `posts` module in a Remix `loader`, and render it using reusable components.
+**Focus**: Create the main `/home` page, fetch data from the backend's `posts` module in a rrv7 `loader`, and render it using reusable components.
 
 ---
 
@@ -23,7 +23,7 @@ description: Starting point in your software engineering journey with webeet.
   - [ ] In `app/routes/home.tsx`, export a `loader` function.
   - [ ] Inside the `loader`, use your Axios service to call the backend's `GET /api/posts` endpoint.
   - [ ] Wrap the API call with `amparo-core`'s `Result.fromAsync` to safely handle success and error states.
-  - [ ] If the call is successful, return the data using Remix's `json` utility. If it fails, throw a `Response` or handle the error appropriately.
+  - [ ] If the call is successful, return the data using rrv7's `json` utility. If it fails, throw a `Response` or handle the error appropriately.
 
 - **Validate Data with Zod**
 
