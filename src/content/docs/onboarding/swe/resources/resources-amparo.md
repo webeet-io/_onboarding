@@ -49,8 +49,8 @@ const dbResponse = await safe(
 
 Purpose: Ensures a value is "truthy" (i.e., not null, undefined, false, 0, or ""). If it's not, it throws a specified error.
 
-    How it Works: If the provided value is truthy, the function returns the value. If it's falsy, it immediately throws a structured error.
-    Use Case: Perfect for general-purpose checks where you expect a value to exist or a condition to be true after an operation.
+- **How it Works**: If the provided value is truthy, the function returns the value. If it's falsy, it immediately throws a structured error.
+- **Use Case**: Perfect for general-purpose checks where you expect a value to exist or a condition to be true after an operation.
 
 Example from code:
 assert checks if isPasswordValid is true. If false, it throws an Authentication error.
@@ -69,8 +69,8 @@ assert(
 
 Purpose: Validates that a value conforms to a specific TypeScript type or shape using a type guard function.
 
-    How it Works: If the type guard returns true, assertWithTypeguard returns the original value, now correctly typed. If the guard returns false, it throws a structured error.
-    Use Case: The primary tool for validating the shape of incoming data, like request.body.
+- **How it Works**: If the type guard returns true, assertWithTypeguard returns the original value, now correctly typed. If the guard returns false, it throws a structured error.
+- **Use Case**: The primary tool for validating the shape of incoming data, like request.body.
 
 Example from code:
 This function uses a Zod schema to validate the request body.
@@ -93,8 +93,8 @@ amparo-fastify also enables architectural patterns for creating type-safe contro
 
 Purpose: To add custom, fully-typed properties to Fastify's native FastifyRequest object.
 
-    Why it's needed: In a typical auth flow, a preHandler hook verifies a user's token and attaches the user's data to the request object. Module augmentation tells TypeScript that properties like _user will exist on certain requests, preventing type errors.
-    Implementation: A *.ts file is created to declare module "fastify" and extend the FastifyRequest interface.
+- **Why it's needed:** In a typical auth flow, a preHandler hook verifies a user's token and attaches the user's data to the request object. Module augmentation tells TypeScript that properties like _user will exist on certain requests, preventing type errors.
+- **Implementation:** A *.ts file is created to declare module "fastify" and extend the FastifyRequest interface.
 
 Example from code:
 This code adds optional \_user and \_workspace properties to every Fastify request.
@@ -121,13 +121,13 @@ declare module "fastify" {
 
 Purpose: To abstract away repetitive boilerplate from controller definitions, enforce conventions, and improve type safety.
 
-    baseControllerBuilder: amparo-fastify provides a generic baseControllerBuilder. It takes the core logic of a controller (a BaseControllerHelper) and handles the routine tasks of executing it and sending the response.
-    authControllerBuilder: This is a specialized wrapper around the baseControllerBuilder. Its specific job is to create controllers that are guaranteed to have an authenticated user. It pre-configures the baseControllerBuilder to use an AuthRequest type, which ensures request._user exists and is fully typed.
+- **baseControllerBuilder:** amparo-fastify provides a generic baseControllerBuilder. It takes the core logic of a controller (a BaseControllerHelper) and handles the routine tasks of executing it and sending the response.
+- **authControllerBuilder:** This is a specialized wrapper around the baseControllerBuilder. Its specific job is to create controllers that are guaranteed to have an authenticated user. It pre-configures the baseControllerBuilder to use an AuthRequest type, which ensures request._user exists and is fully typed.
 
 Example from code:
 This builder creates a convention: any controller that needs an authenticated user should be built with authControllerBuilder.
 
-```
+```typescript
 // The custom builder takes the controller's core logic
 const authControllerBuilder = <T extends AuthRequestVariant>(
     controllerHelper: BaseControllerHelper<T, AuthRequest<T>>
