@@ -31,10 +31,12 @@ The primary goal of your onboarding is deep learning. Therefore, we have a clear
 
 Asking an AI to write code will give you a quick result, but it will rob you of the critical learning process that comes from solving a problem yourself. This is our way at Webeet; we advocate for using AI to augment our intelligence and accelerate our learning, not to replace our critical thinking.
 
-This approach is backed by research. A study by Microsoft and Harvard on the impact of AI found that while it can boost productivity, it also risks making us complacent. They note that the most effective model is the "centaur," where humans and AI work together:
+This approach is backed by research. A study by Microsoft on the impact of AI found that while it can boost productivity, it also risks making us complacent. They note that the most effective model is the where humans and AI work together through a method they call "stewardship"
 
-> "The idea is that the human provides the judgment, the accountability, [and] the critical-thinking skills."
+> "While GenAI can improve worker efficiency, it can inhibit critical engagement with work and can potentially lead to long-term overreliance on the tool and diminished skill for independent problem-solving. Higher confidence in GenAI’s ability to perform a task is related to less critical thinking effort."
+
+> "Correctness, accuracy, and bias. With GenAI, knowledge workers also shift from task execution to oversight, requiring them to guide and monitor AI to produce high-quality outputs — a role we describe as 'stewardship'"
 
 We want you to build those critical-thinking skills. This project is your opportunity to do just that.
 
-[Read more about the study here.](https://www.hbs.edu/ris/Publication%20Files/24-023_a2c162f1-9538-4226-9963-1223325123d6.pdf)
+[Read more about the study here.](https://www.microsoft.com/en-us/research/wp-content/uploads/2025/01/lee_2025_ai_critical_thinking_survey.pdf)
