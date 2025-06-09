@@ -1,12 +1,18 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
+import expressiveCode from "astro-expressive-code";
 
 // https://astro.build/config
 export default defineConfig({
   integrations: [
+    expressiveCode({
+      themes: ["catppuccin-latte", "catppuccin-latte"],
+    }),
+
     starlight({
       title: "Webeet Docs",
+      customCss: ["./src/styles/app.css"],
       social: [
         {
           icon: "github",
@@ -35,3 +41,4 @@ export default defineConfig({
     }),
   ],
 });
+
