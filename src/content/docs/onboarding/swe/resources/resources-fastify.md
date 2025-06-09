@@ -1,7 +1,7 @@
 ---
 title: Fastify
 sidebar:
-  order: 1
+  order: 4
 description: High-Speed, Low-Overhead Backend Development.
 ---
 

@@ -1,5 +1,7 @@
 ---
 title: React Router v7
+sidebar:
+  order: 3
 description: Overview of React Router v7.
 ---
 
