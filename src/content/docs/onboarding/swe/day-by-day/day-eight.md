@@ -13,22 +13,25 @@ description: Starting point in your software engineering journey with webeet.
 
 ### Backend Testing (Repo 1) ✅
 
-- **Adopt a Module-Based Testing Strategy**
+- **Adopt a Module-Based Integration Testing Strategy**
 
-  - [ ] For each module (e.g., `posts`, `reels`), ensure a `tests` subdirectory exists.
-  - [ ] The goal is to test each module in isolation as much as possible.
+  - [ ] Use **Jest** as the exclusive test runner for the backend.
+  - [ ] For each test suite, create an isolated, in-memory **Fastify server instance**.
+  - [ ] **Mock external dependencies**, such as database helpers (`getUserByAuthMethod`), at the top of the test file using `jest.mock()`.
+  - [ ] Use Fastify's `app.inject()` method to simulate live HTTP requests to your routes, testing the full request-response cycle.
 
-- **Write Module Tests**
-  - [ ] In `src/modules/posts/tests`, write comprehensive tests for `posts.routes.test.ts`. Cover success cases, 404 errors for non-existent posts, and the `POST /:id/like` endpoint.
-  - [ ] In `src/modules/reels/tests`, write tests for both the grid and feed endpoints.
-  - [ ] In `src/modules/highlights/tests`, write tests for both the list and the dynamic `:id` endpoints.
-  - [ ] Use the `bun test` command to run all tests.
+- **Write Module Integration Tests**
+  - [ ] In `src/modules/posts/tests`, write integration tests for the `posts.routes.test.ts`. Mock the database service and use `app.inject()` to verify status codes and response bodies for success cases, 404 errors, and the `POST /:id/like` endpoint.
+  - [ ] Follow the same pattern for the `reels` and `highlights` modules, ensuring each test file is self-contained.
+  - [ ] Use the `jest` command to run all backend tests.
+
+---
 
 ### Frontend Testing (Repo 2) ✅
 
-- **Configure Bun Test Runner**
+- **Configure Jest with React Testing Library**
 
-  - [ ] Verify the project is set up to use `@testing-library/react` and `@testing-library/jest-dom` with Bun's test runner.
+  - [ ] Verify the project is set up to use **Jest** with `@testing-library/react` and `@testing-library/jest-dom`.
 
 - **Test UI Components**
 
@@ -37,5 +40,5 @@ description: Starting point in your software engineering journey with webeet.
 
 - **Test rrv7 Loaders**
   - [ ] Write integration tests for key `loader` functions (e.g., in `home.tsx`).
-  - [ ] Mock the Axios service to control the API responses and test how the loader handles both successful data fetching and API errors.
-  - [ ] Run all frontend tests via `bun test`.
+  - [ ] Mock the Axios service to control API responses and test how the loader handles both successful data fetching and API errors.
+  - [ ] Run all frontend tests via a configured test script (e.g., `npm test`).
