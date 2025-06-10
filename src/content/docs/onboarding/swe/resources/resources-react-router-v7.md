@@ -98,8 +98,8 @@ By default, when using the framework mode, React Router v7 enables **Server-Side
 - [**Official React Router Docs**](https://reactrouter.com/home)
 - [**Server-Side Rendering with React Router**](https://blog.logrocket.com/server-side-rendering-react-router-v7/#:~:text=Static%20site%20generation%20in%20React,Book%20list) (Blog Post)
 - [**Rrv7 `action` function**](https://reactrouter.com/start/framework/actions)
-- [**Remix's `loader` function**](https://remix.run/docs/en/main/route/loader)
-- [**What's New in React Router v6.4**](https://www.syncfusion.com/blogs/post/whats-new-react-router-7/amp) (Blog Post)
+- [**Rrv7 `loader` function**](https://reactrouter.com/start/framework/data-loading)
+- [**What's New in React Router v7**](https://www.syncfusion.com/blogs/post/whats-new-react-router-7/amp) (Blog Post)
 - [**React Router v7 Tutorial (YouTube)**](https://www.youtube.com/watch?v=h7MTWLv3xvw)
 
 <!-- end list -->
