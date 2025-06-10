@@ -5,7 +5,7 @@ sidebar:
 description: Starting point in your software engineering journey with webeet.
 ---
 
-# Finalization & Documentation
+## Finalization & Documentation
 
 **Focus**: Conduct a final review, document the setup and modular architecture, and prepare the project for hand-off or deployment.
 
