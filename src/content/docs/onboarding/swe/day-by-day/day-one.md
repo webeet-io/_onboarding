@@ -16,11 +16,12 @@ description: Day one of your software engineering journey with webeet.
 - **Project, Fastify & Git Setup**
 
   - [ ] Ensure `bun` is installed.
-  - [ ] Install Fastify CLI with `npm`:\
+  - [ ] Create a new Git repository.
+  - [ ] Install Fastify CLI with `npm`:
     ```bash
     npm i fastify-cli
     ```
-  - [ ] Add the following lines to `package.json`:/
+  - [ ] Add the following lines to `package.json`:
     ```json
     "scripts": {
       "dev": "fastify start server.ts",
