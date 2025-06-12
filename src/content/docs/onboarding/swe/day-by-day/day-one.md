@@ -33,11 +33,6 @@ description: Day one of your software engineering journey with webeet.
     fastify generate my-fastify-project
     ```
   - [ ] Add the following lines to `package.json`:
-    ```json
-    "scripts": {
-      "dev": "fastify start server.ts",
-    }
-    ```
 
 - **Install Dependencies**
 
