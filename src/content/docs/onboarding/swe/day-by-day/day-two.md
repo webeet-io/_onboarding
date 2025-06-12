@@ -5,42 +5,134 @@ sidebar:
 description: Day two of your software engineering journey with webeet.
 ---
 
-## Backend CRUD Module & Seeding
+## Creating a Reusable Database Transaction Layer
 
-**Focus**: Build the first full CRUD module (`posts`) following the modular pattern, define its data structures, and create a script to seed the database.
+To keep our code clean and organized, we don't want to write raw SQL queries directly in our services. Instead, we'll create a dedicated "transaction layer." This is a set of helper functions that provide a simple API to interact with our database tables (e.g., `transactions.users.getById(1)`).
+
+### Step 1: Define the Transaction Helpers
+
+Create a new file that will contain a factory function. This function will take the raw database connection as an argument and return an object containing all our helper methods, neatly organized by table name.
+
+**File: `src/core/database/database.transactions.ts`**
+
+```typescript
+import type { Database } from "better-sqlite3";
+
+// This factory function creates and returns our transaction helpers.
+// It takes the database connection as its dependency.
+export const createTransactionHelpers = (db: Database) => {
+  // We use prepared statements for security (prevents SQL injection) and performance.
+  const statements = {
+    // User statements
+    getUserById: db.prepare("SELECT * FROM users WHERE id = ?"),
+    getAllUsers: db.prepare("SELECT * FROM users"),
+    createUser: db.prepare(
+      "INSERT INTO users (name, email) VALUES (@name, @email) RETURNING *",
+    ),
+    // Product statements...
+  };
+
+  const users = {
+    getById: (id: number) => {
+      return statements.getUserById.get(id);
+    },
+    getAll: () => {
+      return statements.getAllUsers.all();
+    },
+    create: (data: { name: string; email: string }) => {
+      return statements.createUser.get(data);
+    },
+  };
+
+  const products = {
+    // ... similar helpers for the products table
+  };
+
+  // Return the complete set of helpers
+  return {
+    users,
+    products,
+  };
+};
+
+// We export the type for easy use across the application
+export type TransactionHelpers = ReturnType<typeof createTransactionHelpers>;
+```
 
 ---
 
-### Milestones ✅
+## Step 2: Integrate Transactions into the Database Plugin
 
-- **Create the `posts` Module Structure**
+Now, we'll update our `database.plugin.ts` to use this new factory function. The plugin will still create the raw `db` connection, but it will _also_ create our transaction helpers and decorate the Fastify instance with them.
 
-  - [ ] Create a new module directory at `src/modules/posts`.
+**File: `src/core/plugins/database.plugin.ts` (Updated)**
 
-- **Define Data Schemas and Types**
+```typescript
+import type { FastifyInstance } from "fastify";
+import fp from "fastify-plugin";
+import Database from "better-sqlite3";
+import {
+  createTransactionHelpers,
+  type TransactionHelpers, // Import the type
+} from "../database/database.transactions";
 
-  - [ ] Inside `src/modules/posts`, create a `posts.types.ts` file.
-  - [ ] Use Zod to define the schema for a `Post` (e.g., `id`, `imageUrl`, `caption`, `authorId`). Export both the schema and the inferred TypeScript type.
+declare module "fastify" {
+  interface FastifyInstance {
+    db: Database.Database;
+    // Add the new transactions property to the Fastify instance
+    transactions: TransactionHelpers;
+  }
+}
 
-- **Update Database Schema**
+async function databasePlugin(fastify: FastifyInstance) {
+  const db = new Database("./database.db");
+  fastify.log.info("SQLite database connection established.");
 
-  - [ ] Modify the core database script (`src/core/database/init.ts`) to create a `posts` table based on the new schema.
-  - [ ] Run the script to update your database: `bun src/core/database/init.ts`.
+  // Create the transaction helpers by passing the db connection
+  const transactions = createTransactionHelpers(db);
 
-- **Implement Module Logic**
+  // Decorate with both the raw connection and the transaction helpers
+  fastify.decorate("db", db);
+  fastify.decorate("transactions", transactions);
 
-  - [ ] In `src/modules/posts`, create `posts.service.ts`. Implement business logic here (e.g., a `getAllPosts()` function that queries the database).
-  - [ ] In `src/modules/posts`, create `posts.controller.ts`. Implement a controller method that calls the `posts.service` and returns the data.
-  - [ ] In `src/modules/posts`, create `posts.routes.ts`. Define the `GET /posts` endpoint and connect it to the controller method.
+  fastify.addHook("onClose", (instance, done) => {
+    instance.db.close();
+    instance.log.info("SQLite database connection closed.");
+    done();
+  });
+}
 
-- **Seed the Database**
+export default fp(databasePlugin);
+```
 
-  - [ ] Create a top-level `scripts` directory.
-  - [ ] Inside `scripts`, create a `seed.ts` file that populates the `posts` and `users` tables.
-  - [ ] Add a script to `package.json`: `"db:seed": "bun scripts/seed.ts"`.
-  - [ ] Run the seed script (`bun db:seed`).
+---
 
-- **Test the Module**
-  - [ ] Inside `src/modules/posts`, create a `tests` directory.
-  - [ ] Create `posts.routes.test.ts` and write a test to ensure `GET /api/posts` returns the seeded data.
-  - [ ] Run the test via `bun test`.
+## Step 3: Using the Transaction Helpers in a Service
+
+With this setup, your services now have a clean, powerful, and type-safe way to interact with the database. They don't need to know anything about SQL; they just use the injected `transactions` object.
+
+**Example: `src/modules/posts/posts.service.ts`**
+
+```typescript
+import type { FastifyInstance } from "fastify";
+
+// The service factory takes the entire Fastify instance
+// to access any decorators it needs.
+export const postsService = (fastify: FastifyInstance) => {
+  return {
+    // Our service method now uses the clean transaction helper
+    findById: async (id: number) => {
+      fastify.log.info(`Fetching post with id ${id}`);
+      // No SQL here! Just a simple function call.
+      const post = fastify.transactions.posts.getById(id);
+      return post;
+    },
+
+    create: async (data: { name: string; email: string }) => {
+      fastify.log.info(`Creating new post with caption ${data.caption}`);
+      const newPost = fastify.transactions.posts.create(data);
+      return newPost;
+    },
+  };
+};
+```
