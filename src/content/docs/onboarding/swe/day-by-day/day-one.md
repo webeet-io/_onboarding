@@ -36,16 +36,18 @@ description: Day one of your software engineering journey with webeet.
 
 - **Install Dependencies**
 
-  - [ ] Use `bun add` to install core dependencies: `fastify`, `amparo-fastify`, `sqlite`, `zod`.
+  - [ ] Use `bun add` to install core dependencies (use --save-dev flag for dev dependencies): `@types/node`,`better-sqlite3`, `fastify`, `amparo-fastify`, `sqlite`, `zod`.
 
 - **Establish Modular Project Structure**
 
-  - [ ] Remove the `plugins` and `routes` directories
+  - [ ] Remove the `plugins` and `routes` directories and the `app.js` file.
   - [ ] Create a `src` directory.
   - [ ] Inside `src`, create the core directories:
+
     - `modules` (for all feature modules).
     - `core` (for shared concerns like database, config).
     - `common` (for shared helpers, enums, and types).
+
   - [ ] Create the main server entry point at `src/server.ts`.
 
 - **Core Services Setup**

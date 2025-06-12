@@ -23,35 +23,30 @@ import type { Database } from "better-sqlite3";
 export const createTransactionHelpers = (db: Database) => {
   // We use prepared statements for security (prevents SQL injection) and performance.
   const statements = {
-    // User statements
-    getUserById: db.prepare("SELECT * FROM users WHERE id = ?"),
-    getAllUsers: db.prepare("SELECT * FROM users"),
-    createUser: db.prepare(
-      "INSERT INTO users (name, email) VALUES (@name, @email) RETURNING *",
+    // Post statements
+    getPostById: db.prepare("SELECT * FROM posts WHERE id = ?"),
+    getAllPosts: db.prepare("SELECT * FROM posts"),
+    createPost: db.prepare(
+      "INSERT INTO posts (img_url, caption) VALUES (@img_url, @caption) RETURNING *",
     ),
     // Product statements...
   };
 
-  const users = {
+  const posts = {
     getById: (id: number) => {
-      return statements.getUserById.get(id);
+      return statements.getPostById.get(id);
     },
     getAll: () => {
-      return statements.getAllUsers.all();
+      return statements.getAllPosts.all();
     },
-    create: (data: { name: string; email: string }) => {
-      return statements.createUser.get(data);
+    create: (data: { img_url: string; caption: string }) => {
+      return statements.createPost.get(data);
     },
-  };
-
-  const products = {
-    // ... similar helpers for the products table
   };
 
   // Return the complete set of helpers
   return {
-    users,
-    products,
+    posts,
   };
 };
 
@@ -128,7 +123,7 @@ export const postsService = (fastify: FastifyInstance) => {
       return post;
     },
 
-    create: async (data: { name: string; email: string }) => {
+    create: async (data: { img_url: string; caption: string }) => {
       fastify.log.info(`Creating new post with caption ${data.caption}`);
       const newPost = fastify.transactions.posts.create(data);
       return newPost;
