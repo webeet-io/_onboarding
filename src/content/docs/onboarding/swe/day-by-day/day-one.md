@@ -32,11 +32,10 @@ description: Day one of your software engineering journey with webeet.
     ```bash
     fastify generate my-fastify-project
     ```
-  - [ ] Add the following lines to `package.json`:
 
 - **Install Dependencies**
 
-  - [ ] Use `bun add` to install core dependencies (use --save-dev flag for dev dependencies): `@types/node`,`better-sqlite3`, `fastify`, `amparo-fastify`, `sqlite`, `zod`.
+  - [ ] Use `npm i` to install core dependencies (use --save-dev flag for dev dependencies): `@types/node`,`better-sqlite3`, `fastify`, `typescript` `amparo-fastify`, `sqlite`, `zod`.
 
 - **Establish Modular Project Structure**
 
@@ -50,6 +49,32 @@ description: Day one of your software engineering journey with webeet.
 
   - [ ] Create the main server entry point at `src/server.ts`.
 
+  ```typescript
+  // Require the framework and instantiate it
+
+  // ESM
+  import Fastify from "fastify";
+
+  const fastify = Fastify({
+    logger: true,
+  });
+
+  // Declare a route
+  fastify.get("/", function (request, reply) {
+    reply.send({ hello: "world" });
+  });
+
+  const port = 3000;
+  // Run the server!
+  fastify.listen({ port }, function (err, address) {
+    if (err) {
+      fastify.log.error(err);
+      process.exit(1);
+    }
+    console.log(`Server is now listening on http://127.0.0.1:${port}`);
+  });
+  ```
+
 - **Core Services Setup**
 
   - [ ] In `src/core/database`, create a files :
@@ -57,5 +82,16 @@ description: Day one of your software engineering journey with webeet.
     - database.plugin.ts
 
 - **Initial Run**
-  - [ ] Add a `"dev"` script to `package.json`: `"dev": "bun --watch src/server.ts"`.
-  - [ ] Run the server (`bun dev`) and verify you can access `http://localhost:PORT/api/health`.
+
+  - [ ] Add a the following scripts to `package.json`:
+
+  ```json
+  {
+    "scripts": {
+      "build": "tsc",
+      "start": "node build/server.js"
+    }
+  }
+  ```
+
+  - [ ] Run the server (`bun dev`) and verify it starts correctly
