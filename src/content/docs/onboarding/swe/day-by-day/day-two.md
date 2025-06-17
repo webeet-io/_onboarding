@@ -14,14 +14,16 @@ Today, we're building our first feature: fetching posts from the database. But w
 The cycle is simple:
 
 1.  **Red**: Write a test that describes what you want to build. Run it. It will fail, because the code doesn't exist yet.
+
 2.  **Green**: Write the simplest possible code to make the test pass.
+
 3.  **Refactor**: Clean up the code you just wrote, confident that your test will catch any mistakes.
 
 Let's get started!
 
 ---
 
-### Milestones ✅
+### Milestones
 
 #### 1. Setup Jest for Testing
 
@@ -134,7 +136,7 @@ We will write a test for a feature that doesn't exist yet: a route `/posts/1` th
 
 ---
 
-### Green Phase: Make the Test Pass
+### Refactor: Make the Test Pass
 
 Let's implement the `findById` logic to satisfy our test.
 
@@ -313,8 +315,46 @@ Let's implement the `findById` logic to satisfy our test.
   npm test
   ```
 
-  It should now be **Green**! You have successfully built and tested a feature in isolation. To see it work for real, you can run `bun run dev` and use a tool like Postman to interact with it (though you'll need to add a post to the database manually first!).
+  It should now be **Green**!
+
+### Conclusions
+
+:::tip[You just saw the test turn green]
+Great feeling! But it might feel a bit like magic. How did we get a post when our database is empty? Let's break it down.
+:::
+
+**1. The Power of Mocking**
+
+Our test **never touched the real database**. When we did this in our test file:
+
+```javascript
+app.decorate("transactions", {
+  posts: {
+    getById: jest.fn().mockReturnValue(mockPost),
+    // ... other mocked methods
+  },
+});
+```
+
+We told our temporary test app: "Hey, ignore the real `databasePlugin`. For this test only, whenever any code calls `fastify.transactions.posts.getById()`, don't run the real database logic. Instead, immediately return this fake `mockPost` object."
+
+We tested the _behavior_ of our route and service (the plumbing), not the SQL query itself.
+
+**2. The "Magic" of `fastify.inject()`**
+
+Instead of starting a real server and sending a request with a tool like Postman, `fastify.inject()` does the work for us programmatically. It simulates an HTTP request _in memory_, passes it through our route handler (`fastify.get("/posts/:id", ...)`), and captures the final response payload and status code. It's an incredibly fast and efficient way to test our endpoints without any network overhead.
+
+**What did we really prove with this test?**
+
+- That our `GET /posts/:id` route is correctly defined.
+- That it correctly calls the `postsService`.
+- That the service correctly calls the data layer's `getById` method.
+- That the route correctly sends back whatever the service gives it with a `200 OK` status.
+
+This is a crucial skill: testing a slice of your application in complete isolation.
+
+</Aside>
 
 ---
 
-Congratulations! You've just completed a true TDD cycle using dependency mocking. This is a fundamental pattern for writing clean, maintainable, and reliable tests.
+Congratulations! You've just completed a true TDD cycle using dependency mocking and are now in the green phase of your posts service. This is a fundamental pattern for writing clean, maintainable, and reliable tests.posts serviceposts service
