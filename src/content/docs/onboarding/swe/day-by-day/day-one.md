@@ -2,96 +2,275 @@
 title: Day One
 sidebar:
   order: 1
-description: Day one of your software engineering journey with webeet.
+description: Your software engineering journey with webeet starts here!
 ---
 
-## Backend API Foundation (Modular Architecture)
+import { Aside } from '@astrojs/starlight/components';
 
-**Focus**: Initialize the backend project with a modular, NestJS-inspired architecture using Bun. Establish the server, database, and a foundational "health" module.
+## Welcome to the Team!
+
+**Today's Goal**: Get your development environment up and running by initializing our backend project. We'll be focusing on creating a solid foundation using a modular, NestJS-inspired architecture. By the end of the day, you'll have a running server, a configured project, and a foundational "health" module.
+
+Let's get started!
 
 ---
 
-### Milestones ✅
+### Milestones
 
-- **Install Bun Globally**
+#### 1. Global Tools Installation
 
-  - [ ] Install `bun`, a fast, all-in-one JavaScript runtime and toolkit, using the following command:
-    ```bash
-    curl -fsSL https://bun.sh/install | bash
-    ```
+First, we need to install the core tools we'll use. We'll be using `npm` for installing packages and `bun` as a convenient, high-performance tool for running our local development server.
 
-- **Project, Fastify & Git Setup**
+- [ ] **Install Bun**
+      We'll use `bun` as a fast runtime to power our development server's hot-reloading.
 
-  - [ ] Ensure `bun` is installed and accessible in your terminal.
-  - [ ] Create a new Git repository.
-  - [ ] Install Fastify CLI with `npm`:
-    ```bash
-    npm install --global fastify-cli
-    ```
-  - [ ] Create an initial Fastify project:
-    ```bash
-    fastify generate my-fastify-project
-    ```
+  ```bash
+  curl -fsSL https://bun.sh/install | bash
+  ```
 
-- **Install Dependencies**
+  _(After installation, close and reopen your terminal or run `source ~/.bashrc` to ensure the `bun` command is available.)_
 
-  - [ ] Use `npm i` to install core dependencies (use --save-dev flag for dev dependencies): `@types/node`,`better-sqlite3`, `fastify`, `typescript` `amparo-fastify`, `sqlite`, `zod`.
+- [ ] **Install Fastify CLI**
+      The Fastify CLI helps us generate boilerplate. We'll install it globally using `npm`.
 
-- **Establish Modular Project Structure**
+  ```bash
+  npm install --global fastify-cli
+  ```
 
-  - [ ] Remove the `plugins` and `routes` directories and the `app.js` file.
-  - [ ] Create a `src` directory.
-  - [ ] Inside `src`, create the core directories:
+#### 2. Project & Git Setup
 
-    - `modules` (for all feature modules).
-    - `core` (for shared concerns like database, config).
-    - `common` (for shared helpers, enums, and types).
+Now, let's create the project itself.
 
-  - [ ] Create the main server entry point at `src/server.ts`.
+- [ ] **Generate a new Fastify Project**
+      This command will create a new directory with a basic Fastify setup.
 
-  ```typescript
-  // Require the framework and instantiate it
+  ```bash
+  fastify generate my-api
+  ```
 
-  // ESM
+- [ ] **Navigate into your new project and initialize Git**
+      It's crucial to start tracking our changes from the very beginning.
+
+  ```bash
+  cd my-api
+  git init
+  ```
+
+#### 3. Dependency Installation
+
+Next, we'll use `npm` to install the packages our project depends on.
+
+:::tip[A Note on Our Tools: `npm` vs. `bun`]
+You might wonder why we installed `bun` but are using `npm` for packages - We believe in using the best tool for the job:
+
+- **`npm` for Package Management:** We use `npm` (Node Package Manager) to handle our project's dependencies. It's the official, battle-tested package manager for the Node.js ecosystem, ensuring maximum compatibility and stability.
+
+- **`bun` for Development Speed:** We use `bun` as a _runtime_ specifically for our `dev` script. Its key feature is incredibly fast hot-reloading, which means when you save a file, you'll see your changes reflected almost instantly.
+  :::
+
+- [ ] **Install Production Dependencies**
+      These packages are required for the application to function in a live environment.
+
+  ```bash
+  npm install better-sqlite3 fastify amparo-fastify sqlite zod
+  ```
+
+- [ ] **Install Development Dependencies**
+      These tools help us write clean, consistent, and error-free code. The `--save-dev` flag tells `npm` they are for development only.
+
+  ```bash
+  npm install --save-dev @types/node typescript @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint eslint-config-prettier eslint-plugin-prettier prettier @types/better-sqlite3
+  ```
+
+#### 4. Configuring the Guardrails
+
+A well-configured project helps us catch errors early and maintain a consistent style. Let's set up TypeScript, ESLint, and Prettier.
+
+- [ ] **1. Configure TypeScript**
+      Create a `tsconfig.json` file in the project root. This file tells the TypeScript compiler how to translate our `.ts` files into JavaScript.
+
+  ```json title="tsconfig.json"
+  {
+    "compilerOptions": {
+      "module": "CommonJS",
+      "moduleResolution": "node",
+      "target": "ESNext",
+      "lib": ["ESNext"],
+      "allowJs": true,
+      "outDir": "./build",
+      "esModuleInterop": true,
+      "forceConsistentCasingInFileNames": true,
+      "baseUrl": "./",
+      "strict": true,
+      "noImplicitAny": true,
+      "strictNullChecks": true,
+      "paths": {
+        "src/*": ["src/*"]
+      },
+      "skipLibCheck": true,
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true
+    },
+    "include": ["src/**/*"],
+    "exclude": ["node_modules", "tests", "build", ".eslint.config.mjs"]
+  }
+  ```
+
+- [ ] **2. Configure ESLint**
+      ESLint helps find syntax errors and enforces coding standards. Create a file named `eslint.config.mjs` in the project root.
+
+  ```javascript title="eslint.config.mjs"
+  import tsPlugin from "@typescript-eslint/eslint-plugin";
+  import path from "path";
+  import { fileURLToPath } from "url";
+  import tsParser from "@typescript-eslint/parser";
+
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = path.dirname(__filename);
+
+  export default [
+    {
+      languageOptions: {
+        parser: tsParser,
+        parserOptions: {
+          project: "tsconfig.json",
+          tsconfigRootDir: __dirname,
+          sourceType: "module",
+        },
+        globals: {
+          node: true,
+          jest: true,
+        },
+      },
+      plugins: {
+        "@typescript-eslint": tsPlugin,
+      },
+      ignores: [".eslintrc.js", "build/**"],
+      files: ["src/**/*.ts", "lib/**/*.ts"],
+      rules: {
+        "@typescript-eslint/interface-name-prefix": "off",
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+        "@typescript-eslint/no-explicit-any": "off",
+      },
+    },
+  ];
+  ```
+
+- [ ] **3. Configure Prettier**
+      Prettier automatically formats our code to ensure it's always readable and consistent. Create a file named `.prettierrc` in the project root (don't forget the dot).
+
+  ```json title=".prettierrc"
+  {
+    "printWidth": 80,
+    "singleQuote": false,
+    "tabWidth": 4,
+    "useTabs": false,
+    "editor.formatOnSave": true,
+    "singleAttributePerLine": true,
+    "semi": false,
+    "trailingComma": "es5"
+  }
+  ```
+
+#### 5. Architecting the Application
+
+Now, let's shape the project structure. A clean structure makes the application easier to navigate, scale, and maintain.
+
+- [ ] **Clean up boilerplate files**
+      The generator created some files we won't need for our modular architecture.
+
+  ```bash
+  rm -rf plugins routes app.js
+  ```
+
+- [ ] **Create our new source directory structure**
+      We'll place all our application code inside the `src` directory.
+
+  ```bash
+  mkdir -p src/modules src/core src/core/database src/common
+  ```
+
+- [ ] **Create the core service files**
+      Let's create empty files for our database logic. We'll fill these in later.
+
+  ```bash
+  touch src/core/database/database.plugin.ts src/core/database/database.transactions.ts
+  ```
+
+- [ ] **Create the main server entry point**
+      Create a new file at `src/server.ts`. This will be the heart of our application.
+
+  ```typescript title="src/server.ts"
   import Fastify from "fastify";
 
   const fastify = Fastify({
     logger: true,
   });
 
-  // Declare a route
-  fastify.get("/", function (request, reply) {
-    reply.send({ hello: "world" });
+  // A simple health-check route
+  fastify.get("/", async function (request, reply) {
+    return { hello: "world" };
   });
 
   const port = 3000;
-  // Run the server!
-  fastify.listen({ port }, function (err, address) {
-    if (err) {
+
+  const start = async () => {
+    try {
+      await fastify.listen({ port });
+      console.log(`🚀 Server is now listening on http://127.0.0.1:${port}`);
+    } catch (err) {
       fastify.log.error(err);
       process.exit(1);
     }
-    console.log(`Server is now listening on http://127.0.0.1:${port}`);
-  });
+  };
+
+  start();
   ```
 
-- **Core Services Setup**
+#### 6. Bringing it to Life!
 
-  - [ ] In `src/core/database`, create a files :
-    - database.transactions.ts
-    - database.plugin.ts
+The final step is to run the server.
 
-- **Initial Run**
+- [ ] **Add scripts to `package.json`**
+      Open your `package.json` and add the following `scripts`. The `dev` script specifically uses `bun` to give us fast hot-reloading.
 
-  - [ ] Add a the following scripts to `package.json`:
-
-  ```json
+  ```json title="package.json"
   {
     "scripts": {
       "build": "tsc",
-      "start": "node build/server.js"
+      "prestart": "npm run build",
+      "start": "node build/server.js",
+      "dev": "bun run --hot src/server.ts",
+      "lint": "eslint ."
     }
   }
   ```
 
-  - [ ] Run the server (`bun dev`) and verify it starts correctly
+  _(Note: You only need to add the "scripts" object, not replace the whole file!)_
+
+- [ ] **Run the server!**
+      Use the `dev` script with `bun` to start the development server.
+
+  ```bash
+  bun run dev
+  ```
+
+- [ ] **Verify it's running**
+      Open your web browser or a tool like Postman and navigate to `http://localhost:3000`. You should see the message:
+      `{"hello":"world"}`
+
+#### 7. Commit Your Work
+
+You did it! You've set up a complete, professional backend project from scratch. The last step is to commit your fantastic work to Git.
+
+- [ ] **Create your first commit**
+
+  ```bash
+  git add .
+  git commit -m "feat: initial project setup and configuration"
+  ```
+
+---
+
+Congratulations on completing your first day! You're now ready to start building amazing features.
