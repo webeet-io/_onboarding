@@ -19,16 +19,7 @@ Let's get started!
 
 #### 1. Global Tools Installation
 
-First, we need to install the core tools we'll use. We'll be using `npm` for installing packages and `bun` as a convenient, high-performance tool for running our local development server.
-
-- [ ] **Install Bun**
-      We'll use `bun` as a fast runtime to power our development server's hot-reloading.
-
-  ```bash
-  curl -fsSL https://bun.sh/install | bash
-  ```
-
-  _(After installation, close and reopen your terminal or run `source ~/.bashrc` to ensure the `bun` command is available.)_
+First, we need to install the core tools we'll use. We'll be using `npm` for installing packages and node as a runtime.
 
 - [ ] **Install Fastify CLI**
       The Fastify CLI helps us generate boilerplate. We'll install it globally using `npm`.
@@ -60,14 +51,6 @@ Now, let's create the project itself.
 
 Next, we'll use `npm` to install the packages our project depends on.
 
-:::tip[A Note on Our Tools: `npm` vs. `bun`]
-You might wonder why we installed `bun` but are using `npm` for packages - We believe in using the best tool for the job:
-
-- **`npm` for Package Management:** We use `npm` (Node Package Manager) to handle our project's dependencies. It's the official, battle-tested package manager for the Node.js ecosystem, ensuring maximum compatibility and stability.
-
-- **`bun` for Development Speed:** We use `bun` as a _runtime_ specifically for our `dev` script. Its key feature is incredibly fast hot-reloading, which means when you save a file, you'll see your changes reflected almost instantly.
-  :::
-
 - [ ] **Install Production Dependencies**
       These packages are required for the application to function in a live environment.
 
@@ -79,7 +62,7 @@ You might wonder why we installed `bun` but are using `npm` for packages - We be
       These tools help us write clean, consistent, and error-free code. The `--save-dev` flag tells `npm` they are for development only.
 
   ```bash
-  npm install --save-dev @types/node typescript @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint eslint-config-prettier eslint-plugin-prettier prettier @types/better-sqlite3
+  npm install --save-dev @types/node typescript @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint eslint-config-prettier eslint-plugin-prettier prettier @types/better-sqlite3 tsx
   ```
 
 #### 4. Configuring the Guardrails
@@ -233,14 +216,14 @@ Now, let's shape the project structure. A clean structure makes the application 
 The final step is to run the server.
 
 - [ ] **Add scripts to `package.json`**
-      Open your `package.json` and add the following `scripts`. The `dev` script specifically uses `bun` to give us fast hot-reloading.
+      Open your `package.json` and add the following `scripts`. The `dev` script specifically uses `tsx` to give us fast hot-reloading.
 
   ```json title="package.json"
     "scripts": {
       "build": "tsc",
       "prestart": "npm run build",
       "start": "node build/server.js",
-      "dev": "bun run --hot src/server.ts",
+      "dev": "tsx watch src/server.ts",
       "lint": "eslint ."
     },
   ```
@@ -248,10 +231,10 @@ The final step is to run the server.
   _(Note: You only need to add the "scripts" object, not replace the whole file!)_
 
 - [ ] **Run the server!**
-      Use the `dev` script with `bun` to start the development server.
+      Use the `dev` script with `npm` to start the development server.
 
   ```bash
-  bun run dev
+  npm run dev
   ```
 
 - [ ] **Verify it's running**

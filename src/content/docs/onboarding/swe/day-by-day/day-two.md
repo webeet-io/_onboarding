@@ -51,7 +51,7 @@ First, we need to add Jest, our testing framework, to the project.
     "scripts": {
       "build": "tsc",
       "start": "node build/server.js",
-      "dev": "bun run --hot src/server.ts",
+      "dev": "tsx watch src/server.ts",
       "lint": "eslint .",
       "test": "jest"
     }
@@ -339,7 +339,7 @@ Now that your tests are passing, let's create a post for real using a command-li
       In your terminal, run the `dev` script.
 
   ```bash
-  bun run dev
+  npm run dev
   ```
 
 - [ ] **Send the `curl` request**
