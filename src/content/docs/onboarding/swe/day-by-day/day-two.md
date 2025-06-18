@@ -26,14 +26,13 @@ Let's get started!
 First, we need to add Jest, our testing framework, to the project.
 
 - [ ] **Install Jest and its dependencies**
-      These are development dependencies, as they aren't needed for the production application.
 
   ```bash
   npm install --save-dev jest @types/jest ts-jest
   ```
 
 - [ ] **Configure Jest**
-      Create a file named `jest.config.js` in the project root. This tells Jest how to handle our TypeScript files.
+      Create a file named `jest.config.js` in the project root.
 
   ```javascript title="jest.config.js"
   /** @type {import('ts-jest').JestConfigWithTsJest} */
@@ -44,8 +43,6 @@ First, we need to add Jest, our testing framework, to the project.
   ```
 
 - [ ] **Add a `test` script to `package.json`**
-      This will give us a convenient way to run our tests.
-
   ```json title="package.json"
   {
     "scripts": {
@@ -57,29 +54,30 @@ First, we need to add Jest, our testing framework, to the project.
     }
   }
   ```
-
   _(Remember to only add the `"test": "jest"` line, not replace the whole scripts object!)_
+
+#### 2. Create the Module Skeleton
+
+Before writing our test, let's create the empty files for our new `posts` module. This satisfies the TypeScript module resolver and prevents editor errors, allowing us to focus on the TDD cycle.
+
+- [ ] **Create the directory and empty files**
+  ```bash
+  mkdir -p src/modules/posts
+  touch src/modules/posts/posts.routes.ts src/modules/posts/posts.service.ts src/modules/posts/posts.test.ts
+  ```
 
 ---
 
 ### Red Phase: Write a Failing Test
 
-We will write a test for a feature that doesn't exist yet: a `POST /posts` route that creates a new post. To keep our test fast and isolated from the real database, we will **mock** the database layer.
-
-- [ ] **Create your first test file**
-      Create a new file for our posts module tests.
-
-  ```bash
-  mkdir -p src/modules/posts
-  touch src/modules/posts/posts.test.ts
-  ```
+Now we will write a test for a feature that doesn't exist yet: a `POST /posts` route that creates a new post.
 
 - [ ] **Write the integration test**
-      We will create a temporary Fastify app for this test and provide a complete mock for the `transactions.posts` object. This ensures our test environment accurately reflects the shape of our dependencies.
+      Add the following code to your now-existing (but empty) `src/modules/posts/posts.test.ts` file.
 
   ```typescript title="src/modules/posts/posts.test.ts"
   import Fastify from "fastify";
-  import { postsRoutes } from "./posts.routes"; // We will create this file next
+  import { postsRoutes } from "./posts.routes";
 
   describe("POST /posts", () => {
     it("should create a new post and return it with a 201 status code", async () => {
@@ -101,7 +99,6 @@ We will write a test for a feature that doesn't exist yet: a `POST /posts` route
         },
       });
 
-      // We only register the route we want to test.
       app.register(postsRoutes);
 
       const response = await app.inject({
@@ -117,7 +114,7 @@ We will write a test for a feature that doesn't exist yet: a `POST /posts` route
   ```
 
 - [ ] **Run the test and watch it fail**
-      This is our **Red** step. The test will fail because the route and its dependencies don't exist yet.
+      This is our **Red** step. The test will fail because `posts.routes.ts` is empty and doesn't export anything, so `postsRoutes` is undefined.
 
   ```bash
   npm test
@@ -132,12 +129,12 @@ We will write a test for a feature that doesn't exist yet: a `POST /posts` route
 
 ---
 
-### Green: Make the Test Pass
+### Green Phase: Make the Test Pass
 
 Let's implement the `create` logic to satisfy our test.
 
 - [ ] **Define the Database Transaction Layer**
-      This layer provides clean, reusable functions for interacting with the database.
+      This layer provides clean, reusable functions for interacting with the database. You'll add this logic to the `database.plugin.ts` and `database.transactions.ts` files created on Day One.
 
   <details>
   <summary>Click to see code for the transaction helpers and plugin</summary>
@@ -147,9 +144,7 @@ Let's implement the `create` logic to satisfy our test.
   ```typescript
   import type { Database } from "better-sqlite3";
 
-  // This factory function creates and returns our transaction helpers.
   export const createTransactionHelpers = (db: Database) => {
-    // We use prepared statements for security and performance.
     const statements = {
       getPostById: db.prepare("SELECT * FROM posts WHERE id = ?"),
       getAllPosts: db.prepare("SELECT * FROM posts"),
@@ -159,20 +154,13 @@ Let's implement the `create` logic to satisfy our test.
     };
 
     const posts = {
-      getById: (id: number) => {
-        return statements.getPostById.get(id);
-      },
-      getAll: () => {
-        return statements.getAllPosts.all();
-      },
-      create: (data: { img_url: string; caption: string }) => {
-        return statements.createPost.get(data);
-      },
+      getById: (id: number) => statements.getPostById.get(id),
+      getAll: () => statements.getAllPosts.all(),
+      create: (data: { img_url: string; caption: string }) =>
+        statements.createPost.get(data),
     };
 
-    return {
-      posts,
-    };
+    return { posts };
   };
 
   export type TransactionHelpers = ReturnType<typeof createTransactionHelpers>;
@@ -200,7 +188,6 @@ Let's implement the `create` logic to satisfy our test.
     const db = new Database("./database.db");
     fastify.log.info("SQLite database connection established.");
 
-    // Create a simple table for testing if it doesn't exist
     db.exec(`
     CREATE TABLE IF NOT EXISTS posts (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -208,10 +195,9 @@ Let's implement the `create` logic to satisfy our test.
       caption TEXT,
       created_at DATETIME DEFAULT CURRENT_TIMESTAMP
     );
-  `);
+    `);
 
     const transactions = createTransactionHelpers(db);
-
     fastify.decorate("db", db);
     fastify.decorate("transactions", transactions);
 
@@ -227,13 +213,12 @@ Let's implement the `create` logic to satisfy our test.
 
   </details>
 
-- [ ] **Create the Posts Service**
-      The service contains our business logic. Create the file `src/modules/posts/posts.service.ts`.
+- [ ] **Implement the Posts Service**
+      The service contains our business logic. Add this code to `src/modules/posts/posts.service.ts`.
 
   ```typescript title="src/modules/posts/posts.service.ts"
   import type { FastifyInstance } from "fastify";
 
-  // Define a type for the data needed to create a post
   type CreatePostData = {
     img_url: string;
     caption: string;
@@ -243,8 +228,6 @@ Let's implement the `create` logic to satisfy our test.
     return {
       create: async (postData: CreatePostData) => {
         fastify.log.info(`Creating a new post`);
-        // This will use the MOCK `transactions` in our test,
-        // and the REAL `transactions` in our live application.
         const post = fastify.transactions.posts.create(postData);
         return post;
       },
@@ -252,14 +235,13 @@ Let's implement the `create` logic to satisfy our test.
   };
   ```
 
-- [ ] **Create the Posts Routes**
-      The route defines the API endpoint. Create the file `src/modules/posts/posts.routes.ts`.
+- [ ] **Implement the Posts Routes**
+      The route defines the API endpoint. Add this code to `src/modules/posts/posts.routes.ts`.
 
   ```typescript title="src/modules/posts/posts.routes.ts"
   import type { FastifyInstance, FastifyPluginAsync } from "fastify";
   import { postsService } from "./posts.service";
 
-  // Define a type for the request body
   type CreatePostBody = {
     img_url: string;
     caption: string;
@@ -270,8 +252,6 @@ Let's implement the `create` logic to satisfy our test.
 
     fastify.post<{ Body: CreatePostBody }>("/posts", async (request, reply) => {
       const newPost = await service.create(request.body);
-
-      // Return a 201 Created status code with the new post object
       return reply.code(201).send(newPost);
     });
   };
@@ -280,29 +260,23 @@ Let's implement the `create` logic to satisfy our test.
   ```
 
 - [ ] **Wire Everything Together in the Main App**
-      Finally, update the `server.ts` file from Day One to register our new database plugin and the posts routes.
+      Finally, update `src/server.ts` to register our new database plugin and the posts routes.
 
   ```typescript title="src/server.ts (Updated)"
   import Fastify from "fastify";
   import { databasePlugin } from "./core/database/database.plugin";
   import { postsRoutes } from "./modules/posts/posts.routes";
 
-  const fastify = Fastify({
-    logger: true,
-  });
+  const fastify = Fastify({ logger: true });
 
-  // Register our database plugin
   fastify.register(databasePlugin);
-  // Register our new posts routes
   fastify.register(postsRoutes);
 
-  // Declare a default route
   fastify.get("/", function (request, reply) {
     reply.send({ hello: "world" });
   });
 
   const port = 3000;
-
   fastify.listen({ port }, function (err, address) {
     if (err) {
       fastify.log.error(err);
@@ -312,49 +286,44 @@ Let's implement the `create` logic to satisfy our test.
   ```
 
 - [ ] **Run the test again**
-      Now that all the files exist, run the test.
-
+      Now that all the files have content, run the test.
   ```bash
   npm test
   ```
-
   It should now be **Green**!
 
 ---
 
 ### Making a Live Request
 
-Now that your tests are passing, let's create a post for real using a command-line tool called `curl`. This lets us interact with our running server directly.
+Now that your tests are passing, let's create a post for real using a command-line tool called `curl`.
 
 - [ ] **Start your development server**
-      In your terminal, run the `dev` script.
 
   ```bash
   bun run dev
   ```
 
 - [ ] **Send the `curl` request**
-      Open a **new** terminal window and run the following command. This sends an HTTP POST request to your local server with a JSON payload.
+      Open a **new** terminal window and run the following command.
 
   ```bash
   curl -X POST \
     -H "Content-Type: application/json" \
-    -d '{"img_url": "https://images.unsplash.com/photo-1518791841217-8f162f1e1131", "caption": "My first post from curl!"}' \
+    -d '{"img_url": "[https://images.unsplash.com/photo-1518791841217-8f162f1e1131](https://images.unsplash.com/photo-1518791841217-8f162f1e1131)", "caption": "My first post from curl!"}' \
     http://localhost:3000/posts
   ```
 
 - [ ] **Check the output**
-      Your server should respond with the newly created post, including the `id` and `created_at` timestamp generated by the database. It will look something like this:
-
+      Your server should respond with the newly created post.
   ```json
   {
     "id": 1,
-    "img_url": https://images.unsplash.com/photo-1518791841217-8f162f1e1131",
+    "img_url": "[https://images.unsplash.com/photo-1518791841217-8f162f1e1131](https://images.unsplash.com/photo-1518791841217-8f162f1e1131)",
     "caption": "My first post from curl!",
-    "created_at": "2025-06-18 16:50:00"
+    "created_at": "2025-06-19 01:17:25"
   }
   ```
-
   You've just confirmed your API endpoint works from end to end!
 
 ---
@@ -366,7 +335,6 @@ Great feeling! But it might feel a bit like magic. How did our test create a pos
 :::
 
 **1. The Power of Mocking**
-
 Our test **never touched the real database**. When we did this in our test file:
 
 ```typescript
@@ -383,7 +351,6 @@ We told our temporary test app: "Hey, ignore the real `databasePlugin`. For this
 We tested the _behavior_ of our route and service (the plumbing), not the SQL query itself.
 
 **2. The "Magic" of `fastify.inject()`**
-
 Instead of starting a real server and sending a `curl` request, `fastify.inject()` does the work for us programmatically. It simulates an HTTP request _in memory_, passes it through our route handler, and captures the final response payload and status code. It's an incredibly fast and efficient way to test our endpoints without any network overhead.
 
 **What did we really prove with this test?**

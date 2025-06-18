@@ -2,12 +2,12 @@
 title: Day Four
 sidebar:
   order: 4
-description: Fetching and rendering data on the home page with loaders and Zod.
+description: Building a scalable layout and the main profile page with loaders and Zod.
 ---
 
-## Building the Home Page
+## Building the Profile Page & Global Layout
 
-Welcome to Day Four! Today, we'll bring our frontend to life by building the main home page. The focus is on the core data flow of a modern web application: fetching data from our backend, validating it, and rendering it with clean, reusable components. We will use React Router's powerful `loader` function to handle data fetching before the page even renders.
+Welcome to Day Four! Today, we'll refactor our frontend to use a more powerful and scalable architecture. We will create a global "app shell" with our main navigation, and then build the primary user view: a `/profile` page that displays a grid of posts. This structure is much closer to a real-world application.
 
 ---
 
@@ -15,7 +15,7 @@ Welcome to Day Four! Today, we'll bring our frontend to life by building the mai
 
 #### 1. API Service and Client-Side Schemas
 
-Before we build the route, let's set up the pieces we'll need to communicate with our backend and validate the data we receive.
+Before we build the UI, we need the tools to communicate with our backend and validate the data we receive.
 
 - [ ] **Create an Axios instance for API calls**
       We'll centralize our API communication logic in a single service file.
@@ -25,27 +25,22 @@ Before we build the route, let's set up the pieces we'll need to communicate wit
   touch app/services/api.ts
   ```
 
-  Now, add the following code to configure Axios.
-
   ```typescript title="app/services/api.ts"
   import axios from "axios";
 
   // We define the base URL of our backend API.
-  // This makes it easy to change if the API moves.
   export const api = axios.create({
     baseURL: "http://localhost:3000", // Your Fastify backend address
   });
   ```
 
 - [ ] **Define the Post Schema with Zod**
-      We need to define the "shape" of our post data on the frontend. This ensures that the data we get from the API is exactly what we expect.
+      This file defines the data structure for a post and creates a validator we can use to ensure API data is safe.
 
   ```bash
   mkdir -p app/schemas
   touch app/schemas/post.schema.ts
   ```
-
-  Add the Zod schema to this file. This schema should mirror the data structure from our backend.
 
   ```typescript title="app/schemas/post.schema.ts"
   import { z } from "zod";
@@ -61,72 +56,86 @@ Before we build the route, let's set up the pieces we'll need to communicate wit
   // Zod schema for an array of posts
   export const postsSchema = z.array(postSchema);
 
-  // We can infer the TypeScript type directly from the Zod schema.
-  // This is incredibly powerful because our type definition and our validator
-  // are always in sync.
+  // We infer the TypeScript type from the Zod schema.
   export type Post = z.infer<typeof postSchema>;
   ```
 
-#### 2. Create the Home Route and Loader
+#### 2. Create Reusable UI Components
 
-Now we'll create the `/home` page itself and implement its `loader` to fetch data.
+Next, we'll create the core, reusable visual pieces of our application.
 
-- [ ] **Create the new route file**
-      Thanks to file-system routing, simply creating this file handles the `/home` URL.
-
-  ```bash
-  touch app/routes/home.tsx
-  ```
-
-- [ ] **Implement the `loader` for data fetching**
-      The `loader` is a special function exported from a route file. React Router runs it on the server (for the initial page load) or in the browser (for client-side navigations) _before_ rendering the component.
-
-  Add the following code to `app/routes/home.tsx`.
-
-  ```tsx title="app/routes/home.tsx"
-  import { useLoaderData } from "react-router";
-  import { api } from "~/services/api";
-  import { postsSchema, type Post } from "~/schemas/post.schema";
-
-  // The loader function is the heart of data loading in React Router.
-  export async function loader() {
-    try {
-      // 1. Fetch data from the backend API.
-      const response = await api.get("/posts");
-
-      // 2. Validate the data against our Zod schema.
-      // The `.parse()` method will throw an error if the data's shape is incorrect.
-      const posts = postsSchema.parse(response.data);
-
-      // 3. If validation passes, return the data directly.
-      // React Router will handle making this data available to the component.
-      return posts;
-    } catch (error) {
-      // If fetching or validation fails, we throw a Response.
-      // React Router will catch this and render the nearest ErrorBoundary
-      // instead of the component, preventing a crash.
-      console.error("Failed to load posts:", error);
-      throw new Response("Could not load posts.", { status: 500 });
-    }
-  }
-  ```
-
-  :::note[A Note on Error Handling: `try/catch` vs `amparo`]
-  You might notice we're using a `try...catch` block here. The `amparo-fastify` library is designed for the **backend** to standardize API error _responses_. On the **frontend**, the standard practice with React Router is to `throw` a `Response` object when a loader fails. This allows the framework's built-in `ErrorBoundary` to gracefully handle the UI state.
-  :::
-
-#### 3. Create Reusable UI Components
-
-A clean codebase is built on small, reusable components. Let's create the visual pieces for our home page.
-
-- [ ] **Create a `PostCard` component**
+- [ ] **Create the `Header` component**
 
   ```bash
   mkdir -p app/components
-  touch app/components/PostCard.tsx
+  touch app/components/Header.tsx
   ```
 
-  This component will display a single post. Note how its `post` prop is typed with the `Post` type we inferred from our Zod schema.
+  ```tsx title="app/components/Header.tsx"
+  export function Header() {
+    return (
+      <header className="sticky top-0 z-50 w-full border-b bg-white">
+        <nav className="container mx-auto flex items-center justify-between px-4 py-3">
+          <h1 className="text-xl font-bold">Instagram</h1>
+          <div className="text-xl">❤️</div>
+        </nav>
+      </header>
+    );
+  }
+  ```
+
+- [ ] **Create the `BottomNav` component with Links**
+      This component will now use React Router's `<Link>` component for navigation.
+
+  ```bash
+  touch app/components/BottomNav.tsx
+  ```
+
+  ```tsx title="app/components/BottomNav.tsx"
+  import { Link } from "react-router";
+
+  export function BottomNav() {
+    return (
+      <footer className="fixed bottom-0 left-0 z-50 w-full h-16 bg-white border-t">
+        <div className="grid h-full max-w-lg grid-cols-5 mx-auto font-medium">
+          <Link
+            to="/home"
+            className="inline-flex flex-col items-center justify-center px-5"
+          >
+            🏠
+          </Link>
+          <div className="inline-flex flex-col items-center justify-center px-5">
+            🔍
+          </div>
+          <Link
+            to="/home"
+            className="inline-flex flex-col items-center justify-center px-5"
+          >
+            ➕
+          </Link>
+          <Link
+            to="/"
+            className="inline-flex flex-col items-center justify-center px-5"
+          >
+            Reels
+          </Link>
+          <Link
+            to="/profile"
+            className="inline-flex flex-col items-center justify-center px-5"
+          >
+            👤
+          </Link>
+        </div>
+      </footer>
+    );
+  }
+  ```
+
+- [ ] **Create the `PostCard` component**
+
+  ```bash
+  touch app/components/PostCard.tsx
+  ```
 
   ```tsx title="app/components/PostCard.tsx"
   import type { Post } from "~/schemas/post.schema";
@@ -140,7 +149,7 @@ A clean codebase is built on small, reusable components. Let's create the visual
         <img
           src={post.img_url}
           alt={post.caption || "Instagram post"}
-          className="w-full h-auto"
+          className="w-full h-auto aspect-square object-cover"
         />
         <div className="p-4">
           <p>
@@ -153,100 +162,155 @@ A clean codebase is built on small, reusable components. Let's create the visual
   }
   ```
 
-- [ ] **Create a placeholder `Header` component**
+#### 3. Creating the Global App Shell
 
-  ```bash
-  touch app/components/Header.tsx
+Now we will modify our root layout to include the Header and BottomNav, making them appear on every page.
+
+- [ ] **Update `app/root.tsx`**
+      Import the components you just created and place them around the `<Outlet />`. The Outlet is where all other routes will be rendered.
+
+  ```tsx title="app/root.tsx (Updated)"
+  import {
+    isRouteErrorResponse,
+    Links,
+    Meta,
+    Outlet,
+    Scripts,
+    ScrollRestoration,
+    useRouteError,
+  } from "react-router";
+  import stylesheet from "./app.css?url";
+  import { Header } from "./components/Header";
+  import { BottomNav } from "./components/BottomNav";
+
+  export function links() {
+    return [{ rel: "stylesheet", href: stylesheet }];
+  }
+
+  export function Layout({ children }: { children: React.ReactNode }) {
+    return (
+      <html lang="en" className="min-h-screen">
+        <head>
+          <meta charSet="utf-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <Meta />
+          <Links />
+        </head>
+        <body className="min-h-screen bg-gray-50 text-gray-800">
+          {children}
+          <ScrollRestoration />
+          <Scripts />
+        </body>
+      </html>
+    );
+  }
+
+  export default function App() {
+    return (
+      <>
+        <Header />
+        <main className="container mx-auto p-4">
+          <Outlet />
+        </main>
+        <BottomNav />
+      </>
+    );
+  }
+
+  // ... ErrorBoundary() function remains the same
   ```
 
-  ```tsx title="app/components/Header.tsx"
-  export function Header() {
-    return (
-      <header className="sticky top-0 z-50 w-full border-b bg-white">
-        <nav className="container mx-auto flex items-center justify-between px-4 py-3">
-          <h1 className="text-xl font-bold">Instagram</h1>
-          {/* Placeholder for icons */}
-          <div className="text-xl">❤️</div>
-        </nav>
-      </header>
-    );
+#### 4. Creating the Profile Page with Nested Routes
+
+Finally, we'll build the profile section, which consists of a layout route and a child route for our posts grid.
+
+- [ ] **Create an Index Route to Redirect Users**
+      This special route catches visitors to your site's root URL (`/`) and sends them directly to the profile page.
+
+  ```bash
+  touch app/routes/_index.tsx
+  ```
+
+  ```tsx title="app/routes/_index.tsx"
+  import { redirect } from "react-router";
+
+  export async function loader() {
+    return redirect("/profile/posts/grid");
   }
   ```
 
-- [ ] **Create a placeholder `BottomNav` component**
+- [ ] **Create the Profile Layout Route**
+      This route component will provide the sub-navigation for "Posts" and "Reels" and an `<Outlet />` for its child routes to render into.
+
   ```bash
-  touch app/components/BottomNav.tsx
+  touch app/routes/profile.tsx
   ```
-  ```tsx title="app/components/BottomNav.tsx"
-  export function BottomNav() {
+
+  ```tsx title="app/routes/profile.tsx"
+  import { NavLink, Outlet } from "react-router";
+
+  export default function ProfileLayout() {
+    const activeLinkStyle = {
+      borderBottom: "2px solid black",
+      fontWeight: "bold",
+    };
+
     return (
-      <footer className="fixed bottom-0 left-0 z-50 w-full h-16 bg-white border-t">
-        <div className="grid h-full max-w-lg grid-cols-5 mx-auto font-medium">
-          {/* Placeholders for nav icons */}
-          <div className="inline-flex flex-col items-center justify-center px-5">
-            🏠
-          </div>
-          <div className="inline-flex flex-col items-center justify-center px-5">
-            🔍
-          </div>
-          <div className="inline-flex flex-col items-center justify-center px-5">
-            ➕
-          </div>
-          <div className="inline-flex flex-col items-center justify-center px-5">
-            {" "}
-            Reels{" "}
-          </div>
-          <div className="inline-flex flex-col items-center justify-center px-5">
-            👤
-          </div>
+      <div>
+        <div className="flex justify-center items-center border-b mb-4">
+          <NavLink
+            to="/profile/posts/grid"
+            className="flex-1 text-center p-4"
+            style={({ isActive }) => (isActive ? activeLinkStyle : undefined)}
+          >
+            Posts
+          </NavLink>
+          <NavLink
+            to="/profile/reels/grid"
+            className="flex-1 text-center p-4"
+            style={({ isActive }) => (isActive ? activeLinkStyle : undefined)}
+          >
+            Reels
+          </NavLink>
         </div>
-      </footer>
+        <main>
+          <Outlet />
+        </main>
+      </div>
     );
   }
   ```
 
-#### 4. Render the Page Component
+- [ ] **Create the Posts Grid Route**
+      This page will fetch the post data and render a grid of `<PostCard>` components. Its filename (`profile.posts.grid.tsx`) tells React Router to render it inside the `profile.tsx` layout.
 
-Finally, let's build the `Home` component that ties everything together.
+  ```bash
+  touch app/routes/profile.posts.grid.tsx
+  ```
 
-- [ ] **Update `app/routes/home.tsx` to render the UI**
-      We'll use the `useLoaderData` hook to get the posts and then map over them to render our `PostCard` components.
-
-  ```tsx title="app/routes/home.tsx"
+  ```tsx title="app/routes/profile.posts.grid.tsx"
   import { useLoaderData } from "react-router";
   import { api } from "~/services/api";
   import { postsSchema, type Post } from "~/schemas/post.schema";
   import { PostCard } from "~/components/PostCard";
-  import { Header } from "~/components/Header";
-  import { BottomNav } from "~/components/BottomNav";
 
   export async function loader() {
-    // ... same loader code as before
     try {
       const response = await api.get("/posts");
-      const posts = postsSchema.parse(response.data);
-      return posts;
+      return postsSchema.parse(response.data);
     } catch (error) {
       console.error("Failed to load posts:", error);
       throw new Response("Could not load posts.", { status: 500 });
     }
   }
 
-  // This is the actual page component.
-  export default function Home() {
-    // The `useLoaderData` hook provides the data returned from the loader.
-    // It is automatically typed based on the return type of the loader function.
+  export default function PostsGrid() {
     const posts = useLoaderData() as Post[];
-
     return (
-      <div className="bg-gray-50 pb-20">
-        <Header />
-        <main className="container mx-auto pt-4">
-          {posts.map((post) => (
-            <PostCard key={post.id} post={post} />
-          ))}
-        </main>
-        <BottomNav />
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {posts.map((post) => (
+          <PostCard key={post.id} post={post} />
+        ))}
       </div>
     );
   }
@@ -256,24 +320,17 @@ Finally, let's build the `Home` component that ties everything together.
 
 ### Verification
 
-1.  **Start your backend server** from Day 2.
-2.  **Start your frontend dev server** with `bun dev`.
-3.  Navigate to `http://localhost:5173/home`.
-
-If you have posts in your backend database, you should see them rendered on the page inside `PostCard` components!
+1.  **Start your backend and frontend servers.**
+2.  Navigate to `http://localhost:5173/`.
+3.  You should be automatically redirected to `http://localhost:5173/profile/posts/grid` and see your grid of posts. The "Posts" tab should be highlighted.
 
 ---
 
 ### Conclusions
 
-Today was a huge leap forward. You've implemented one of the most fundamental patterns in modern web development.
+Today you've implemented a professional frontend architecture.
 
-1.  **Co-located Data Loading**: By placing the `loader` function in the same file as the `Home` component, the logic for what data this route needs is right next to the code that renders it. This is a common pattern and the whole reason JSX exists, to have your behaviour and your templates tightly coupled.
-
-2.  **Frontend as a Gatekeeper**: You didn't just trust the API. By using **Zod** to validate the incoming `response.data`, you've made your frontend resilient. If the backend API changes or sends malformed data, your application won't crash with a cryptic `undefined is not a function` error. Instead, your `loader` will fail gracefully and your `ErrorBoundary` will be displayed.
-
-3.  **Type Safety from End to End**: Notice the journey of our `Post` type. We defined it once in `post.schema.ts` by inferring it from our Zod schema. Then, `useLoaderData` provided that type to our component, which then passed it down as a prop to `<PostCard />`. At no point did we have to manually declare the type of our data—it flowed automatically from the validator, giving us full autocompletion and type-checking.
-
-4.  **Component-Based Architecture**: You broke down the UI into logical, reusable pieces (`Header`, `BottomNav`, `PostCard`). This is the essence of React. Now, if you need to change how a post looks, you only have to edit one file.
-
-You now have a fully functioning data-driven route. This pattern of **loader -> validation -> component rendering** will be the foundation for almost every other feature we build.
+1.  **The App Shell Pattern**: By moving the `Header` and `BottomNav` to `root.tsx`, you've created a global layout. This is efficient and ensures a consistent look and feel across the entire application.
+2.  **Nested Layouts & Routes**: The `profile.tsx` route acts as a layout for a specific section of your app, providing shared UI like sub-navigation. Its children, like `profile.posts.grid.tsx`, render inside its `<Outlet />`. This is a powerful pattern for organizing complex applications.
+3.  **Programmatic Redirects**: Using a `loader` to `redirect` is a clean, server-side-friendly way to guide users to the correct starting page of your app.
+4.  **Component-Based Architecture**: You defined small, reusable pieces (`Header`, `PostCard`) and then composed them together to build complex pages. This is the heart of the React development model.
