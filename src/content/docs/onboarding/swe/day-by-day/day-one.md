@@ -9,7 +9,7 @@ import { Aside } from '@astrojs/starlight/components';
 
 ## Welcome to the Team!
 
-**Today's Goal**: Get your development environment up and running by initializing our backend project. We'll be focusing on creating a solid foundation using a modular, NestJS-inspired architecture. By the end of the day, you'll have a running server, a configured project, and a foundational "health" module.
+**Today's Goal**: Get your development environment up and running by initializing our backend project. We'll be focusing on creating a solid foundation using a modular, NestJS-inspired architecture. By the end of the day, you'll have a running server, and a fully configured project.
 
 Let's get started!
 
@@ -45,14 +45,14 @@ Now, let's create the project itself.
       This command will create a new directory with a basic Fastify setup.
 
   ```bash
-  fastify generate my-api
+  fastify generate insta-clone-fastify-backend
   ```
 
 - [ ] **Navigate into your new project and initialize Git**
       It's crucial to start tracking our changes from the very beginning.
 
   ```bash
-  cd my-api
+  cd insta-clone-fastify-backend
   git init
   ```
 
@@ -181,7 +181,7 @@ Now, let's shape the project structure. A clean structure makes the application 
       The generator created some files we won't need for our modular architecture.
 
   ```bash
-  rm -rf plugins routes app.js
+  rm -rf plugins routes app.js test
   ```
 
 - [ ] **Create our new source directory structure**
@@ -236,15 +236,13 @@ The final step is to run the server.
       Open your `package.json` and add the following `scripts`. The `dev` script specifically uses `bun` to give us fast hot-reloading.
 
   ```json title="package.json"
-  {
     "scripts": {
       "build": "tsc",
       "prestart": "npm run build",
       "start": "node build/server.js",
       "dev": "bun run --hot src/server.ts",
       "lint": "eslint ."
-    }
-  }
+    },
   ```
 
   _(Note: You only need to add the "scripts" object, not replace the whole file!)_

@@ -5,8 +5,6 @@ sidebar:
 description: Learning Test-Driven Development (TDD) by building our first feature.
 ---
 
-import { Aside } from '@astrojs/starlight/components';
-
 ## The TDD Mindset: Red, Green, Refactor
 
 Today, we're building our first feature: fetching posts from the database. But we're going to do it using **Test-Driven Development (TDD)**. This is a powerful practice where we write a failing test _before_ we write any feature code.
@@ -136,7 +134,7 @@ We will write a test for a feature that doesn't exist yet: a route `/posts/1` th
 
 ---
 
-### Refactor: Make the Test Pass
+### Green:  Make the Test Pass
 
 Let's implement the `findById` logic to satisfy our test.
 
@@ -357,4 +355,4 @@ This is a crucial skill: testing a slice of your application in complete isolati
 
 ---
 
-Congratulations! You've just completed a true TDD cycle using dependency mocking and are now in the green phase of your posts service. This is a fundamental pattern for writing clean, maintainable, and reliable tests.posts serviceposts service
+Congratulations! You've just completed a true TDD cycle using dependency mocking and are now in the green phase of your posts service. This is a fundamental pattern for writing clean, maintainable, and reliable service
