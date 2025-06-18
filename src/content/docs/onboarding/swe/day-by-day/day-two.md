@@ -83,24 +83,23 @@ We will write a test for a feature that doesn't exist yet: a route `/posts/1` th
   import Fastify from "fastify";
   import { postsRoutes } from "./posts.routes"; // We will create this file next
 
-  describe("GET /posts/:id", () => {
-    it("should return a specific post by id", async () => {
+  describe("POST /posts/", () => {
+    it("should create a  new post and return it with 201 status codce", async () => {
       const app = Fastify();
 
-      const mockPost = {
-        id: 1,
-        img_url: "[http://example.com/img.png](http://example.com/img.png)",
-        caption: "A test post",
+      const newPostPayload = {
+        img_url:
+          "[http://example.com/new-image.jpg](http://example.com/new-image.jpg)",
+        caption: "A brand new post from our test!",
       };
 
-      // We manually decorate the test app instance with our mock.
-      // To prevent errors, the shape of our mock must match the real object,
-      // so we mock all methods on `transactions.posts`.
+      const createdPost = { ...newPostPayload, id: 1 };
+
       app.decorate("transactions", {
         posts: {
-          getById: jest.fn().mockReturnValue(mockPost),
-          getAll: jest.fn().mockReturnValue([mockPost]),
-          create: jest.fn().mockReturnValue(mockPost),
+          getById: jest.fn().mockReturnValue(createdPost),
+          getAll: jest.fn().mockReturnValue(createdPost),
+          create: jest.fn().mockReturnValue(createdPost),
         },
       });
 
@@ -108,12 +107,13 @@ We will write a test for a feature that doesn't exist yet: a route `/posts/1` th
       app.register(postsRoutes);
 
       const response = await app.inject({
-        method: "GET",
-        url: "/posts/1",
+        method: "POST",
+        url: "/posts",
+        payload: newPostPayload,
       });
 
-      expect(response.statusCode).toBe(200);
-      expect(JSON.parse(response.payload)).toEqual(mockPost);
+      expect(response.statusCode).toBe(201);
+      expect(JSON.parse(response.payload)).toEqual(createdPost);
     });
   });
   ```
@@ -134,9 +134,9 @@ We will write a test for a feature that doesn't exist yet: a route `/posts/1` th
 
 ---
 
-### Green:  Make the Test Pass
+### Green: Make the Test Pass
 
-Let's implement the `findById` logic to satisfy our test.
+Let's implement the `createPost` logic to satisfy our test.
 
 - [ ] **Define the Database Transaction Layer**
       This layer provides clean, reusable functions for interacting with the database. We'll add functions for all our `posts` table operations.
@@ -235,13 +235,19 @@ Let's implement the `findById` logic to satisfy our test.
   ```typescript title="src/modules/posts/posts.service.ts"
   import type { FastifyInstance } from "fastify";
 
+  // Define a type for the data needed to create a post
+  type CreatePostData = {
+    img_url: string;
+    caption: string;
+  };
+
   export const postsService = (fastify: FastifyInstance) => {
     return {
-      findById: async (id: number) => {
-        fastify.log.info(`Fetching post with id ${id}`);
+      create: async (postData: CreatePostData) => {
+        fastify.log.info(`Creating a new post`);
         // This will use the MOCK `transactions` in our test,
         // and the REAL `transactions` in our live application.
-        const post = fastify.transactions.posts.getById(id);
+        const post = fastify.transactions.posts.create(postData);
         return post;
       },
     };
@@ -255,19 +261,20 @@ Let's implement the `findById` logic to satisfy our test.
   import type { FastifyInstance, FastifyPluginAsync } from "fastify";
   import { postsService } from "./posts.service";
 
+  // Define a type for the request body
+  type CreatePostBody = {
+    img_url: string;
+    caption: string;
+  };
+
   const postsRoutes: FastifyPluginAsync = async (fastify: FastifyInstance) => {
     const service = postsService(fastify);
 
-    fastify.get("/posts/:id", async (request, reply) => {
-      const params = request.params as { id: string };
-      const id = parseInt(params.id, 10);
+    fastify.post<{ Body: CreatePostBody }>("/posts", async (request, reply) => {
+      const newPost = await service.create(request.body);
 
-      const post = await service.findById(id);
-
-      if (!post) {
-        return reply.code(404).send({ message: "Post not found" });
-      }
-      return post;
+      // Return a 201 Created status code with the new post object
+      return reply.code(201).send(newPost);
     });
   };
 
@@ -328,7 +335,7 @@ Our test **never touched the real database**. When we did this in our test file:
 ```javascript
 app.decorate("transactions", {
   posts: {
-    getById: jest.fn().mockReturnValue(mockPost),
+    createPost: jest.fn().mockReturnValue(mockPost),
     // ... other mocked methods
   },
 });
@@ -355,4 +362,4 @@ This is a crucial skill: testing a slice of your application in complete isolati
 
 ---
 
-Congratulations! You've just completed a true TDD cycle using dependency mocking and are now in the green phase of your posts service. This is a fundamental pattern for writing clean, maintainable, and reliable service
+Congratulations! You've just completed a true TDD cycle using dependency mocking and are now in the green phase of your posts service. This is a fundamental pattern for writing clean, maintainable, and reliable servicgetByIde
