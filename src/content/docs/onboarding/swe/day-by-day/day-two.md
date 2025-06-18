@@ -339,7 +339,7 @@ Now that your tests are passing, let's create a post for real using a command-li
   ```bash
   curl -X POST \
     -H "Content-Type: application/json" \
-    -d '{"img_url": "[https://images.unsplash.com/photo-1518791841217-8f162f1e1131](https://images.unsplash.com/photo-1518791841217-8f162f1e1131)", "caption": "My first post from curl!"}' \
+    -d '{"img_url": "https://images.unsplash.com/photo-1518791841217-8f162f1e1131", "caption": "My first post from curl!"}' \
     http://localhost:3000/posts
   ```
 
@@ -349,7 +349,7 @@ Now that your tests are passing, let's create a post for real using a command-li
   ```json
   {
     "id": 1,
-    "img_url": "[https://images.unsplash.com/photo-1518791841217-8f162f1e1131](https://images.unsplash.com/photo-1518791841217-8f162f1e1131)",
+    "img_url": https://images.unsplash.com/photo-1518791841217-8f162f1e1131",
     "caption": "My first post from curl!",
     "created_at": "2025-06-18 16:50:00"
   }
