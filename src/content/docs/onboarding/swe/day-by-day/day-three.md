@@ -169,7 +169,7 @@ A professional project needs professional tooling.
           <Outlet />
         </main>
         <footer className="py-4 text-center text-sm text-gray-500">
-          <p>&copy; 2025 WeBeet</p>
+          <p>&copy; 2025 Webeet</p>
         </footer>
       </>
     );
