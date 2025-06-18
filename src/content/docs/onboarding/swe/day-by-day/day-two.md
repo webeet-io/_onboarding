@@ -1,7 +1,7 @@
 ---
 title: Day Two
 sidebar:
-  order: 2
+  order: 2
 description: Learning Test-Driven Development (TDD) by building our first feature.
 ---
 
