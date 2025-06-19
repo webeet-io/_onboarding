@@ -224,7 +224,7 @@ The final step is to run the server.
       "prestart": "npm run build",
       "start": "node build/server.js",
       "dev": "tsx watch src/server.ts",
-      "poststart": "rimraf dist",
+      "poststart": "rimraf build",
       "lint": "eslint ."
     },
   ```
