@@ -97,8 +97,7 @@ Our goal is to write a test that fails because the feature doesn't exist. To do 
       const app = Fastify();
 
       const newPostPayload = {
-        img_url:
-          "[http://example.com/new-image.jpg](http://example.com/new-image.jpg)",
+        img_url: "http://example.com/new-image.jpg",
         caption: "A brand new post from our test!",
       };
 
