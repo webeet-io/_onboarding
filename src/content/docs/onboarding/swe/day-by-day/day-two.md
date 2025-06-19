@@ -64,7 +64,7 @@ First, we need to add Jest, our testing framework, to the project.
 
 ### Red Phase: Write a Failing Test
 
-Our goal is to write a test that fails because the feature doesn't exist, not because of a syntax error. To do this, we'll create the necessary files as placeholders first.
+Our goal is to write a test that fails because the feature doesn't exist. To do this, we'll create the necessary files as placeholders first - if we don't the test won't run because of a syntax error.
 
 - [ ] **Create the Module Skeleton**
       This step creates the empty files for our `posts` module. This satisfies the TypeScript module resolver and prevents editor errors, allowing us to focus on the TDD cycle.
