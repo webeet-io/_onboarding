@@ -200,7 +200,7 @@ A professional project needs professional tooling.
 - [ ] **Verify in the Browser**
 
   ```bash
-  bun dev
+  npm run dev
   ```
 
   Navigate to `http://localhost:5173/

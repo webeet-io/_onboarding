@@ -18,7 +18,6 @@ Welcome to Day Four! Today, we'll refactor our frontend to use a more powerful a
 Before we build the UI, we need the tools to communicate with our backend and validate the data we receive.
 
 - [ ] **Create an Axios instance for API calls**
-      We'll centralize our API communication logic in a single service file.
 
   ```bash
   mkdir -p app/services
@@ -35,7 +34,6 @@ Before we build the UI, we need the tools to communicate with our backend and va
   ```
 
 - [ ] **Define the Post Schema with Zod**
-      This file defines the data structure for a post and creates a validator we can use to ensure API data is safe.
 
   ```bash
   mkdir -p app/schemas
@@ -85,7 +83,6 @@ Next, we'll create the core, reusable visual pieces of our application.
   ```
 
 - [ ] **Create the `BottomNav` component with Links**
-      This component will now use React Router's `<Link>` component for navigation.
 
   ```bash
   touch app/components/BottomNav.tsx
@@ -167,7 +164,6 @@ Next, we'll create the core, reusable visual pieces of our application.
 Now we will modify our root layout to include the Header and BottomNav, making them appear on every page.
 
 - [ ] **Update `app/root.tsx`**
-      Import the components you just created and place them around the `<Outlet />`. The Outlet is where all other routes will be rendered.
 
   ```tsx title="app/root.tsx (Updated)"
   import {
@@ -225,7 +221,6 @@ Now we will modify our root layout to include the Header and BottomNav, making t
 Finally, we'll build the profile section, which consists of a layout route and a child route for our posts grid.
 
 - [ ] **Create an Index Route to Redirect Users**
-      This special route catches visitors to your site's root URL (`/`) and sends them directly to the profile page.
 
   ```bash
   touch app/routes/_index.tsx
@@ -240,7 +235,6 @@ Finally, we'll build the profile section, which consists of a layout route and a
   ```
 
 - [ ] **Create the Profile Layout Route**
-      This route component will provide the sub-navigation for "Posts" and "Reels" and an `<Outlet />` for its child routes to render into.
 
   ```bash
   touch app/routes/profile.tsx
@@ -282,7 +276,6 @@ Finally, we'll build the profile section, which consists of a layout route and a
   ```
 
 - [ ] **Create the Posts Grid Route**
-      This page will fetch the post data and render a grid of `<PostCard>` components. Its filename (`profile.posts.grid.tsx`) tells React Router to render it inside the `profile.tsx` layout.
 
   ```bash
   touch app/routes/profile.posts.grid.tsx
@@ -322,7 +315,16 @@ Finally, we'll build the profile section, which consists of a layout route and a
 
 1.  **Start your backend and frontend servers.**
 2.  Navigate to `http://localhost:5173/`.
-3.  You should be automatically redirected to `http://localhost:5173/profile/posts/grid` and see your grid of posts. The "Posts" tab should be highlighted.
+
+:::danger[Expected Error: 404 Not Found]
+When the page loads, you will see an error page instead of a grid of posts. If you open your browser's developer tools, you will see a network request to `GET http://localhost:3000/posts` has failed with a `404 Not Found` status.
+
+**This is expected!**
+
+This is a very common situation in real-world development where the frontend and backend are temporarily out of sync. On Day Two, we only created the `POST /posts` endpoint on our backend. We never created the `GET` endpoint that our new frontend page needs.
+
+Your challenge is to fix this by creating the `GET /posts` endpoint on the backend yourself. If you need a guide, the solution is covered in the "Housekeeping" callout at the beginning of Day Five.
+:::
 
 ---
 

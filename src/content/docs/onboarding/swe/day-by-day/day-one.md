@@ -62,7 +62,7 @@ Next, we'll use `npm` to install the packages our project depends on.
       These tools help us write clean, consistent, and error-free code. The `--save-dev` flag tells `npm` they are for development only.
 
   ```bash
-  npm install --save-dev @types/node typescript @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint eslint-config-prettier eslint-plugin-prettier prettier @types/better-sqlite3 tsx
+  npm install --save-dev @types/node typescript @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint eslint-config-prettier eslint-plugin-prettier prettier @types/better-sqlite3 tsx rimraf
   ```
 
 #### 4. Configuring the Guardrails
@@ -224,6 +224,7 @@ The final step is to run the server.
       "prestart": "npm run build",
       "start": "node build/server.js",
       "dev": "tsx watch src/server.ts",
+      "poststart": "rimraf dist",
       "lint": "eslint ."
     },
   ```
