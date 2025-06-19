@@ -20,9 +20,17 @@ Before we build our `reels` module, let's fix an issue from a previous day. Our 
 
 Your task is to apply the patterns you've already learned in a TDD-safe way:
 
-1.  **See the Test Fail (The "Red" Light)**: First, make the necessary change in `src/core/database/database.transactions.ts` to prepare for the reels module by adding an empty `reels` object to the return value. Then, run `npm test`. The `posts` test will fail with a type error because the mock is now out of date. This proves your test suite is working correctly.
-2.  **Make the Test Green**: Update the test in `src/modules/posts/posts.test.ts` by adding a mock for the `reels` property to the `app.decorate` call. Run `npm test` again to confirm all tests pass.
-3.  **Implement the Feature**: Now that your test suite is green and your refactor is complete, you can confidently add the new feature. Update the `posts.service.ts` and `posts.routes.ts` files to add the `getAll` functionality and the `GET /posts` endpoint.
+1.  **Create and see the Test Fail (The "Red" Light)**: First, let's write our test. Add an `it` call inside our test suite in `posts.test.ts`:
+
+    ```typescript
+    it("should get all posts and return them with a 201 status code", async () => {});
+    ```
+
+    This test (as the description describes) should use `fastify.inject` to send a GET request to a new `GET /posts` endpoint in our `posts.routes` file.
+
+    Write it and watch it fail.
+
+2.  **Make the Test Green**: Now with our test in place, we can confidently add the new feature. Update the `posts.service.ts` and `posts.routes.ts` files to add the `getAll` functionality and the `GET /posts` endpoint.
 
 This exercise shows how tests act as a safety net, allowing you to make changes without fear of breaking existing functionality.
 :::
@@ -120,9 +128,9 @@ Now, we write the minimum amount of code required to make our new test pass. Thi
 
 Our test is green, and the feature is "functionally" complete—it gets data from the database to the browser. But it doesn't look or feel like Instagram yet. This is the **Refactor** phase.
 
-The goal now is to take the working-but-basic implementation and polish it into a pixel-perfect clone of the real Instagram..
+The goal as we go is to take the working-but-basic implementation and polish it into a pixel-perfect clone of the real Instagram..
 
-TDD gives us the confidence to make these UI functionality changes, knowing that our tests will immediately tell us if we've broken the core data-fetching logic.
+TDD gives us the confidence to make these UI and functionality changes, knowing that our tests will immediately tell us if we've broken the core data-fetching logic.
 
 This is where you show what you've learned and use the patterns we have been building to create new features and polish!
 
