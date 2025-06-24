@@ -13,7 +13,7 @@ This project is a 9-day plan to build a simplified Instagram clone. It features 
 
 ### Core Technologies
 
-- **Runtime**: Bun (for backend, frontend, and testing).
+- **Runtime**: Node
 - **Backend**: Fastify, TypeScript, SQLite, Zod, `amparo-fastify`.
 - **Frontend**: React Router v7 (SSR), TypeScript, Axios, Zustand, Zod, `amparo-core`.
 - **Repositories**: Two separate Git repos (frontend vs. backend).
@@ -24,7 +24,7 @@ This project is a 9-day plan to build a simplified Instagram clone. It features 
 
 - **Objective**: Establish a robust, modular backend API.
 - **Key Milestones**:
-  - Initialize the Fastify project with a `src/modules` architecture using Bun.
+  - Initialize the Fastify project with a `src/modules` architecture using npm.
   - Set up the core database service with SQLite.
   - Build the first complete CRUD module (`posts`) including its routes, controller, service, and tests.
   - Create a database seeding script.
@@ -35,7 +35,7 @@ This project is a 9-day plan to build a simplified Instagram clone. It features 
 
 - **Objective**: Build the frontend application and implement the main content-viewing features.
 - **Key Milestones**:
-  - Initialize the React Router v7 frontend project using Bun.
+  - Initialize the React Router v7 frontend project using their starter script (you will find it on the onboarding and on their official docs).
   - Build the main `/home` page, fetching data from the backend API's `/posts` module.
   - Sequentially build the backend modules and corresponding frontend routes for **Reels**, **Highlights** (including dynamic routes), and **Tagged** content.
   - Establish a pattern of creating reusable React components for UI elements.
