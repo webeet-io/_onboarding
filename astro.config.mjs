@@ -30,12 +30,12 @@ export default defineConfig({
           autogenerate: { directory: "onboarding/swe/first-steps" },
         },
         {
-          label: "TypeScript",
-          autogenerate: { directory: "onboarding/swe/typescript" },
-        },
-        {
           label: "Learn our stack",
           autogenerate: { directory: "onboarding/swe/resources" },
+        },
+        {
+          label: "TypeScript",
+          autogenerate: { directory: "onboarding/swe/typescript" },
         },
         {
           label: "Day by day",
