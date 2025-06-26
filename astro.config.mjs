@@ -26,24 +26,12 @@ export default defineConfig({
       },
       sidebar: [
         {
-          label: "First steps",
-          autogenerate: { directory: "onboarding/swe/first-steps" },
+          label: "Onboarding",
+          autogenerate: { directory: "onboarding/" },
         },
         {
-          label: "TypeScript",
-          autogenerate: { directory: "onboarding/swe/typescript" },
-        },
-        {
-          label: "Python",
-          autogenerate: { directory: "onboarding/swe/python" },
-        },
-        {
-          label: "Learn our stack",
-          autogenerate: { directory: "onboarding/swe/resources" },
-        },
-        {
-          label: "Day by day",
-          autogenerate: { directory: "onboarding/swe/day-by-day" },
+          label: "Product",
+          autogenerate: { directory: "product/" },
         },
       ],
     }),
