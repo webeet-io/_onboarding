@@ -1,7 +1,7 @@
 ---
-title: Async Programming in TypeScript
+title: Async Model
 sidebar:
-  order: 3
+  order: 2
 description: Handling Asynchronous Operations with Promises and Async/Await.
 ---
 

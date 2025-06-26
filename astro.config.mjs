@@ -38,6 +38,10 @@ export default defineConfig({
           autogenerate: { directory: "onboarding/swe/typescript" },
         },
         {
+          label: "Python",
+          autogenerate: { directory: "onboarding/swe/python" },
+        },
+        {
           label: "Day by day",
           autogenerate: { directory: "onboarding/swe/day-by-day" },
         },
