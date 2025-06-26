@@ -1,14 +1,13 @@
 ---
-title: TypeScript
+title: Overview
 sidebar:
   order: 1
 description: Overview of TypeScript.
 ---
 
->
 > **TypeScript** is a powerful, open-source language developed by Microsoft that builds on top of JavaScript. Simply put, it is **JavaScript, plus a type system**. It doesn't replace JavaScript; instead, it extends it. All valid JavaScript code is also valid TypeScript code, but TypeScript adds features that help you write more robust, understandable, and maintainable applications.
 >
-> The main benefit of TypeScript is **static type checking**. It catches errors and bugs in your editor *before* you even run your code, which can save you from countless runtime errors. If you know JavaScript, you already know 95% of TypeScript. The rest is learning how to describe the "shapes" of your data.
+> The main benefit of TypeScript is **static type checking**. It catches errors and bugs in your editor _before_ you even run your code, which can save you from countless runtime errors. If you know JavaScript, you already know 95% of TypeScript. The rest is learning how to describe the "shapes" of your data.
 
 ---
 
@@ -53,9 +52,9 @@ interface User {
 
 // Using a type alias
 type Post = {
-    title: string;
-    content: string;
-    author: User; // We can use our User interface here!
+  title: string;
+  content: string;
+  author: User; // We can use our User interface here!
 };
 
 function displayUser(user: User) {
@@ -77,7 +76,7 @@ TypeScript is incredibly useful in React for defining the props a component shou
 
 ```tsx
 // UserProfile.tsx
-import React from 'react';
+import React from "react";
 
 // Define the shape of the props object for this component
 interface UserProfileProps {
@@ -86,7 +85,11 @@ interface UserProfileProps {
   isLoggedIn: boolean;
 }
 
-const UserProfile: React.FC<UserProfileProps> = ({ username, posts, isLoggedIn }) => {
+const UserProfile: React.FC<UserProfileProps> = ({
+  username,
+  posts,
+  isLoggedIn,
+}) => {
   if (!isLoggedIn) {
     return <div>Please log in.</div>;
   }
@@ -109,8 +112,8 @@ const UserProfile: React.FC<UserProfileProps> = ({ username, posts, isLoggedIn }
 
 ### **Docs for Further Reading**
 
-* [**TypeScript Interactive Tutorial**](https://www.totaltypescript.com/tutorials/beginners-typescript)
-* [**Official TypeScript Website**](https://www.typescriptlang.org/)
-* [**TypeScript for JavaScript Programmers**](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html) (Official Handbook)
-* [**TypeScript for New Programmers**](https://www.typescriptlang.org/docs/handbook/typescript-from-scratch.html) (Official guide for beginners)
-* [**TypeScript Playground**](https://www.typescriptlang.org/play) (Write TS and see the compiled JS live)
+- [**TypeScript Interactive Tutorial**](https://www.totaltypescript.com/tutorials/beginners-typescript)
+- [**Official TypeScript Website**](https://www.typescriptlang.org/)
+- [**TypeScript for JavaScript Programmers**](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html) (Official Handbook)
+- [**TypeScript for New Programmers**](https://www.typescriptlang.org/docs/handbook/typescript-from-scratch.html) (Official guide for beginners)
+- [**TypeScript Playground**](https://www.typescriptlang.org/play) (Write TS and see the compiled JS live)
