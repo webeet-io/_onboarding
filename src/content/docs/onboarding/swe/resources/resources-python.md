@@ -30,3 +30,4 @@ Our prompt-generation service is built on integrating with Large Language Models
 ### **Docs for Further Reading**
 
 - [**Official Python Documentation**](https://docs.python.org/3/)
+- [**Real Python: REST APIs with FastAPI**](https://realpython.com/courses/python-rest-apis-with-fastapi/)
