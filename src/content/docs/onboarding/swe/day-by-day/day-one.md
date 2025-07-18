@@ -5,8 +5,6 @@ sidebar:
 description: Your software engineering journey with webeet starts here!
 ---
 
-import { Aside } from '@astrojs/starlight/components';
-
 ## Welcome to the Team!
 
 **Today's Goal**: Get your development environment up and running by initializing our backend project. We'll be focusing on creating a solid foundation using a modular, NestJS-inspired architecture. By the end of the day, you'll have a running server, and a fully configured project.
