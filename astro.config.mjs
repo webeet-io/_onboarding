@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
+import starlightUtils from "@lorenzo_lewis/starlight-utils";
 import expressiveCode from "astro-expressive-code";
 
 // https://astro.build/config
@@ -12,6 +13,13 @@ export default defineConfig({
 
     starlight({
       title: "Webeet Docs",
+      plugins: [
+        starlightUtils({
+          multiSidebar: {
+            switcherStyle: "hidden",
+          },
+        }),
+      ],
       customCss: ["./src/styles/app.css"],
       social: [
         {
@@ -26,16 +34,16 @@ export default defineConfig({
       },
       sidebar: [
         {
-          label: "First steps",
-          autogenerate: { directory: "onboarding/swe/first-steps" },
+          label: "SWE",
+          autogenerate: { directory: "onboarding/swe" },
         },
         {
-          label: "Learn our stack",
-          autogenerate: { directory: "onboarding/swe/resources" },
+          label: "Data",
+          autogenerate: { directory: "onboarding/data" },
         },
         {
-          label: "Day by day",
-          autogenerate: { directory: "onboarding/swe/day-by-day" },
+          label: "DevSecOps",
+          autogenerate: { directory: "onboarding/devsecops" },
         },
       ],
     }),
