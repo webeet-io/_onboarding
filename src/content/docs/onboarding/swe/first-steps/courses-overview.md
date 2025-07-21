@@ -14,13 +14,15 @@ To help you get up to speed, we have curated a dedicated "Learn our stack" secti
 This section covers all the core technologies you will be working with, including:
 
 - TypeScript
-- Zustand
 - React Router v7
 - Fastify
 - Jest
 - SQLite
 - Amparo
 - Zod
+- Zustand
+- Python
+- FastAPI
 
 We highly encourage you to use these materials as you progress through the project plan. They are designed to support your learning every step of the way.
 
