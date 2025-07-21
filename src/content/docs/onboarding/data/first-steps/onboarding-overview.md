@@ -1,3 +1,10 @@
+---
+title: Welcome to Webeet
+description: Your journey and our philosophy on learning.
+sidebar:
+  order: 1
+---
+
 # 🎓 Webeet Intern Onboarding Guide
 
 Welcome to the Webeet Internship Program! We're excited to have you on board. Over the next several days, you'll dive into a hands-on onboarding experience designed to sharpen your technical skills, familiarize you with our development workflow, and get you comfortable with our tools and systems.
@@ -16,23 +23,29 @@ By the end of this onboarding, you will:
   - Event Systems
   - Data Architecture
 
-### Note: The technical onboarding will happen in repo [\_onboarding_data](https://github.com/webeet-io/_onboarding_data)
-
 ---
 
 ## 📅 Timeline of Onboarding
 
 You’ll find the full day-by-day breakdown of your onboarding plan below. Each day has its own folder in the `daily_tasks/` directory with detailed instructions, materials, and task descriptions.
 
-| **Day**                        | **Focus Area**              |
+<<<<<<< HEAD:Week 1/Data/README.md
+| **Day** | **Focus Area** |
 | ------------------------------ | --------------------------- |
-| **Day 0 (Friday, June 6)**     | Welcome + Tools Setup       |
-| **Day 1 (Tuesday, June 10)**   | Git & GitHub Fundamentals   |
+| **Day 0 (Friday, June 6)** | Welcome + Tools Setup |
+| **Day 1 (Tuesday, June 10)** | Git & GitHub Fundamentals |
 | **Day 2 (Wednesday, June 11)** | Python Basics for Data Work |
-| **Day 3 (Thursday, June 12)**  | PostgreSQL Practice         |
-| **Day 4 (Friday, June 13)**    | ETL & Integration           |
+| **Day 3 (Thursday, June 12)** | PostgreSQL Practice |
+| **Day 4 (Friday, June 13)** | ETL & Integration |
+=======
+| **Day** | **Focus Area** |
+| --------- | --------------------------- |
+| **Day 1** | Git & GitHub Fundamentals |
+| **Day 2** | Python Basics for Data Work |
+| **Day 3** | PostgreSQL Practice |
+| **Day 4** | ETL & Integration |
 
-🔎 **More detailed daily agendas and exercises can be found in the `daily_tasks/day-X/` folders.**
+> > > > > > > dev:src/content/docs/onboarding/data/first-steps/onboarding-overview.md
 
 ---
 
@@ -56,7 +69,7 @@ Each onboarding day follows the same structure:
   - Review submissions
   - Discuss key insights from your solutions
 
-📂 Detailed content for each day’s meeting, tasks, and resources will be available in the corresponding `daily_tasks/day-X/` folder.
+📂 Detailed content for each day’s meeting, tasks, and resources will be available in the corresponding `daily_tasks/day-X/` folder on GitHub.
 
 ---
 

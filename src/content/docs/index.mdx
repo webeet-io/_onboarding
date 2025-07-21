@@ -1,0 +1,39 @@
+---
+title: Welcome to Webeet's Onboarding!
+description: Get started with webeet.io
+template: splash
+hero:
+  tagline: Congratulations on embarking on this new journey.
+  image:
+    light: ../../assets/webeet_logo.png
+    dark: ../../assets/webeet_logo_dark.webp
+  actions:
+    - text: Software Engineering First Steps!
+      link: /onboarding/swe/first-steps/onboarding-overview
+      icon: right-arrow
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+## Next steps
+
+<CardGrid stagger>
+	<Card title="About Webeet" icon="rocket">
+    In progress!
+	</Card>
+  <a class="domain" id="data" href="/onboarding/data/first-steps/onboarding-overview">
+	  <Card title="Data" icon="seti:bazel">
+      Start your onboarding in our Data Department!
+	  </Card>
+  </a>
+  <a class="domain" id="software-engineering" href="/onboarding/swe/first-steps/onboarding-overview">
+	  <Card title="Software Engineering" icon="vim">
+      Take your first steps into Webeet's Software Engineering Department!
+	  </Card>
+  </a>
+	<a class="domain" id="devsecops" href="/onboarding/cyber-security/first-steps/onboarding-overview">
+    <Card title="DevSecOps" icon="seti:xml">
+      In progress!
+	  </Card>
+  </a>
+  </CardGrid>

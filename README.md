@@ -1,5 +1,3 @@
-# Introduction 👋
-
 > _“A journey of a thousand miles begins with a single step.”_
 >
 > — _Lao Tzu_
