@@ -1,7 +1,7 @@
 ---
-title: Git & Our Workflow
+title: Git
 sidebar:
-  order: 11
+  order: 1
 description: Our team's guide to using Git effectively in a multi-repo environment.
 ---
 
