@@ -14,6 +14,7 @@
     "@lorenzo_lewis/starlight-utils": "^0.3.2",
     "astro": "^5.6.1",
     "astro-expressive-code": "^0.41.2",
-    "sharp": "^0.32.5"
+    "sharp": "^0.32.5",
+    "starlight-auto-sidebar": "^0.1.2"
   }
 }
