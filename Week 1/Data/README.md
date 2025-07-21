@@ -16,21 +16,21 @@ By the end of this onboarding, you will:
   - Event Systems
   - Data Architecture
 
-### Note: The technical onboarding will happen in repo [_onboarding_data](https://github.com/webeet-io/_onboarding_data)
+### Note: The technical onboarding will happen in repo [\_onboarding_data](https://github.com/webeet-io/_onboarding_data)
+
 ---
 
 ## 📅 Timeline of Onboarding
 
 You’ll find the full day-by-day breakdown of your onboarding plan below. Each day has its own folder in the `daily_tasks/` directory with detailed instructions, materials, and task descriptions.
 
-| **Day** | **Focus Area** |
-|--------|----------------|
-| **Day 0 (Friday, June 6)** | Welcome + Tools Setup |
-| **Day 1 (Tuesday, June 10)** | Git & GitHub Fundamentals |
+| **Day**                        | **Focus Area**              |
+| ------------------------------ | --------------------------- |
+| **Day 0 (Friday, June 6)**     | Welcome + Tools Setup       |
+| **Day 1 (Tuesday, June 10)**   | Git & GitHub Fundamentals   |
 | **Day 2 (Wednesday, June 11)** | Python Basics for Data Work |
-| **Day 3 (Thursday, June 12)** | PostgreSQL Practice |
-| **Day 4 (Friday, June 13)** | ETL & Integration |
-
+| **Day 3 (Thursday, June 12)**  | PostgreSQL Practice         |
+| **Day 4 (Friday, June 13)**    | ETL & Integration           |
 
 🔎 **More detailed daily agendas and exercises can be found in the `daily_tasks/day-X/` folders.**
 
@@ -42,6 +42,7 @@ Each onboarding day follows the same structure:
 
 - **Morning Meeting**  
   We will meet together in the morning. Team leads and senior data team members will:
+
   - Explain the core concepts for the day
   - Demonstrate practical applications
   - Walk through the day’s assignment
@@ -65,7 +66,6 @@ Each onboarding day follows the same structure:
 
 - Each intern will work in their **own personal branch**:  
   `[your-name]`
-  
 - For each daily task, create a **sub-branch** from your personal branch:  
   `[your-name]/day-1`, `[your-name]/day-2`, etc.
 
@@ -85,7 +85,6 @@ Each onboarding day follows the same structure:
 
 ---
 
-
 ## 📚 Additional Sources
 
 Feel free to explore **extra learning materials** during onboarding or at any point throughout your internship. These resources are meant to help you grow and expand your understanding at your own pace.
@@ -103,5 +102,7 @@ We’re here to help you **learn** and **build something great together**.
 - Don’t hesitate to reach out to your **Team Lead** or any **Senior Data Specialists**.
 - We welcome all questions — **there are no stupid questions**, and **mistakes are part of the process**.
 - Collaboration and open communication are key to succeeding at Webeet.
+
 ---
+
 We’re thrilled to see what you’ll build and how you’ll grow this week. Let’s make it a productive and insightful start to your journey 🚀
