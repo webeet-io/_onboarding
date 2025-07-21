@@ -93,8 +93,8 @@ amparo-fastify also enables architectural patterns for creating type-safe contro
 
 Purpose: To add custom, fully-typed properties to Fastify's native FastifyRequest object.
 
-- **Why it's needed:** In a typical auth flow, a preHandler hook verifies a user's token and attaches the user's data to the request object. Module augmentation tells TypeScript that properties like _user will exist on certain requests, preventing type errors.
-- **Implementation:** A *.ts file is created to declare module "fastify" and extend the FastifyRequest interface.
+- **Why it's needed:** In a typical auth flow, a preHandler hook verifies a user's token and attaches the user's data to the request object. Module augmentation tells TypeScript that properties like \_user will exist on certain requests, preventing type errors.
+- **Implementation:** A \*.ts file is created to declare module "fastify" and extend the FastifyRequest interface.
 
 Example from code:
 This code adds optional \_user and \_workspace properties to every Fastify request.
@@ -122,7 +122,7 @@ declare module "fastify" {
 Purpose: To abstract away repetitive boilerplate from controller definitions, enforce conventions, and improve type safety.
 
 - **baseControllerBuilder:** amparo-fastify provides a generic baseControllerBuilder. It takes the core logic of a controller (a BaseControllerHelper) and handles the routine tasks of executing it and sending the response.
-- **authControllerBuilder:** This is a specialized wrapper around the baseControllerBuilder. Its specific job is to create controllers that are guaranteed to have an authenticated user. It pre-configures the baseControllerBuilder to use an AuthRequest type, which ensures request._user exists and is fully typed.
+- **authControllerBuilder:** This is a specialized wrapper around the baseControllerBuilder. Its specific job is to create controllers that are guaranteed to have an authenticated user. It pre-configures the baseControllerBuilder to use an AuthRequest type, which ensures request.\_user exists and is fully typed.
 
 Example from code:
 This builder creates a convention: any controller that needs an authenticated user should be built with authControllerBuilder.
@@ -130,9 +130,9 @@ This builder creates a convention: any controller that needs an authenticated us
 ```typescript
 // The custom builder takes the controller's core logic
 const authControllerBuilder = <T extends AuthRequestVariant>(
-    controllerHelper: BaseControllerHelper<T, AuthRequest<T>>
+  controllerHelper: BaseControllerHelper<T, AuthRequest<T>>,
 ) =>
-    // It calls the generic builder, but specifically uses the AuthRequest type,
-    // which enforces that request._user is present.
-    baseControllerBuilder<T, AuthRequest<T>>(controllerHelper);
+  // It calls the generic builder, but specifically uses the AuthRequest type,
+  // which enforces that request._user is present.
+  baseControllerBuilder<T, AuthRequest<T>>(controllerHelper);
 ```

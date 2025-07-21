@@ -21,10 +21,10 @@ First, you install the library and create a database file. All operations are pe
 
 ```javascript
 // db-setup.js
-import Database from 'better-sqlite3';
+import Database from "better-sqlite3";
 
 // This will create 'blog.db' if it doesn't exist.
-const db = new Database('blog.db');
+const db = new Database("blog.db");
 
 // Create a table if it doesn't exist
 db.exec(`
@@ -36,7 +36,7 @@ db.exec(`
   )
 `);
 
-console.log('Database initialized successfully.');
+console.log("Database initialized successfully.");
 ```
 
 You can run this script once to set up your database schema.
@@ -49,36 +49,37 @@ The best way to use SQLite with Fastify is to establish a connection when the se
 
 ```javascript
 // server.js
-import Fastify from 'fastify';
-import Database from 'better-sqlite3';
+import Fastify from "fastify";
+import Database from "better-sqlite3";
 
 const app = Fastify({ logger: true });
 
 // 1. Connect to the database
-const db = new Database('blog.db');
+const db = new Database("blog.db");
 
 // 2. Decorate the Fastify instance with the database connection
-app.decorate('db', db);
+app.decorate("db", db);
 
 // 3. Define routes that use the database
-app.get('/posts', async (request, reply) => {
+app.get("/posts", async (request, reply) => {
   // Access the db via the decorated instance
-  const stmt = app.db.prepare('SELECT * FROM posts ORDER BY createdAt DESC');
+  const stmt = app.db.prepare("SELECT * FROM posts ORDER BY createdAt DESC");
   const posts = stmt.all();
   return posts;
 });
 
-app.post('/posts', async (request, reply) => {
+app.post("/posts", async (request, reply) => {
   const { title, content } = request.body;
 
   // Use prepared statements to prevent SQL injection
-  const stmt = app.db.prepare('INSERT INTO posts (title, content) VALUES (?, ?)');
+  const stmt = app.db.prepare(
+    "INSERT INTO posts (title, content) VALUES (?, ?)",
+  );
   const info = stmt.run(title, content);
 
   reply.code(201);
   return { id: info.lastInsertRowid, title, content };
 });
-
 
 // Start the server
 const start = async () => {
@@ -94,6 +95,7 @@ start();
 ```
 
 In this example:
+
 1.  We connect to `blog.db`.
 2.  `app.decorate('db', db)` makes the database instance available inside every route handler via `app.db` (or `request.server.db`).
 3.  The `/posts` routes prepare and run SQL queries to read from and write to the database. Using prepared statements (`?` placeholders) is a crucial security practice.
@@ -102,14 +104,15 @@ In this example:
 
 ### **Why this works well with our stack:**
 
-* **Fastify:** The single connection instance is efficiently reused across all requests without the overhead of reconnecting.
-* **Jest:** During testing, you can use an in-memory SQLite database (`new Database(':memory:')`) to ensure tests are fast and don't affect your development database file.
-* **Development Speed:** It provides the power of SQL without the setup complexity of a larger database server like PostgreSQL or MySQL, making it ideal for the initial phases of the onboarding project.
+- **Fastify:** The single connection instance is efficiently reused across all requests without the overhead of reconnecting.
+- **Jest:** During testing, you can use an in-memory SQLite database (`new Database(':memory:')`) to ensure tests are fast and don't affect your development database file.
+- **Development Speed:** It provides the power of SQL without the setup complexity of a larger database server like PostgreSQL or MySQL, making it ideal for the initial phases of the onboarding project.
 
 ---
 
 ### **Docs for Further Reading**
-* [**Official SQLite Website**](https://www.sqlite.org/)
-* [**When To Use SQLite**](https://www.sqlite.org/whentouse.html) (Important to understand its use cases)
-* [**`better-sqlite3` Documentation on GitHub**](https://github.com/WiseLibs/better-sqlite3)
-* [**Using a Database with Fastify**](https://www.fastify.io/docs/latest/Guides/Database/) (Official Guide)
+
+- [**Official SQLite Website**](https://www.sqlite.org/)
+- [**When To Use SQLite**](https://www.sqlite.org/whentouse.html) (Important to understand its use cases)
+- [**`better-sqlite3` Documentation on GitHub**](https://github.com/WiseLibs/better-sqlite3)
+- [**Using a Database with Fastify**](https://www.fastify.io/docs/latest/Guides/Database/) (Official Guide)

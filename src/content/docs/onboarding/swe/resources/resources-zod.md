@@ -21,11 +21,13 @@ You start by importing `z` from Zod and defining the shape of your data. Zod pro
 
 ```javascript
 // schemas.js
-import { z } from 'zod';
+import { z } from "zod";
 
 // Schema for a single user
 const UserSchema = z.object({
-  username: z.string().min(3, { message: "Username must be 3 or more characters long" }),
+  username: z
+    .string()
+    .min(3, { message: "Username must be 3 or more characters long" }),
   email: z.string().email({ message: "Invalid email address" }),
   age: z.number().optional(), // .optional() means it can be undefined
 });
@@ -39,24 +41,24 @@ type User = {
   age?: number | undefined;
 }
 */
-````
+```
 
 In this example, we create a `UserSchema` that defines the expected shape of a user object, including validation rules like minimum string length and email format.
 
------
+---
 
 #### **2. Parsing and Validating Data**
 
 Once you have a schema, you can use it to validate data. Zod offers two main methods for this: `.parse()` and `.safeParse()`.
 
-  * **`.parse()`**: Throws an error if validation fails. Use this when you expect data to be valid and want any failure to be an exception.
-  * **`.safeParse()`**: Returns an object containing either the validated data or an error object. Use this for handling validation failures gracefully without a `try/catch` block.
+- **`.parse()`**: Throws an error if validation fails. Use this when you expect data to be valid and want any failure to be an exception.
+- **`.safeParse()`**: Returns an object containing either the validated data or an error object. Use this for handling validation failures gracefully without a `try/catch` block.
 
 <!-- end list -->
 
 ```javascript
 // validation.js
-import { UserSchema } from './schemas';
+import { UserSchema } from "./schemas";
 
 const userData = {
   username: "Tom",
@@ -82,7 +84,7 @@ if (result.success) {
 }
 ```
 
------
+---
 
 #### **3. Composing Complex Schemas**
 
@@ -103,13 +105,13 @@ const PostSchema = z.object({
 
 This example demonstrates nesting the `UserSchema` inside a `PostSchema` and defining an array of strings for `tags`, showcasing how easily schemas can be composed.
 
------
+---
 
 ### **Docs for Further Reading**
 
-  * [**Zod Hands-on Tutorial**](https://www.totaltypescript.com/tutorials/zod)
-  * [**Official Zod Documentation on GitHub**](https://github.com/colinhacks/zod)
-  * [**Zod Website & Cheatsheet**](https://zod.dev/)
-  * [**Zod with Generics (YouTube)**](https://www.youtube.com/watch?v=9N50YV5NHaE)
+- [**Zod Hands-on Tutorial**](https://www.totaltypescript.com/tutorials/zod)
+- [**Official Zod Documentation on GitHub**](https://github.com/colinhacks/zod)
+- [**Zod Website & Cheatsheet**](https://zod.dev/)
+- [**Zod with Generics (YouTube)**](https://www.youtube.com/watch?v=9N50YV5NHaE)
 
 <!-- end list -->

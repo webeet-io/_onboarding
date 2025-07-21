@@ -21,7 +21,7 @@ A store is a single object that contains your state variables and action functio
 
 ```jsx
 // store.js
-import { create } from 'zustand';
+import { create } from "zustand";
 
 const useBearStore = create((set) => ({
   bears: 0,
@@ -30,11 +30,11 @@ const useBearStore = create((set) => ({
 }));
 
 export default useBearStore;
-````
+```
 
 In this example, we define a store with a `bears` count. The `set` function is used to safely update the state. Actions like `increasePopulation` are defined directly within the store.
 
------
+---
 
 #### **2. Connecting to React Components**
 
@@ -42,7 +42,7 @@ To use the store, you simply import the hook and call it inside your component. 
 
 ```jsx
 // BearCounter.jsx
-import useBearStore from './store';
+import useBearStore from "./store";
 
 function BearCounter() {
   const bears = useBearStore((state) => state.bears);
@@ -65,7 +65,7 @@ function Controls() {
 
 Here, we use a selector `(state) => state.bears` to subscribe the component only to changes in the `bears` property. This is a performance optimization that prevents re-renders when other, unused parts of the state change.
 
------
+---
 
 #### **3. Handling Asynchronous Actions**
 
@@ -79,7 +79,9 @@ const usePostStore = create((set) => ({
   fetchPosts: async () => {
     set({ isLoading: true });
     try {
-      const response = await fetch('[https://api.example.com/posts](https://api.example.com/posts)');
+      const response = await fetch(
+        "[https://api.example.com/posts](https://api.example.com/posts)",
+      );
       const posts = await response.json();
       set({ posts, isLoading: false });
     } catch (error) {
@@ -92,16 +94,16 @@ const usePostStore = create((set) => ({
 
 This example shows how to manage loading states while fetching data from an API, all within the store itself.
 
------
+---
 
 ### **Docs for Further Reading**
 
-  * [**Official Zustand Documentation on GitHub**](https://github.com/pmndrs/zustand)
-  * [**Zustand Official Website**](https://zustand-demo.pmnd.rs/)
-  * [**Zustand Getting Started**](https://zustand.docs.pmnd.rs/getting-started/introduction)
-
+- [**Official Zustand Documentation on GitHub**](https://github.com/pmndrs/zustand)
+- [**Zustand Official Website**](https://zustand-demo.pmnd.rs/)
+- [**Zustand Getting Started**](https://zustand.docs.pmnd.rs/getting-started/introduction)
 
 <!-- end list -->
 
 ```
+
 ```

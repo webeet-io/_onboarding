@@ -17,7 +17,7 @@ Jest tests are typically organized into `describe` blocks, which group related t
 
 #### **1. The Basic Test Structure**
 
-At its core, a Jest test makes an assertion about your code. You use the `expect` function with a "matcher" function (like `.toBe()`) to check if a value is what you expect it *to be*.
+At its core, a Jest test makes an assertion about your code. You use the `expect` function with a "matcher" function (like `.toBe()`) to check if a value is what you expect it _to be_.
 
 ```javascript
 // sum.js
@@ -26,23 +26,23 @@ export function sum(a, b) {
 }
 
 // sum.test.js
-import { sum } from './sum';
+import { sum } from "./sum";
 
-describe('sum function', () => {
-  it('should add two numbers correctly', () => {
+describe("sum function", () => {
+  it("should add two numbers correctly", () => {
     // Expect the result of sum(1, 2) to be 3
     expect(sum(1, 2)).toBe(3);
   });
 
-  it('should handle negative numbers', () => {
+  it("should handle negative numbers", () => {
     expect(sum(-1, -1)).toBe(-2);
   });
 });
-````
+```
 
 When you run Jest, it will automatically find and execute files ending in `.test.js` and report whether the expectations passed or failed.
 
------
+---
 
 #### **2. Testing Fastify Endpoints**
 
@@ -50,14 +50,14 @@ Jest is perfect for writing integration tests for your Fastify API. You don't ne
 
 ```javascript
 // server.js
-import Fastify from 'fastify';
+import Fastify from "fastify";
 
 export function buildApp() {
   const app = Fastify();
-  app.get('/', async (request, reply) => {
-    return { hello: 'world' };
+  app.get("/", async (request, reply) => {
+    return { hello: "world" };
   });
-  app.post('/users', async (request, reply) => {
+  app.post("/users", async (request, reply) => {
     // In a real app, you'd save the user to a database
     reply.code(201);
     return { user: request.body };
@@ -65,11 +65,10 @@ export function buildApp() {
   return app;
 }
 
-
 // server.test.js
-import { buildApp } from './server';
+import { buildApp } from "./server";
 
-describe('Fastify Server Routes', () => {
+describe("Fastify Server Routes", () => {
   let app;
 
   beforeAll(async () => {
@@ -81,22 +80,22 @@ describe('Fastify Server Routes', () => {
     await app.close();
   });
 
-  it('should return 200 OK on the root route', async () => {
+  it("should return 200 OK on the root route", async () => {
     const response = await app.inject({
-      method: 'GET',
-      url: '/'
+      method: "GET",
+      url: "/",
     });
 
     expect(response.statusCode).toBe(200);
-    expect(JSON.parse(response.payload)).toEqual({ hello: 'world' });
+    expect(JSON.parse(response.payload)).toEqual({ hello: "world" });
   });
 
-  it('should create a user and return 201 on POST /users', async () => {
-    const newUser = { name: 'Tom', email: 'tom@example.com' };
+  it("should create a user and return 201 on POST /users", async () => {
+    const newUser = { name: "Tom", email: "tom@example.com" };
     const response = await app.inject({
-      method: 'POST',
-      url: '/users',
-      payload: newUser
+      method: "POST",
+      url: "/users",
+      payload: newUser,
     });
 
     expect(response.statusCode).toBe(201);
@@ -107,7 +106,7 @@ describe('Fastify Server Routes', () => {
 
 This example shows how to test both a `GET` and a `POST` endpoint, checking the status codes and the JSON responses to ensure the API works correctly.
 
------
+---
 
 #### **3. Mocking Functions**
 
@@ -142,13 +141,12 @@ it('should call the fetch API with the correct URL', async () => {
 
 ```
 
------
+---
 
 ### **Docs for Further Reading**
 
-  * [**Official Jest Website**](https://jestjs.io/)
-  * [**Jest Docs: Getting Started**](https://jestjs.io/docs/getting-started)
-  * [**Jest Docs: Mock Functions**](https://jestjs.io/docs/mock-function-api)
-
+- [**Official Jest Website**](https://jestjs.io/)
+- [**Jest Docs: Getting Started**](https://jestjs.io/docs/getting-started)
+- [**Jest Docs: Mock Functions**](https://jestjs.io/docs/mock-function-api)
 
 <!-- end list -->
