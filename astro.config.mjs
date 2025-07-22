@@ -28,6 +28,11 @@ export default defineConfig({
       },
       sidebar: [
         {
+          label: "Webeet",
+          collapsed: true,
+          autogenerate: { directory: "general" },
+        },
+        {
           label: "SWE",
           collapsed: true,
           autogenerate: { directory: "onboarding/swe" },
