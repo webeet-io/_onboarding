@@ -1,5 +1,5 @@
 ---
-title: Welcome to Webeet's Onboarding!
+title: Welcome to Webeet's Wiki!
 description: Get started with webeet.io
 template: splash
 hero:
@@ -8,27 +8,29 @@ hero:
     light: ../../assets/webeet_logo.png
     dark: ../../assets/webeet_logo_dark.webp
   actions:
-    - text: Software Engineering First Steps!
-      link: /onboarding/swe/first-steps/onboarding-overview
+    - text: Dive into Webeet
+      link: /general/readme
       icon: right-arrow
 ---
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
 
-## Next steps
+## Onboarding
 
 <CardGrid stagger>
-	<Card title="About Webeet" icon="rocket">
-    In progress!
-	</Card>
+  <a class="domain" id="our-company" href="/general/welcome">
+	  <Card title="Our Company" icon="rocket">
+      Get to know our principles and how we work
+	  </Card>
+  </a>
   <a class="domain" id="data" href="/onboarding/data/first-steps/onboarding-overview">
 	  <Card title="Data" icon="seti:bazel">
-      Start your onboarding in our Data Department!
+      Take your first steps into Webeet's Data Department
 	  </Card>
   </a>
   <a class="domain" id="software-engineering" href="/onboarding/swe/first-steps/onboarding-overview">
 	  <Card title="Software Engineering" icon="vim">
-      Take your first steps into Webeet's Software Engineering Department!
+      Take your first steps into Webeet's Software Engineering Department
 	  </Card>
   </a>
 	<a class="domain" id="devsecops" href="/onboarding/cyber-security/first-steps/onboarding-overview">
@@ -37,3 +39,13 @@ import { Card, CardGrid } from '@astrojs/starlight/components';
 	  </Card>
   </a>
   </CardGrid>
+
+## Offboarding
+
+<CardGrid stagger>
+  <a class="domain" id="offboarding" href="/offboarding/readme">
+    <Card title="Offboarding" icon="cloud-download">
+      Our guide for your offboarding
+    </Card>
+  </a>
+</CardGrid>
