@@ -1,3 +1,10 @@
+---
+title: Welcome
+sidebar:
+  order: 0
+description: This is where your journey starts.
+---
+
 > _“A journey of a thousand miles begins with a single step.”_
 >
 > — _Lao Tzu_
