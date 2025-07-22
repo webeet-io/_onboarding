@@ -1,0 +1,73 @@
+---
+title: 🧭 Internal Media Policy
+sidebar:
+  order: 11
+description: Consent for recording and capturing media during Webeet sessions.
+---
+
+## Description
+
+As part of the Webeet internship and professional training program, sessions may be recorded, and screenshots or other media may be captured for internal use.
+
+This policy clarifies the purpose, scope, and usage of such recordings.
+
+## Scope
+
+By participating in the internship program, the intern acknowledges and agrees that:
+
+- Live sessions, meetings, lectures, workshops, standups, and any other program activities may be recorded (audio, video, and screen).
+- Screenshots and images may be captured during these activities.
+- Group photos, celebratory screenshots, and session images may be taken during onboarding, cohort introductions, and team activities.
+
+## Purpose
+
+All recordings, screenshots, and media are captured and used strictly for internal purposes, including but not limited to:
+
+- Training and educational review.
+- Supporting interns who could not attend live sessions.
+- Internal program evaluation and quality assurance.
+- Operational management of the internship program.
+- Internal communications, team celebrations, or documentation.
+- Improving future cohorts, curriculum, and educational practices.
+- Internal use across company platforms (including but not limited to Discord, Slack, project management tools, and internal documentation systems).
+
+## Restrictions
+
+Interns are not permitted to record sessions, take screenshots, or capture any media from program activities for personal use or external distribution.
+
+Any screenshots, recordings, or other media made available to interns as part of the program may not be shared, published, or distributed publicly or externally without prior written consent from Webeet.
+
+Unauthorized recording, capturing, or sharing of program content is strictly prohibited.
+
+## Use and Protection
+
+- All recordings and media will be used exclusively by Webeet, Masterschool, or authorized partners involved in delivering and improving the internship program.
+- Recordings will not be published, shared externally, or used for public marketing purposes without separate written consent from the individual(s) involved.
+- All data is handled in accordance with applicable data protection laws, including GDPR.
+- Recordings and media are stored securely within internal systems.
+- No special categories of personal data (e.g. health data, political views, etc.) are intentionally collected.
+
+## Mandatory
+
+Participation in the Webeet internship program requires acceptance of this media & recording policy. We are unable to accommodate individual opt-outs from recordings or screenshots, as these are essential to program delivery and internal operations.
+
+## Consent
+
+By participating in the internship program, the intern provides explicit consent to:
+
+- The recording of internship-related sessions and activities.
+- The capturing of screenshots and other media during program activities.
+- The internal use of such recordings and media as described above, without the need for separate or repeated permissions.
+
+## Duration
+
+There is no fixed time limitation on the internal use of recordings or media, as they may serve ongoing training, program improvement, and internal operational purposes.
+
+## Exclusions
+
+- If any external use of an intern’s personal image or identifiable information is proposed (such as public marketing), separate written consent will be requested beforehand.
+- Interns are expected to avoid sharing unnecessary personal or sensitive information during recorded sessions.
+
+## Questions
+
+For any questions or concerns regarding this policy, interns may contact the program manager or company representative.

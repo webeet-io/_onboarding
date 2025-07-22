@@ -1,3 +1,10 @@
+---
+title: 🐈‍⬛ GitHub
+sidebar:
+  order: 9
+description: How to use GitHub effectively within the Webeet community.
+---
+
 GitHub isn’t just a place to store code—it’s where **modern tech teams live**. Whether you’re an engineer, a data analyst, or a security professional, **GitHub is the beating heart of how we collaborate at Webeet**.
 
 You’ll use it every day—to track work, review changes, document findings, and stay aligned with your team. And here’s the truth: **learning to use GitHub well is one of the most powerful professional upgrades you can make**.
@@ -34,17 +41,17 @@ Learn to use it well, and you'll level up faster than you ever thought possible.
 
 ### ⚡️ How To Join
 
-To get started on GitHub with the Webeet team, you need to **fill out the form in Notion (below)**. 
+To get started on GitHub with the Webeet team, you need to **fill out the form in Notion (below)**.
 
 This helps us set you up with the right permissions for the projects you’ll be working on.
 
 Fill out the short form with your:
+
 - Full name (e.g., David Rajcher)
 - Domain (e.g., Engineering)
 - Email
 - Link to GitHub User (e.g., https://github.com/david-l-r)
-    - ⚠️ *If you don’t have one, you can create it first and then come back to complete the form.*
- 
+  - ⚠️ *If you don’t have one, you can create it first and then come back to complete the form.*
 
 📝 **Fill In The Form**: [Press here to fill in the form](https://webeet.notion.site/2034d699899c80caa00bed8b468b0536?pvs=105)
 
@@ -52,5 +59,4 @@ Once you submit, we’ll invite you to the organization and repositories. You’
 
 Welcome to GitHub. You’re officially working like a pro.
 
------
-Next: [🔀 Learn Git](https://github.com/webeet-io/_onboarding/blob/main/Day%201/9-%20%F0%9F%94%80%20Learn%20Git.md)
+---

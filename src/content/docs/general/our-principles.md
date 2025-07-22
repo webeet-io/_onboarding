@@ -1,4 +1,9 @@
-# 🧭 Our Principles
+---
+title: 🧭 Our Principles
+sidebar:
+  order: 2
+description: How our principles guide our work and interactions.
+---
 
 At Webeet, we believe that our values show in the people we choose to work with. Below are the specific working principles, values, and behaviors we care about most.
 
@@ -64,5 +69,4 @@ Be curious. Be supportive. Celebrate small wins. Offer thoughtful feedback. Show
 
 Everyone here is balancing growth, learning, deadlines—and sometimes imposter syndrome. Your attitude shapes the vibe. Be someone others are grateful to work with.
 
------
-Next: [👥 Who We Are](https://github.com/webeet-io/_onboarding/blob/main/Day%201/2-%20%F0%9F%91%A5%20Who%20We%20Are.md)
+---

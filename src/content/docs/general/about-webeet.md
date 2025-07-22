@@ -1,4 +1,9 @@
-# ⭐️ About Webeet
+---
+title: ⭐️ About Webeet
+sidebar:
+  order: 1
+description: Introduction to Webeet
+---
 
 ### 🔭 Our Mission
 
@@ -37,5 +42,4 @@ What started as a small experiment has now evolved into a **fully functioning co
 
 We’ve delivered **27 projects** with over **20 companies** so far—and we’re just getting started.
 
--------
-Next: [🧭 Our Principles](https://github.com/webeet-io/_onboarding/blob/main/Day%201/1-%20%F0%9F%A7%AD%20Our%20Principles.md)
+---

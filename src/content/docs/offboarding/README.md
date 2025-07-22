@@ -1,4 +1,9 @@
-# 📘 Offboarding Guide
+---
+title: Offboarding Guide
+sidebar:
+  order: 1
+description: Your guide to offboarding from Webeet's internship
+---
 
 ## 🎯 Goal: Turn Your Internship Into a Launchpad
 
@@ -62,7 +67,7 @@ After receiving feedback (and making improvements where needed), it’s time to 
 
 - Add the internship under your **Experience** section.
 - Reuse your strongest resume bullet points.
-- Adjust your **title** to reflect the kind of position you're aiming for.  
+- Adjust your **title** to reflect the kind of position you're aiming for.
   _(Avoid “Intern,” “Junior,” “In process,” or “Student.” Think: Software Engineer, Data Analyst, etc.)_
 
 **Bonus: Recommendations**
