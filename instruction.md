@@ -1,4 +1,4 @@
-# Insturction
+# Insturctions
 
 - Commit changes
 - Merge to `main`
