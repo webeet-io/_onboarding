@@ -36,3 +36,9 @@ a.domain {
 a.domain {
   color: var(--sl-color-gray-1);
 }
+
+.two-by-two {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem; /* adjust as needed */
+}
