@@ -8,6 +8,6 @@ Only deploy if you were given the permissions to do so. Major changes should go 
 
 2. Login: `vercel login` > login with Google > Login with support@webeet.io
 
-3.
+3. Deploy: `vercel --prod` to deploy to production
 
 ##
