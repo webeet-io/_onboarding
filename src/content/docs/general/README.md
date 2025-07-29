@@ -23,7 +23,7 @@ Below is the list of lessons included in your onboarding.
 
 ### The Why
 
-- [⭐️ About Webeet](/general/readme)
+- [⭐️ About Webeet](/general/about-webeet)
 - [🧭 Our Principles](/general/our-principles)
 - [👥 Who We Are](/general/who-we-are)
 

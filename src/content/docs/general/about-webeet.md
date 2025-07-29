@@ -14,7 +14,7 @@ At Webeet, we believe that talent doesn’t grow in isolation—it grows in moti
 
 Our mission is to **bridge the gap between training and industry** by giving aspiring professionals a place where they can apply their learning in meaningful ways from day one.
 
-We a **digital studio powered by Junior Professionals**—and structured to benefit both sides of the ecosystem. Interns learn by doing, and companies get the help they need at the very start of their journey.
+We are a **digital studio powered by Junior Professionals**—and structured to benefit both sides of the ecosystem. Interns learn by doing, and early-stage startups get the help they need at the very start of their journey.
 
 Webeet exists to unlock first opportunities. Because in tech, getting that first chance is often the hardest part. We’re here to make it easier.
 
