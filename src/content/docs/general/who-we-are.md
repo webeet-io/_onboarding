@@ -5,7 +5,9 @@ sidebar:
 description: Get to know us!
 ---
 
-We are a team of professionals deeply passionate about the intersection of education and technology. Each of us brings expertise from both industry and instruction—blending hands-on experience with a drive to help others grow. At Webeet, we channel that passion into building impactful digital products while mentoring the next generation of tech talent.
+We are a team of professionals deeply passionate about the intersection of education and technology. Each of us brings expertise from both industry and instruction: blending hands-on experience with a drive to help others grow.
+
+At Webeet, we channel that passion into building impactful digital products while mentoring the next generation of tech talent.
 
 <details>
 <summary><strong>David Rajcher | Founder, CEO</strong></summary>
@@ -70,53 +72,6 @@ My passion for education has driven me to mentor aspiring data analysts and deve
 </p>
 
 Add me on [Linkedin](https://www.linkedin.com/in/anastasiia-piterskaia-737b16195/) 😊
-
-</details>
-
-<details>
-<summary><strong>Dr. Stefan Hofbauer | Head of Security</strong></summary>
-
-<img width="100px" src="https://github.com/user-attachments/assets/bacd83f7-0839-4846-933e-11924fa79ae4" alt="Dr. Stefan Hofbauer" style="margin: 10px"/>
-
-<p>
-I am an IT & security expert with 20 years of experience in IT, of which the last 7 years working in private sector roles as well as Consultant in different Domains.</p>
-
-<p>
-My experience ranges from Information Security Management, BCM coordination, Risk Management as well as classic IT and IT infrastructure.
-</p>
-
-<p>
-Besides that, I am also certified as an ISO 27001 Manager and Auditor taking part in Audits. For 4 years I have been teaching IT and IT Security lectures in different universities and universities of applied science.</p>
-
-<p>
-At webeet.io, I bring in my current Knowledge and experience and further extend it to build IT Security Systems for education and Mentoring students to be able to achieve higher goals.</p>
-
-Add me on [Linkedin](https://www.linkedin.com/in/dr-stefan-hofbauer-ab4411/) 😊
-
-</details>
-
-<details>
-<summary><strong>Elis (e.) Hnatiuk | Engineering Team Lead</strong></summary>
-
-<img width="100px" src="https://github.com/user-attachments/assets/ee899287-9846-45a4-8daa-58dcc4e95c09" alt="Elis (e.) Hnatiuk" style="margin: 10px"/>
-
-<p>
-I am a multidisciplinary professional with a passion for both technology and the arts. My path into engineering leadership has been shaped by over a decade as a digital and video performance artist.
-</p>
-
-<p>
-Before joining Webeet, I directed productions at LICHTHOF Theater, co-founded Kyiv Collage Practice—a hybrid learning community—and led collaborative art projects across more than seven countries.
-</p>
-
-<p>
-My experience ranges from mentoring creatives to managing multidisciplinary teams, all while navigating fast-paced, high-stakes environments.
-</p>
-
-<p>
-At Webeet, I lead engineering squads with empathy and precision, helping junior developers grow through structure, feedback, and shared ownership. I believe building software is a creative act.
-</p>
-
-Add me on [Linkedin](https://www.linkedin.com/in/e-hnatiuk/) 😊
 
 </details>
 

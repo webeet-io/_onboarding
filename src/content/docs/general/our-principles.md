@@ -15,7 +15,7 @@ At Webeet, we believe that our values show in the people we choose to work with.
 
 </aside>
 
-Webeet is a real studio, doing real work, for real clients. That means there’s pressure to deliver, to solve problems, and to bring value every day. But we know that growth doesn’t come from getting everything right—it comes from **getting better over time**.
+Because we work with startups, we have pressure to deliver, to solve problems, and to bring value every day. But we know that growth doesn’t come from getting everything right—it comes from **getting better over time**.
 
 We expect a lot, but we also give you room to learn. Mistakes happen. What matters is that you take responsibility, learn fast, and **turn each challenge into a step forward**.
 
@@ -37,7 +37,7 @@ We don’t wait for permission. We step up, we fix things, and we ask how we can
 >
 > _— Michael Jordan_
 
-Webeet is built on **collaboration, not competition**. We share credit. We ask for help. We support others without hesitation—because we know that real impact comes from **working together**.
+Webeet is built on **collaboration, not competition**. We share credit. We ask for help. We support others without hesitation—because we know that impact comes from **working together**.
 
 Clients don't just hire an individual. They work with the entire Webeet squad. And that squad only works if everyone is aligned, committed, and invested in each other's success.
 
