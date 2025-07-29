@@ -28,6 +28,20 @@
   --sl-color-black: #ffffff;
 }
 
+details.codeblock {
+  background-color: #232634;
+  border-radius: 1%;
+  padding: 10px;
+}
+
+details.codeblock > summary {
+  color: #ffffff;
+}
+
+details.codeblock > summary > span {
+  color: #ca9ee5;
+}
+
 a.domain {
   text-decoration: none;
   color: var(--sl-color-text);
