@@ -2,163 +2,84 @@
 title: Day Five
 sidebar:
   order: 5
-description: Extending our architecture with TDD and safe refactoring.
+description: Applying features across the app and preparing for portfolio showcase.
 ---
 
-## TDD-Driven Development: The Reels Module
+## Feature Integration, Styling Refinement & Portfolio Showcase
 
-Welcome to Day Five! Today, we will build the backend for our **Reels** feature using the same Test-Driven Development (TDD) discipline we learned on Day Two. This will solidify the Red-Green-Refactor pattern. We will also perform a "TDD-safe refactor" to add a feature we missed, demonstrating how tests provide a safety net when changing existing code.
-
----
-
-### Backend Milestones (Repo 1: `insta-clone-fastify-backend`) ✅
-
-Our first task is to add a missing endpoint for posts, and we will do it using TDD principles to guide our refactoring.
-
-:::tip[TDD-Safe Refactoring: Adding `GET /posts`]
-Before we build our `reels` module, let's fix an issue from a previous day. Our frontend's "Posts Grid" on Day Four needs to fetch all posts from a `GET /posts` endpoint, but on Day Two, we only created the `POST /posts` endpoint.
-
-Your task is to apply the patterns you've already learned in a TDD-safe way:
-
-1.  **Create and see the Test Fail (The "Red" Light)**: First, let's write our test. Add an `it` call inside our test suite in `posts.test.ts`:
-
-    ```typescript
-    it("should get all posts and return them with a 201 status code", async () => {});
-    ```
-
-    This test (as the description describes) should use `fastify.inject` to send a GET request to a new `GET /posts` endpoint in our `posts.routes` file.
-
-    Write it and watch it fail.
-
-2.  **Make the Test Green**: Now with our test in place, we can confidently add the new feature. Update the `posts.service.ts` and `posts.routes.ts` files to add the `getAll` functionality and the `GET /posts` endpoint.
-
-This exercise shows how tests act as a safety net, allowing you to make changes without fear of breaking existing functionality.
-:::
-
-#### Red Phase: Write a Failing Test for Reels
-
-We'll now build the `reels` module, starting with a failing test for the `GET /reels/grid` endpoint.
-
-- [ ] **Create the `reels` test file**
-
-  ```bash
-  mkdir -p src/modules/reels
-  touch src/modules/reels/reels.test.ts
-  ```
-
-- [ ] **Write the integration test**
-      This test describes what we want: an endpoint that returns an array of reels and a `200 OK` status.
-
-  ```typescript title="src/modules/reels/reels.test.ts"
-  import Fastify from "fastify";
-  import { reelsRoutes } from "./reels.routes";
-
-  describe("GET /reels/grid", () => {
-    it("should return a list of reels with a 200 status code", async () => {
-      const app = Fastify();
-      const mockReels = [
-        {
-          id: 1,
-          video_url: "http://example.com/video1.mp4",
-          thumbnail_url: "http://example.com/thumb1.png",
-          caption: "Reel 1",
-          views: 100,
-        },
-        {
-          id: 2,
-          video_url: "http://example.com/video2.mp4",
-          thumbnail_url: "http://example.com/thumb2.png",
-          caption: "Reel 2",
-          views: 200,
-        },
-      ];
-
-      // To satisfy TypeScript, our mock must match the full shape of the
-      // 'transactions' dependency, including all methods on 'posts'.
-      app.decorate("transactions", {
-        posts: {
-          create: jest.fn(),
-          getAll: jest.fn(),
-          getById: jest.fn(),
-        },
-        reels: {
-          getAll: jest.fn().mockReturnValue(mockReels),
-        },
-      });
-
-      app.register(reelsRoutes);
-
-      const response = await app.inject({
-        method: "GET",
-        url: "/reels/grid",
-      });
-
-      expect(response.statusCode).toBe(200);
-      expect(JSON.parse(response.payload)).toEqual(mockReels);
-    });
-  });
-  ```
-
-- [ ] **Run the test and watch it fail**
-  ```bash
-  npm test
-  ```
-  It will fail because `reels.routes.ts` doesn't exist. This is our **Red** light. Perfect.
-
-#### Green Phase: Make the Test Pass
-
-Now, we write the minimum amount of code required to make our new test pass. This includes creating the types, updating the database, implementing the service and routes, and loading the module in the server.
-
-- [ ] **Create `reels.types.ts`**
-- [ ] **Update `database.plugin.ts` and `database.transactions.ts`**
-- [ ] **Implement `reels.service.ts` and `reels.routes.ts`**
-- [ ] **Load the Reels Module in `server.ts`**
-
-- [ ] **Run the test again**
-  ```bash
-  npm test
-  ```
-  With all the pieces in place, the `reels.test.ts` suite should now pass. This is our **Green** light.
-
-#### Refactor Phase: Make It Real
-
-Our test is green, and the feature is "functionally" complete—it gets data from the database to the browser. But it doesn't look or feel like Instagram yet. This is the **Refactor** phase.
-
-The goal as we go is to take the working-but-basic implementation and polish it into a pixel-perfect clone of the real Instagram..
-
-TDD gives us the confidence to make these UI and functionality changes, knowing that our tests will immediately tell us if we've broken the core data-fetching logic.
-
-This is where you show what you've learned and use the patterns we have been building to create new features and polish!
+Welcome to Day Five, your final day of the core onboarding project! Today, we'll solidify your understanding by integrating the advanced features and styling concepts you learned on Day Four across your entire frontend application. Finally, you'll prepare your project for presentation, either by showcasing it directly from a provided portfolio repository or integrating it into your own.
 
 ---
 
-### Frontend Milestones (Repo 2: `insta-clone-react-frontend`) ✅
+### Milestones ✅
 
-- [ ] **Create the Reels Schema** (`app/schemas/reel.schema.ts`)
-- [ ] **Create the Reel Grid Item Component** (`app/components/ReelGridItem.tsx`)
-- [ ] **Create the Reels Grid Route** (`app/routes/profile.reels.grid.tsx`)
+#### 1. Apply Styling to All Frontend Modules
 
----
+- [ ] **Comprehensive Styling Review:**
+      Go through _all_ your frontend components and routes (`Header.tsx`, `BottomNav.tsx`, `PostCard.tsx`, `ProfileLayout.tsx`, `ReelGridItem.tsx`, `HighlightBubble.tsx`, `HighlightStory.tsx`, `CreatePostForm.tsx`, and all your route components like `profile.posts.grid.tsx`, `profile.reels.grid.tsx`, `profile.tagged.grid.tsx`, `profile.highlights.tsx`, `profile.highlights.$id.tsx`).
+  - Ensure consistent use of Tailwind CSS utility classes for a cohesive look and feel.
+  - Pay attention to responsiveness for different screen sizes.
+  - Aim for a polished, Instagram-like aesthetic, refining padding, margins, colors, fonts, and component spacing.
 
-### Verification
+#### 2. Extend File Uploads & Actions (Optional, for advanced interns)
 
-1.  Restart both your backend and frontend servers to apply all changes.
-2.  Navigate to `http://localhost:5173/`. You should be redirected to the posts grid at `/profile/posts/grid`.
-3.  Click the "Reels" tab in the sub-navigation.
-4.  The URL should change to `/profile/reels/grid`, and you should now see the grid of reel thumbnails fetched from your backend.
+This is an extension task for those who want an extra challenge and deeper understanding of `action` functions and `FormData`.
+
+- [ ] **(Optional) Implement "Edit Profile Picture" with Image Upload:**
+  - **Backend:** Add an endpoint (`PUT /users/profile-picture`) that accepts a file upload and updates a user's profile picture URL in the database. You'll need to create a `users` module or extend an existing one if you have user authentication.
+  - **Frontend:** Create a UI element (e.g., on the `/profile` page) that allows users to upload a new profile picture. Use a React Router `action` to handle the file upload and send it to your new backend endpoint.
+
+- [ ] **(Optional) Implement "Edit Post Caption" (using `action`):**
+  - **Backend:** Add a `PUT /posts/:id` endpoint that accepts a JSON body to update a post's caption.
+  - **Frontend:** Modify your `PostCard` or create a new "Edit Post" form that uses a React Router `action` to send the updated caption to the backend. This will reinforce the concept of data mutations via `action` functions.
+
+#### 3. Portfolio Showcase Preparation
+
+The ultimate goal of this project is to provide you with a tangible piece for your portfolio.
+
+- [ ] **Option A: Use Webeet's Portfolio Repo (Recommended)**
+  - Your mentor will provide you with access to a dedicated portfolio repository.
+  - Clone this repository.
+  - Follow the instructions within that repository's `README.md` to integrate your `insta-clone-react-frontend` and `insta-clone-fastify-backend` projects. This might involve setting up submodules, copying files, or configuring deployment scripts within the portfolio repo.
+  - Ensure the portfolio repository's deployment (e.g., to Vercel or Netlify for the frontend, and Render/Railway for the backend) correctly points to and runs your projects.
+
+- [ ] **Option B: Integrate into Your Personal Portfolio (If you have one)**
+  - If you already maintain a personal portfolio website, discuss with your mentor how best to integrate this project.
+  - This might involve creating a dedicated sub-domain, deploying your project as a separate application, or linking to its live Vercel/Render deployments.
+  - Create a detailed `README.md` for both your `insta-clone-react-frontend` and `insta-clone-fastify-backend` repositories. These READMEs should clearly:
+    - Describe the project's purpose and features.
+    - List the technologies used (TypeScript, React Router v7, Fastify, Jest, SQLite, Amparo, Zod, Zustand, Tailwind CSS, Vercel).
+    - Explain the modular architecture (for the backend) and component/routing patterns (for the frontend).
+    - Provide clear setup and running instructions for both local development and deployed versions.
+    - Include screenshots or a GIF demonstration of the application.
+    - Highlight key learnings and challenges overcome during development.
+
+#### 4. Project Review & Refinement
+
+Use the remainder of the day to polish your code and documentation.
+
+- [ ] **Code Cleanup:**
+  - Remove any unused imports, variables, or commented-out code.
+  - Ensure consistent formatting across all files (run Prettier and ESLint one last time!).
+  - Add meaningful comments to complex logic or non-obvious sections.
+- [ ] **Review and Improve:**
+  - Test all features end-to-end one last time.
+  - Look for opportunities to make your code more readable, efficient, or robust.
+  - Ensure all `TODO` comments or temporary notes have been addressed.
 
 ---
 
 ### Conclusions
 
-Look at how quickly you added a new feature! This is the direct benefit of the architecture you built on Day Four.
+Congratulations on completing your onboarding project! You've gone from foundational setup to building complex full-stack features, deploying your application, and preparing it for your professional portfolio.
 
-1.  **Leveraging Existing Layouts**: You didn't need to create any new navigation or layout components. You simply created a new route file (`profile.reels.grid.tsx`), and it was automatically rendered within the correct context by the parent `profile.tsx` layout. This is the power of nested routing.
-2.  **A Predictable, Repeatable Pattern**: The process for adding a new data-driven page is now crystal clear:
-    1.  Create the backend module (types, db, service, routes).
-    2.  Create a Zod schema on the frontend.
-    3.  Build the small, reusable UI components.
-    4.  Assemble them in a new route file with a `loader`.
-        This pattern makes development fast and predictable.
-3.  **The Importance of Seeding**: Manually creating data via `curl` is fine for one-off tests, but for developing a UI, having a reliable set of seed data that loads automatically saves a tremendous amount of time and effort.
-4.  **Continuous Improvement**: The "Housekeeping" task at the beginning shows that development is an iterative process. We often need to go back and improve or fix previous work as new requirements come to light.
+**Key Achievements:**
+
+- **Full-Stack Proficiency:** You've built a robust application using TypeScript, React, Fastify, and SQLite.
+- **Test-Driven Development (TDD):** You've embraced TDD to build features with confidence and maintain code quality.
+- **Modern Frontend Development:** You've mastered React Router v7, component-based architecture, and efficient data handling.
+- **Backend Engineering:** You've developed modular APIs, handled database interactions, and managed file uploads.
+- **Deployment Skills:** You've successfully deployed a full-stack application to production environments.
+- **Portfolio Ready:** You now have a tangible, well-documented project to showcase your skills to future recruiters.
+
+This project has provided you with hands-on experience across the entire software development lifecycle at Webeet. We are incredibly proud of your progress and look forward to seeing the amazing contributions you'll make to the team!
