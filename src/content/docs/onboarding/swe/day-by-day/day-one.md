@@ -45,6 +45,40 @@ Now, let's create the project itself.
   git init
   ```
 
+- [ ] **Create three different local branches**
+      We will get into their exact purpose in detail on a dedicated resources page, but for now, simply make sure to create the following three branches, **notice the use of special characters `_`, `/`, and `-`**:
+  - ```bash
+    git switch -c main
+    ```
+  - ```bash
+    git switch -c <your-name>
+    # e.g. git switch -c lucic
+    ```
+  - ```bash
+    git switch -c _<your-name>/day-1
+    # e.g. git switch -c _lucic/day-1
+    ```
+
+- [ ] **Verify branch creation**
+      Verify the three branches were created successfully by running:
+
+  ```bash
+  git branch
+  ```
+
+  You should see your three local branches. Your Day 1 branch should be highlighted and marked with a '\*'.
+
+  ```bash
+  ❯ git branch
+    <your-name>
+  * _<your-name>/day-1
+    main
+  ```
+
+:::danger[Important]
+Follow the next milestones while making sure you are working on your **Day 1 branch**.
+:::
+
 #### 3. Dependency Installation
 
 Next, we'll use `npm` to install the packages our project depends on.
@@ -332,10 +366,7 @@ First, we need to add Jest, our testing framework, to the project.
   ```json title="package.json"
   {
     "scripts": {
-      "build": "tsc",
-      "start": "node build/server.js",
-      "dev": "tsx watch src/server.ts",
-      "lint": "eslint .",
+      // ... your existing scripts
       "test": "jest"
     }
   }
@@ -431,6 +462,9 @@ Our goal is to write a test that fails because the feature doesn't exist. To do 
 
   :::danger[Failure: expected 201, received 404]
   This is the perfect failure. Our test works, and it has correctly identified that the feature is missing.
+
+  Take a moment to read jest's output in your terminal and compare it with the code written inside `posts.test.ts`. As a rule of thumb, you should **always read your errors carefully**.
+
   :::
 
 ---
@@ -708,6 +742,19 @@ Instead of starting a real server and sending a `curl` request, `fastify.inject(
 - That the route correctly sends back whatever the service gives it with a `201 Created` status.
 
 This is a crucial skill: testing a slice of your application in complete isolation. You've now successfully completed a true TDD cycle for a feature and verified it with a live request.
+
+---
+
+### Wrapping Up Day 1
+
+It is time to push all your work to the correct repos. We have previously created three branches for you to work on during the onboarding. Now it's time to understand what we need three branches for.
+
+In short, we want you to commit your work **both** to your personal GitHub profile, for recruiters to see, **and** to our company's repo for collaboration and code reviews.
+Since this is a workflow which will repeat itself throughout the entire duration of the onboarding, we have created a dedicated resources file to explain it in detail.
+
+You can refer back to it in before starting and after finishing each day to make sure you're tracking your work on your private account, and allowing your Lead to review your code and your team to collaborate with you.
+
+#### Take a look at our page [Git for the Onboarding Project](/onboarding/swe/resources/resources-git-for-onboarding)
 
 ---
 
