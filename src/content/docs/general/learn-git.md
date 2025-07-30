@@ -20,7 +20,7 @@ Think of Git as the **“undo + time machine + multiplayer mode”** of software
 
 ## 📚 Learn the fundamentals of git:
 
-### 👉 For Data and Cyber
+### 👉 For Data and Security
 
 [Net Ninja's Git Tutorial](https://www.youtube.com/playlist?list=PL4cUxeGkcC9goXbgTDQ0n_4TBzOO0ocPR)
 

@@ -44,7 +44,7 @@ This offboarding process will help you organize your thoughts, highlight your ac
    > - Cleaned and transformed incoming data to fit internal schema using Python and Pandas.
    > - Collaborated with engineering to test API performance and ensure smooth data ingestion across pipelines.
 
-   > **Cybersecurity Example**
+   > **Security Example**
    >
    > - Configured AWS GuardDuty, Security Hub, and CloudTrail to monitor for threats and unusual activity in a cloud environment.
    > - Analyzed security alerts and improved IAM policies based on findings.

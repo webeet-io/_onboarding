@@ -23,7 +23,7 @@ Before launching Webeet, I served as <strong>Program Director for Software Engin
 </p>
 
 <p>
-So I built Webeet: a studio where early-stage startups get the digital services they need, and <strong>Junior Professionals in Engineering, Data, and Cybersecurity</strong> gain their first real experience on impactful projects. I’m passionate about <strong>designing structures that help people grow</strong>, whether it’s a new product architecture or a professional development track.
+So I built Webeet: a studio where early-stage startups get the digital services they need, and <strong>Junior Professionals in Engineering, Data, and Security</strong> gain their first real experience on impactful projects. I’m passionate about <strong>designing structures that help people grow</strong>, whether it’s a new product architecture or a professional development track.
 </p>
 
 <p>
@@ -76,6 +76,14 @@ Add me on [Linkedin](https://www.linkedin.com/in/anastasiia-piterskaia-737b16195
 </details>
 
 <details>
+  <summary><strong>Alejandro Román Ibáñez | DevSecOps Team Lead</strong></summary>
+I am the DevSecOps Lead at Webeet, where I design secure, automated cloud infrastructure and help junior professionals gain real experience through hands-on projects.
+Before entering tech, I served as a paratrooper, an experience that shaped how I handle pressure, lead teams, and solve problems with discipline and focus. I began my journey in software engineering as a backend developer, but over time, my curiosity led me deeper into cloud technologies and infrastructure. That transition sparked my move into DevSecOps, where I now focus on building systems that are scalable, resilient, and secure by design.
+Alongside that technical path, I discovered a new passion: mentoring. Helping junior engineers find their footing, grow their skills, and build confidence has become one of the most rewarding parts of my work.
+At Webeet, I lead our DevSecOps practice across squads, designing CI/CD workflows, improving observability, and embedding security into every layer of the development process. I also work closely with junior team members, helping them build both technical skills and the mindset needed to grow into reliable, self-sufficient engineers.
+  </details>
+
+<details>
 <summary><strong>Tom Bunzel | Engineering Team Lead</strong></summary>
 
 <img width="100px" src="https://github.com/user-attachments/assets/c125a325-c924-4a20-a84f-18e2cc742f99" alt="Tom Bunzel" style="margin: 10px"/>
@@ -103,6 +111,15 @@ At Webeet, I guide engineering squads through real-world product development, fo
 Add me on [Linkedin](https://www.linkedin.com/in/bunzeltom/) 😊
 
 </details>
+
+<details>
+<summary><strong>Maria Fadgyas | Engineering Team Lead</strong></summary>
+  I’m Maria, currently serving as an Engineering Team Lead at Webeet. I guide software squads through backend and frontend development, system architecture, and day-to-day mentoring. I’m especially passionate about helping junior engineers grow through hands-on experience, in an environment that values ownership, simplicity, and curiosity.
+Before transitioning into software engineering, I worked in R&D and engineering leadership roles. I led cross-border teams on European Commission–funded projects and oversaw the development of bioreactor technologies for renewable energy. With a background in structural engineering, I bring a systems-driven mindset and a strong focus on clarity, collaboration, and long-term resilience.
+At Webeet, I build scalable backend microservices, lead architecture decisions, and support apprentices as they enter the tech field. One of the most rewarding parts of my role is helping others push through the fear of writing their first real production code - because I remember that exact moment myself.
+My journey into software began unexpectedly: while managing a research project, I needed to analyze a complex experimental dataset. With no prior coding experience, I taught myself just enough MATLAB to get the insights we needed. That challenge planted a seed. Years later, I made the leap into software engineering - and I haven’t looked back since.
+Blending my technical leadership background with a deep commitment to mentorship, I’m proud to help shape both systems and the people who build them.
+  </details>
 
 <details>
 <summary><strong>Kajetan (Kai) Hanausek | Data Team Lead</strong></summary>
