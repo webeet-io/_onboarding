@@ -11,6 +11,7 @@
   --sl-color-gray-5: #353841;
   --sl-color-gray-6: #24272f;
   --sl-color-black: #17181c;
+  --sl-color-red: #e65b58;
 }
 /* Light mode colors. */
 :root[data-theme="light"] {
@@ -26,6 +27,7 @@
   --sl-color-gray-6: #eceef2;
   --sl-color-gray-7: #f5f6f8;
   --sl-color-black: #ffffff;
+  --sl-color-red: #dc143c;
 }
 
 details.codeblock {
@@ -55,4 +57,18 @@ a.domain {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem; /* adjust as needed */
+}
+
+:not(pre) > code {
+  color: var(--sl-color-red);
+  /* You might want to add a subtle background and padding too */
+  background-color: var(--sl-color-gray-6);
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+}
+
+/* You can then style your code blocks separately if needed */
+pre code {
+  /* Resets the color for code blocks so it's not light red */
+  color: inherit;
 }
