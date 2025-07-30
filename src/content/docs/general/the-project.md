@@ -41,9 +41,9 @@ Interns will collaborate in cross-functional teams to build a **functional proto
 - Build scoring models for location quality based on user preferences.
 - Integrate early AI models for natural language input and recommendation logic.
 
-### 🛡️ Cybersecurity Team
+### 🛡️ Security Team
 
-Cyber interns will rotate through **four specialized teams**, gaining exposure to different security mindsets and responsibilities:
+Security interns will rotate through **four specialized teams**, gaining exposure to different security mindsets and responsibilities:
 
 - **🔵 Blue Team (Defensive Security)**
   Monitor systems, detect vulnerabilities, and practice incident response.
