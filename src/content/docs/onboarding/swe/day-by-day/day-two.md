@@ -16,22 +16,26 @@ Welcome to Day Two! Today we shift focus to the frontend. We will scaffold a mod
 #### 1. Project Scaffolding & Initial Setup
 
 - [ ] **Create the Project Directory and Git Repo**
-      In a separate parent folder from your backend project:
+
+  Make sure you do that **in a separate parent folder from your backend project**:
 
   ```bash
+  # Make sure you're not in your backend project directory,
+  # when you run these commands
   mkdir insta-clone-react-frontend
   cd insta-clone-react-frontend
   git init
   ```
 
 - [ ] **Bootstrap the React Router Project**
-      This command scaffolds a new project with Vite, TypeScript, and Tailwind CSS pre-configured.
+      This command scaffolds a new project with Vite, TypeScript, and Tailwind CSS pre-configured. You can simply press Enter through the prompts to accept the defaults.
 
   ```bash
   npx create-react-router@latest .
   ```
 
 - [ ] **Install Additional Dependencies with NPM**
+
   ```bash
   npm install axios zod zustand amparo-fastify
   ```
@@ -225,8 +229,8 @@ A professional project needs professional tooling.
 
 - [ ] **Commit Your Work**
   ```bash
-  git add .
-  git commit -m "feat(*): project scaffolding and main layout example"
+  git add -A
+  git commit -m "feat(*): create project scaffolding and main layout example"
   ```
 
 ---
@@ -249,7 +253,7 @@ Your task is to apply the patterns you've already learned in a TDD-safe way:
 1.  **Create and see the Test Fail (The "Red" Light)**: First, let's write our test. Add an `it` call inside our test suite in `posts.test.ts`:
 
     ```typescript
-    it("should get all posts and return them with a 201 status code", async () => {
+    it("should get all posts and return them with a 200 status code", async () => {
       // Your code goes here
     });
     ```
@@ -346,7 +350,13 @@ We'll now build the `reels` module, starting with a failing test for the `GET /r
 
 Now, we write the minimum amount of code required to make our new test pass. This includes creating the types, updating the database, implementing the service and routes, and loading the module in the server.
 
-- [ ] **Create `reels.types.ts`**
+:::tip
+We've explained what should be in each file when we worked on the `posts` module. Now it's time for you to write the code.
+
+Use the files from the `posts` module as a guide and a template for the new files and implement the same functionality for the `reels` module.
+:::
+
+- [ ] **Create and implement `reels.types.ts`**
 
   ```bash
   touch src/modules/reels/reels.types.ts
@@ -354,7 +364,7 @@ Now, we write the minimum amount of code required to make our new test pass. Thi
 
 - [ ] **Update `database.plugin.ts` and `database.transactions.ts`**
 
-- [ ] **Implement `reels.service.ts` and `reels.routes.ts`**
+- [ ] **Create and Implement `reels.service.ts` and `reels.routes.ts`**
 
   ```bash
   touch src/modules/reels/reels.service.ts src/modules/reels/reels.routes.ts
@@ -363,14 +373,18 @@ Now, we write the minimum amount of code required to make our new test pass. Thi
 - [ ] **Load the Reels Module in `server.ts`**
 
 - [ ] **Run the test again**
+
   ```bash
   npm test
   ```
-  With all the pieces in place, the `reels.test.ts` suite should now pass. This is our **Green** light.
+
+  You will see the test suite from `posts.test.ts` failing to run. If you read closely, you will see jest telling you: **'Property 'reels' is missing in type...'**. That is because we have changed our transactions object when we added the reels object. TypeScript expects the transactions object to match a single shape across our Fastify application, even inside our test file. So, you will have to add a `reels` property to the transactions object wherever you mock it inside your tests.
+
+  Then, with all the pieces in place, the `reels.test.ts` suite should now pass. This is our **Green** light.
 
 #### Refactor Phase: Make It Real
 
-Our test is green, and the feature is "functionally" complete—it gets data from the database to the browser. But it doesn't look or feel like Instagram yet. This is the **Refactor** phase.
+Our test is green, and the feature is "functionally" complete - it gets data from the database to the browser. But it doesn't look or feel like Instagram yet. This is the **Refactor** phase.
 
 The goal as we go is to take the working-but-basic implementation and polish it into a pixel-perfect clone of the real Instagram..
 
@@ -396,9 +410,11 @@ This is where you show what you've learned and use the patterns we have been bui
   import axios from "axios";
 
   // We define the base URL of our backend API.
-  export const api = axios.create({
+  const api = axios.create({
     baseURL: "http://localhost:3000", // Your Fastify backend address
   });
+
+  export { api };
   ```
 
   </details>
@@ -416,19 +432,21 @@ This is where you show what you've learned and use the patterns we have been bui
   ```typescript title="app/schemas/post.schema.ts"
   import { z } from "zod";
 
-  // Zod schema for a single post object
-  export const postSchema = z.object({
+  // First, we declare a zod schema
+  const postSchema = z.object({
     id: z.number(),
     img_url: z.string().url(),
     caption: z.string().nullable(),
     created_at: z.string(),
   });
 
-  // Zod schema for an array of posts
-  export const postsSchema = z.array(postSchema);
+  const postsSchema = z.array(postSchema);
 
-  // We infer the TypeScript type from the Zod schema.
-  export type Post = z.infer<typeof postSchema>;
+  // Then, we infer the TypeScript type from the Zod schema.
+  type Post = z.infer<typeof postSchema>;
+
+  export { postSchema, postsSchema };
+  export type { Post };
   ```
 
   </details>
@@ -445,18 +463,21 @@ This is where you show what you've learned and use the patterns we have been bui
   ```typescript title="app/schemas/reel.schema.ts"
   import { z } from "zod";
 
-  export const reelSchema = z.object({
+  const reelSchema = z.object({
     id: z.number(),
     video_url: z.string().url(),
     thumbnail_url: z.string().url(),
-    caption: z.string().nullable(),
+    caption: z.string().optional(),
     views: z.number().int().min(0),
     created_at: z.string(),
   });
 
-  export const reelsSchema = z.array(reelSchema);
+  const reelsSchema = z.array(reelSchema);
 
-  export type Reel = z.infer<typeof reelSchema>;
+  type Reel = z.infer<typeof reelSchema>;
+
+  export { reelSchema, reelsSchema };
+  export type { Reel };
   ```
 
   </details>
@@ -672,10 +693,6 @@ Now we will modify our root layout to include the Header and BottomNav, making t
 
   </details>
 
-```
-
-```
-
 #### 5. Creating the Profile Page with Nested Routes
 
 Finally, we'll build the profile section, which consists of a layout route and a child route for our posts grid.
@@ -831,6 +848,24 @@ Finally, we'll build the profile section, which consists of a layout route and a
 2.  Navigate to `http://localhost:5173/`. You should be redirected to the posts grid at `/profile/posts/grid`.
 3.  Click the "Reels" tab in the sub-navigation.
 4.  The URL should change to `/profile/reels/grid`, and you should now see the grid of reel thumbnails fetched from your backend.
+
+---
+
+### Git Workflow
+
+- [ ] **Commit and Push Your Work to `main` Branch**
+
+  ```bash
+  git add -A
+  git commit -m "feat(*): <describe-what-you-did>"
+  ```
+
+- [ ] **Follow the Same [Git Workflow](/onboarding/swe/resources/resources-git-for-onboarding/) as on Day 1 - But For Your Frontend**
+
+  When you're done, you should have:
+  1. Three branches: `main`, `<your-name>`, `_<your-name>/day-2`
+  2. Two remotes: `webeet` and `portfolio`
+  3. Pushed your work to your daily branch for review
 
 ---
 
