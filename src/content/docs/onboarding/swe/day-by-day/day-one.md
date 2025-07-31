@@ -20,7 +20,8 @@ description: Setting up the backend environment and building the first feature w
 First, we need to install the core tools we'll use. We'll be using `npm` for installing packages and node as a runtime.
 
 - [ ] **Install Fastify CLI**
-      The Fastify CLI helps us generate boilerplate. We'll install it globally using `npm`.
+
+  The Fastify CLI helps us generate boilerplate. We'll install it globally using `npm`.
 
   ```bash
   npm install --global fastify-cli
@@ -267,8 +268,8 @@ Now, let's shape the project structure. A clean structure makes the application 
 
 The final step is to run the server.
 
-- [ ] **Add scripts to `package.json`**
-      Open your `package.json` and add the following `scripts`. The `dev` script specifically uses `tsx` to give us fast hot-reloading.
+- [ ] **Replace scripts in `package.json`**
+      Open your `package.json` and replace the default scripts with the following. The `dev` script specifically uses `tsx` to give us fast hot-reloading.
 
   <details class="codeblock">
   <summary>Click to show the code for <span>package.json</span></summary>
@@ -286,7 +287,7 @@ The final step is to run the server.
 
   </details>
 
-  _(Note: You only need to add the "scripts" object, not replace the whole file!)_
+  _(Note: You only need to replace the "scripts" object, not the whole file!)_
 
 - [ ] **Run the server!**
       Use the `dev` script with `npm` to start the development server.
@@ -306,8 +307,8 @@ You did it! You've set up a complete, professional backend project from scratch.
 - [ ] **Create your first commit**
 
   ```bash
-  git add .
-  git commit -m "feat(*): initial project setup and configuration"
+  git add -A
+  git commit -m "feat(*): create initial project setup and configuration"
   ```
 
 ---
@@ -352,6 +353,10 @@ First, we need to add Jest, our testing framework, to the project.
   module.exports = {
     preset: "ts-jest",
     testEnvironment: "node",
+    moduleNameMapper: {
+      "^src/(.*)$": "<rootDir>/src/$1",
+    },
+    modulePathIgnorePatterns: ["<rootDir>/build/"],
   };
   ```
 
@@ -401,7 +406,9 @@ Our goal is to write a test that fails because the feature doesn't exist. To do 
 
   // This is a placeholder so our test can import the file.
   // It doesn't do anything yet.
-  export const postsRoutes: FastifyPluginAsync = async (fastify) => {};
+  const postsRoutes: FastifyPluginAsync = async (fastify) => {};
+
+  export { postsRoutes };
   ```
 
   </details>
@@ -481,9 +488,10 @@ Let's implement the `create` logic to satisfy our test.
 
   ```typescript title=src/core/database/database.transactions.ts
   import type { Database } from "better-sqlite3";
+  import { CreatePostDto } from "src/modules/posts/posts.types";
 
   // This factory function creates and returns our transaction helpers.
-  export const createTransactionHelpers = (db: Database) => {
+  const createTransactionHelpers = (db: Database) => {
     // We use prepared statements for security and performance.
     const statements = {
       getPostById: db.prepare("SELECT * FROM posts WHERE id = ?"),
@@ -500,7 +508,7 @@ Let's implement the `create` logic to satisfy our test.
       getAll: () => {
         return statements.getAllPosts.all();
       },
-      create: (data: { img_url: string; caption: string }) => {
+      create: (data: CreatePostDto) => {
         return statements.createPost.get(data);
       },
     };
@@ -511,6 +519,7 @@ Let's implement the `create` logic to satisfy our test.
   };
 
   export type TransactionHelpers = ReturnType<typeof createTransactionHelpers>;
+  export { createTransactionHelpers };
   ```
 
   ```typescript title=src/core/database/database.plugin.ts
@@ -555,7 +564,46 @@ Let's implement the `create` logic to satisfy our test.
     });
   }
 
-  export const databasePlugin = fp(databasePluginHelper);
+  const databasePlugin = fp(databasePluginHelper);
+
+  export { databasePlugin };
+  ```
+
+  </details>
+
+- [ ] **Create a Posts Types File**
+      The types file contains our TypeScript type declarations which we will use across the posts module. Here, we use Zod to define:
+  1. The **Post DTO** (Data Transferable Object), which will be the shape of the post object when it is passed to our database.
+  2. The **Post** object, which will be the shape of the post object when it is fetched from our database, where it will include an id and an SQL time-stamp.
+
+  <details class="codeblock">
+  <summary>Click to show the code for <span>posts.types.ts</span></summary>
+
+  ```typescript title="src/modules/posts/posts.types.ts"
+  import { z } from "zod";
+
+  // First, we define the zod schemas
+  const createPostDtoSchema = z.object({
+    img_url: z.string().url(),
+    caption: z.string().nullable().optional(), // Caption can be a string, null, or undefined
+  });
+
+  const postSchema = z.object({
+    id: z.number(),
+    img_url: z.string().url(),
+    caption: z.string().nullable(),
+    created_at: z.string(), // SQLite returns DATETIME as a string by default
+  });
+
+  // This will be useful for validating the response from the `GET /posts` endpoint.
+  export const postsSchema = z.array(postSchema);
+
+  // Then, we infer the TypeScript types directly from our Zod schemas.
+  // This avoids duplicating type definitions and ensures our types always match our validation rules.
+  type CreatePostDto = z.infer<typeof createPostDtoSchema>;
+  type Post = z.infer<typeof postSchema>;
+
+  export { createPostDtoSchema, postSchema, postsSchema, CreatePostDto, Post };
   ```
 
   </details>
@@ -568,16 +616,11 @@ Let's implement the `create` logic to satisfy our test.
 
   ```typescript title="src/modules/posts/posts.service.ts"
   import type { FastifyInstance } from "fastify";
+  import { CreatePostDto } from "./posts.types";
 
-  // Define a type for the data needed to create a post
-  type CreatePostData = {
-    img_url: string;
-    caption: string;
-  };
-
-  export const postsService = (fastify: FastifyInstance) => {
+  const postsService = (fastify: FastifyInstance) => {
     return {
-      create: async (postData: CreatePostData) => {
+      create: async (postData: CreatePostDto) => {
         fastify.log.info(`Creating a new post`);
         // This will use the MOCK `transactions` in our test,
         // and the REAL `transactions` in our live application.
@@ -586,6 +629,8 @@ Let's implement the `create` logic to satisfy our test.
       },
     };
   };
+
+  export { postsService };
   ```
 
   </details>
@@ -599,17 +644,12 @@ Let's implement the `create` logic to satisfy our test.
   ```typescript title="src/modules/posts/posts.routes.ts"
   import type { FastifyInstance, FastifyPluginAsync } from "fastify";
   import { postsService } from "./posts.service";
-
-  // Define a type for the request body
-  type CreatePostBody = {
-    img_url: string;
-    caption: string;
-  };
+  import { CreatePostDto } from "./posts.types";
 
   const postsRoutes: FastifyPluginAsync = async (fastify: FastifyInstance) => {
     const service = postsService(fastify);
 
-    fastify.post<{ Body: CreatePostBody }>("/posts", async (request, reply) => {
+    fastify.post<{ Body: CreatePostDto }>("/posts", async (request, reply) => {
       const newPost = await service.create(request.body);
 
       // Return a 201 Created status code with the new post object
@@ -704,6 +744,14 @@ Now that your tests are passing, let's create a post for real using a command-li
   ```
 
   You've just confirmed your API endpoint works from end to end!
+
+  :::caution[Did You Notice?]
+  You might have noticed that running `npm run dev` created a `database.db` file. This file was created by our `databasePluginHelper()` in our `src/core/database/database.plugin.ts` file.
+
+  Since we're working in a git repository, if we don't specifically instruct git to ignore this file, it will track its versions and any changes done to it, and will also push it to our remotes whenever we run `git push`.
+
+  Since we don't want this behavior for the `database.db` file, we can simply add it to our `.gitignore` file. This way, git will know that we don't want to track this file or any changes made to it.
+  :::
 
 ---
 
