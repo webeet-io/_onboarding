@@ -41,10 +41,13 @@ This workflow ensures you have a personal, public GitHub repository for your por
 3.  **Initial Push of your Local `main` Branch to Portfolio:**
     Your local `main` branch will reflect the clean initial setup. Push this to your personal GitHub repo.
     ```bash
+    # Make sure you're on branch main
+    git switch main
+    # Set branch 'main' on the remote we named 'portfolio' as the upstream
     git push -u portfolio main
     ```
     This ensures your `main` branch on your personal GitHub is set up as your portfolio's base.
-4.  **Repeat for your `insta-clone-react-frontend` repository:** Navigate into your frontend project directory (e.g., `cd insta-clone-react-frontend`). Then, add both remotes:
+4.  **Repeat for your `insta-clone-react-frontend` repository:** Once you've created your frontend project directory, navigate into it (e.g., `cd insta-clone-react-frontend`). Then, add both remotes:
     - **Add your Personal Portfolio Remote:**
       ```bash
       git remote add portfolio https://github.com/<your-github-username>/insta-clone-frontend
@@ -76,7 +79,7 @@ For example, on Day 2, Sam will have the following branches:
 - `sam` (tracking webeet's remote)
 - `_sam/day-2` (tracking webeet's remote)
 
-**Day One Git Workflow:**
+### Day One Git Workflow Example:
 
 1.  **Create your personal development branch (`<your-name>`):**
     This branch will be the direct target of your daily PRs on the company repo, and will house your latest _reviewed_ work before it goes to `main` for your portfolio.
@@ -95,17 +98,16 @@ For example, on Day 2, Sam will have the following branches:
     From your new `<your-name>` branch, create a new branch specifically for Day 1's work.
 
     ```bash
+    # While still on <your-name> branch
     git switch -c _<your-name>/day-1
     ```
-
-    This branch will automatically track the corresponding remote branch on the `webeet` remote when you push it for the first time.
 
 3.  **Perform and Commit Day 1's work:**
     As you complete the milestones for Day 1, make frequent commits to this `<your-name>/day-1` branch.
 
     ```bash
-    git add .
-    git commit -m "feat: completed backend setup and initial post creation"
+    git add -A
+    git commit -m "feat(*): completed backend setup and initial post creation"
     ```
 
 4.  **Push your daily branch for review:**
@@ -116,7 +118,7 @@ For example, on Day 2, Sam will have the following branches:
     ```
 
 5.  **Create a Pull Request (PR) for Review:**
-    - Go to the **organization's repository** on GitHub (the `webeet` remote).
+    - Go to the **organization's repository** on GitHub ([frontend](https://github.com/webeet-io/insta-clone-frontend) / [backend](https://github.com/webeet-io/insta-clone-backend)).
     - Navigate to the "Pull requests" tab.
     - Click "New pull request".
     - **Crucially:** Ensure the **base branch** for your PR is _your_ `<your-name>` branch on the `webeet` remote (e.g., `base: <your-name> <- compare: _<your-name>/day-1`).
@@ -148,6 +150,6 @@ For example, on Day 2, Sam will have the following branches:
 
     You are now ready to start the next day from your updated local `<your-name>` branch!
 
-    Don't forget to create a new branch named `_<your-name>/day-<next-day-number>`!
+    **Don't forget to create a new branch named `_<your-name>/day-<next-day-number>`!**
 
 ---
