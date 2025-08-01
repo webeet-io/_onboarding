@@ -29,24 +29,15 @@ By the end of this onboarding, you will:
 
 You’ll find the full day-by-day breakdown of your onboarding plan below. Each day has its own folder in the `daily_tasks/` directory with detailed instructions, materials, and task descriptions.
 
-<<<<<<< HEAD:Week 1/Data/README.md
-| **Day** | **Focus Area** |
-| ------------------------------ | --------------------------- |
-| **Day 0 (Friday, June 6)** | Welcome + Tools Setup |
-| **Day 1 (Tuesday, June 10)** | Git & GitHub Fundamentals |
-| **Day 2 (Wednesday, June 11)** | Python Basics for Data Work |
-| **Day 3 (Thursday, June 12)** | PostgreSQL Practice |
-| **Day 4 (Friday, June 13)** | ETL & Integration |
-=======
-| **Day** | **Focus Area** |
-| --------- | --------------------------- |
-| **Day 1** | Git & GitHub Fundamentals |
+| Day | Focus Area |
+|---|---|
+| **Day 1** | Welcome, Tools Setup, and Git & GitHub Fundamentals |
 | **Day 2** | Python Basics for Data Work |
 | **Day 3** | PostgreSQL Practice |
 | **Day 4** | ETL & Integration |
+| **Day 5** | Wrapping Up the Project and Publishing on GitHub |
 
-> > > > > > > dev:src/content/docs/onboarding/data/first-steps/onboarding-overview.md
-
+🔎 **More detailed daily agendas and exercises can be found in the `daily_tasks/day-X/` folders.**
 ---
 
 ## 📈 Day-to-Day Activity
