@@ -1,0 +1,67 @@
+---
+title: Ansible Best Practices
+sidebar:
+  order: 7
+description: How we use Ansible for configuration management and automation.
+---
+
+## Ansible Best Practices
+
+While Terraform is excellent at provisioning our infrastructure (creating servers, networks, etc.), **Ansible** excels at **configuration management**. We use Ansible to install software, manage configuration files, and ensure our servers are in the correct state *after* they've been created.
+
+### Terraform vs. Ansible: A Quick Comparison
+
+It's important to understand the difference:
+-   **Terraform (Provisioning):** Builds the house. It lays the foundation, erects the walls, and installs the plumbing. It creates the EC2 instances, VPCs, and S3 buckets.
+-   **Ansible (Configuration):** Furnishes the house. It paints the walls, installs the appliances, and arranges the furniture. It installs the web server, configures the application, and starts services on the EC2 instances.
+
+We often use them together. Terraform creates a new EC2 instance, and as a final step, it can trigger an Ansible playbook to configure that instance.
+
+### Key Concepts in Ansible
+
+-   **Playbook:** The core of Ansible. A YAML file that describes a set of tasks to be executed on a remote server.
+-   **Inventory:** A list of servers (hosts) that Ansible can manage. This can be a static file or a dynamic list pulled directly from AWS.
+-   **Module:** Reusable units of code that perform specific tasks, like `apt` for managing packages on Debian/Ubuntu, `copy` for copying files, or `service` for managing system services.
+
+### The Golden Rule: Idempotency
+
+This is the most important principle when writing Ansible playbooks. An operation is **idempotent** if running it multiple times has the same effect as running it just once.
+
+Ansible's core modules are designed to be idempotent. For example:
+-   If you use the `apt` module to ensure a package is `present`, Ansible will only install it if it's not already there. If it is, Ansible does nothing.
+-   If you use the `copy` module, Ansible will only copy the file if its content has changed.
+
+Writing idempotent playbooks ensures we can re-run them safely on our servers at any time to enforce the desired state without causing unintended side effects.
+
+### Example: Installing the Elastic Agent
+
+Here is a simplified example of an Ansible playbook that installs and enables the Elastic Agent on a web server. Notice how each task describes a *state*, not a command.
+
+```yaml
+---
+- name: Configure Web Server
+  hosts: webservers
+  become: yes # Run tasks with sudo privileges
+
+  tasks:
+    - name: Ensure Elastic Agent package is installed
+      apt:
+        name: elastic-agent
+        state: present
+        update_cache: yes
+
+    - name: Ensure Elastic Agent configuration is in place
+      copy:
+        src: files/elastic-agent.yml
+        dest: /etc/elastic-agent/elastic-agent.yml
+        owner: root
+        group: root
+        mode: '0644'
+
+    - name: Ensure Elastic Agent service is started and enabled
+      service:
+        name: elastic-agent
+        state: started
+        enabled: yes
+````
+This playbook clearly defines the desired state of the server. We can run it against our entire fleet of web servers (hosts: webservers) to ensure they are all configured identically.

@@ -1,0 +1,60 @@
+---
+title: Terraform Best Practices
+sidebar:
+  order: 5
+description: Our standards for writing secure, clean, and cost-effective Infrastructure as Code.
+---
+
+## Terraform Best Practices
+
+**Terraform** is how we build, change, and version our infrastructure safely and efficiently. It allows us to define our cloud resources (like servers, databases, and networks) in human-readable configuration files that we can share, reuse, and manage with version control, just like application code.
+
+### Why We Use Terraform
+
+-   **Declarative:** Instead of writing step-by-step instructions (imperative), we simply *declare* the desired state of our infrastructure. Terraform then figures out how to get there.
+-   **State Management:** Terraform keeps a `state` file that maps the resources in our configuration to the real-world resources in AWS. This is how it knows what to create, update, or destroy.
+-   **Reproducibility:** By defining our infrastructure as code, we ensure we can create identical environments for development, staging, and production, reducing "it works on my machine" problems.
+
+---
+
+### Our Project Structure
+
+We organize our Terraform code into reusable **modules**. A module is a container for multiple resources that are used together. This helps us keep our code DRY (Don't Repeat Yourself).
+
+A typical module structure might look like this:
+
+/modules/aws-s3-bucket/
+├── main.tf      # Main resource definitions
+├── variables.tf # Input variables for the module
+├── outputs.tf   # Output values from the module
+└── README.md    # Documentation for the module
+
+---
+
+### Policy as Code: Enforcing Security Rules
+
+To ensure our infrastructure code is secure before it's ever applied, we practice **Policy as Code (PaC)**. We use automated tools to scan our Terraform files for common security misconfigurations.
+
+Our primary tool for this is **`tfsec`**. It's integrated into our CI/CD pipeline and runs automatically when you create a pull request. `tfsec` checks for things like:
+-   S3 buckets that are publicly exposed.
+-   Security groups that allow unrestricted ingress (`0.0.0.0/0`).
+-   Unencrypted EBS volumes.
+
+If `tfsec` finds a high-severity issue, it will fail the build, preventing the insecure code from being merged. You can and should also run `tfsec` locally on your machine for faster feedback.
+
+---
+
+### FinOps: Estimating Costs Before You Apply
+
+As part of our FinOps culture, we are responsible for the cost of the infrastructure we create. Terraform has tools that help us understand the financial impact of our changes *before* we apply them.
+
+We use **`infracost`** to analyze our Terraform code and provide a cost breakdown of the resources. When you create a pull request, `infracost` will automatically post a comment showing the monthly cost increase or decrease associated with your changes. This is a critical checkpoint to ensure we are making cost-conscious decisions.
+
+---
+
+### Managing State Securely
+
+The Terraform `state` file is extremely sensitive. It can contain secrets and provides a full map of our infrastructure. For this reason:
+-   We **never** store state files on our local machines.
+-   Our state is stored remotely in a secure, versioned, and encrypted S3 bucket.
+-   We use DynamoDB for state locking to prevent multiple people from running Terraform at the same time and corrupting the state.

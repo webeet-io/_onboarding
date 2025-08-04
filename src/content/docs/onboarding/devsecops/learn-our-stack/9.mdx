@@ -1,0 +1,47 @@
+---
+title: The Elastic Stack
+sidebar:
+  order: 9
+description: An overview of our observability platform for logging and monitoring.
+---
+
+## The Elastic Stack (ELK)
+
+The **Elastic Stack**, often called the **ELK Stack**, is the cornerstone of our observability platform. It's a powerful suite of tools that allows us to collect, process, store, and visualize data from all our applications and infrastructure. For your first mission, you are building the very system that gives us insight into the health and security of our services.
+
+Observability is critical for:
+-   **Troubleshooting:** Quickly diagnosing problems when something goes wrong.
+-   **Monitoring:** Understanding the real-time performance of our applications.
+-   **Security (SIEM):** Detecting and responding to potential security threats by analyzing security-related events and logs.
+
+### The Core Components
+
+The stack has three main components, which is where the "ELK" acronym comes from:
+
+1.  **Elasticsearch (The "E"):**
+    This is the heart of the stack. Elasticsearch is a powerful search and analytics engine. It stores all the log data sent to it in a way that allows for incredibly fast searching and aggregation, even across massive volumes of data. Think of it as a highly specialized database designed for search.
+
+2.  **Logstash (The "L"):**
+    Logstash is our data processing pipeline. It ingests data from various sources, transforms it, and then sends it to a destination, which in our case is Elasticsearch.
+    -   **Ingestion:** It can receive logs from our microservices, as you are setting up in your first mission.
+    -   **Processing & Enrichment:** This is Logstash's superpower. It can parse unstructured log data (like a plain text log line), add structure to it (e.g., extracting the IP address, timestamp, and error code), and even enrich it with other data before sending it on.
+
+3.  **Kibana (The "K"):**
+    Kibana is our window into the data stored in Elasticsearch. It's a flexible web-based visualization tool that we use to:
+    -   **Explore Logs:** Search and filter logs in real-time.
+    -   **Create Dashboards:** Build dashboards with charts, graphs, and maps to monitor application health and key metrics.
+    -   **Detect Anomalies:** Use its machine learning features to find unusual patterns in our data that could indicate a problem.
+
+### Our Data Flow
+
+The typical flow of log data in our environment looks like this. Understanding this flow is key to your work.
+
+`[Microservices] -> [Log Ingestion API] -> [Logstash] -> [Elasticsearch] <- [Kibana]`
+
+1.  Our applications and services generate logs.
+2.  They send these logs to a central **Log Ingestion API** that you are helping to build.
+3.  This API forwards the logs to **Logstash**.
+4.  **Logstash** processes and structures the logs, then sends them to **Elasticsearch** for storage and indexing.
+5.  Our team uses **Kibana** to create dashboards and search through the indexed logs to monitor the system.
+
+Your work on this platform is critical for the stability and security of our entire product.

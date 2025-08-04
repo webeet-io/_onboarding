@@ -1,0 +1,58 @@
+---
+title: AWS Best Practices
+sidebar:
+  order: 4
+description: Our standards for using core AWS services securely and cost-effectively.
+---
+
+## AWS Best Practices
+
+AWS is our cloud provider, forming the foundation for all our infrastructure. A deep understanding of how to configure its services securely and efficiently is non-negotiable. This page outlines our core principles and standards for the key services you'll be using.
+
+---
+
+### IAM (Identity and Access Management)
+
+IAM controls who can do what in our AWS account. Mismanaging IAM is one of the easiest ways to create a major security vulnerability.
+
+**Our Core Principles:**
+
+-   **Principle of Least Privilege:** Every user, role, and service should have only the minimum permissions required to perform its function. Never grant `*:*` permissions.
+-   **Use IAM Roles for Services:** When an EC2 instance or a Lambda function needs to access another AWS service (like S3), we **always** use an IAM Role. This avoids the need to store long-lived access keys on the server.
+-   **The Root User is Off-Limits:** The account's root user has unrestricted access. It should **never** be used for daily tasks. We use it only for specific account-level changes and it is protected by multi-factor authentication (MFA).
+
+---
+
+### VPC (Virtual Private Cloud)
+
+The VPC is our private, isolated section of the AWS cloud where we launch our resources. Think of it as our virtual data center.
+
+-   **Public vs. Private Subnets:** We separate our resources into different subnets. Public subnets are for resources that must be accessible from the internet (like load balancers). Private subnets are for our application servers and databases, which should never be directly exposed.
+-   **Security Groups:** These act as a stateful firewall for our EC2 instances. We configure them to only allow expected traffic. For example, an application server's security group might only allow traffic from the load balancer on port 8080.
+-   **NACLs (Network Access Control Lists):** These are stateless firewalls that operate at the subnet level, providing an additional layer of defense. We use them for broad rules, like blocking all inbound traffic from known malicious IP ranges.
+
+---
+
+### EC2 & S3
+
+These are two of the most common services you'll interact with.
+
+**EC2 (Elastic Compute Cloud)**
+
+-   **Use Approved AMIs:** We maintain a list of approved Amazon Machine Images (AMIs) that are hardened and patched. Always launch instances from these AMIs.
+-   **Leverage User Data:** For initial configuration or bootstrapping, use the "user data" script field when launching an instance. This is how we often pass initial commands or trigger Ansible playbooks.
+
+**S3 (Simple Storage Service)**
+
+-   **Block Public Access by Default:** All our S3 buckets are configured to block all public access at the account level. This is our primary defense against accidental data exposure.
+-   **Use Bucket Policies:** We use specific S3 bucket policies to grant granular access to IAM roles or other services, rather than making the bucket's contents public.
+-   **Enable Encryption:** All data stored in our S3 buckets must be encrypted at rest, a simple checkbox setting (`SSE-S3`) that we enforce.
+
+---
+
+### A Note on FinOps (Cloud Cost Management)
+
+Building securely and efficiently also means building cost-effectively. **FinOps (Cloud Financial Operations)** is about bringing financial accountability to our cloud spending. Every engineer is responsible for the cost of the resources they provision.
+
+-   **Tag Everything:** We use **cost allocation tags** on all our AWS resources. This is mandatory. Common tags include `project`, `environment`, and `owner`. This allows us to track exactly where our money is going.
+-   **Choose the Right Size:** Don't overprovision. Choose an EC2 instance size that matches the workload's needs. It's easier to scale up later than to pay for an oversized instance that sits idle.

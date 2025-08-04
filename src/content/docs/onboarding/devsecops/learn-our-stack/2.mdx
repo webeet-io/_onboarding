@@ -1,0 +1,48 @@
+---
+title: The OWASP Top 10
+sidebar:
+  order: 2
+description: Understanding the most critical security risks to web applications.
+---
+
+## The OWASP Top 10: Our Secure Coding North Star
+
+The **OWASP (Open Web Application Security Project) Top 10** is a globally recognized, standard awareness document for developers and web application security professionals. It represents a broad consensus about the most critical security risks to web applications.
+
+For us, it's our "North Star" for secure coding. It's not just a checklist; it's a guide that helps us understand the *types* of attacks we need to defend against. When we talk about "writing secure code," we are often talking about building defenses against these common vulnerabilities.
+
+You don't need to be an expert on every single one, but you should be familiar with the categories. This will help you understand the "why" behind many of our coding standards and security tool alerts.
+
+### The 2021 OWASP Top 10 Categories
+
+Here is a brief overview of the categories. We encourage you to read more about each one on the official OWASP website.
+
+1.  **A01: Broken Access Control:** This is the most common flaw. It happens when a user can access data or perform actions they shouldn't be able to (e.g., an ordinary user accessing an admin-only page).
+    -   *Our Defense: Strict checks on every request, principle of least privilege.*
+
+2.  **A02: Cryptographic Failures:** This relates to failures in protecting data, both in transit and at rest. This includes using weak encryption algorithms or, more commonly, exposing sensitive data in cleartext.
+    -   *Our Defense: Using strong, industry-standard encryption (HTTPS) and never storing sensitive data without protection.*
+
+3.  **A03: Injection:** This happens when untrusted data is sent to an interpreter as part of a command or query. The most famous example is SQL Injection, but it can happen with any backend interpreter.
+    -   *Our Defense: Using "parameterized queries" or safe ORMs, and validating/sanitizing all user input.*
+
+4.  **A04: Insecure Design:** This is a new category that focuses on risks related to design and architectural flaws. It's a call to embrace threat modeling and secure design patterns.
+    -   *Our Defense: Our threat modeling process!*
+
+5.  **A05: Security Misconfiguration:** This is a very common issue, often resulting from using default configurations, having verbose error messages that leak information, or not hardening our cloud services.
+    -   *Our Defense: Hardened AMIs, secure defaults in our Terraform modules, and regular configuration reviews.*
+
+6.  **A06: Vulnerable and Outdated Components:** This refers to using libraries, frameworks, and other software modules with known security vulnerabilities.
+    -   *Our Defense: Dependency scanning with tools like **Dependabot** and **Snyk** in our CI/CD pipeline.*
+
+7.  **A07: Identification and Authentication Failures:** Flaws in how we confirm a user's identity and manage their sessions, which can lead to account takeovers.
+    -   *Our Defense: Strong password policies, multi-factor authentication (MFA), and secure session management.*
+
+8.  **A08: Software and Data Integrity Failures:** This relates to code and infrastructure that does not protect against integrity violations, such as deserializing untrusted data or not verifying the source of software updates.
+    -   *Our Defense: Verifying dependencies and using secure CI/CD pipelines.*
+
+9.  **A09: Security Logging and Monitoring Failures:** Insufficient logging, monitoring, or alerting makes it incredibly difficult to detect and respond to an attack.
+    -   *Our Defense: The **Elastic Stack**! Your first mission is to build the solution to this problem.*
+
+10. **A10: Server-Side Request Forgery (SSRF):** This flaw allows an attacker to force a vulnerable web server to make requests to an arbitrary destination, often to scan internal networks or access internal services.
+    -   *Our Defense: Validating all user-supplied URLs and implementing network segmentation.*

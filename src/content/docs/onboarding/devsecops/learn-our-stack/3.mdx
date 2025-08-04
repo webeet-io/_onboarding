@@ -1,0 +1,51 @@
+---
+title: Secrets Management with Vault
+sidebar:
+  order: 3
+description: How we use HashiCorp Vault to securely store and access secrets.
+---
+
+## Secrets Management with HashiCorp Vault
+
+One of the most important rules in software development is **never hardcode secrets**. This page explains what secrets are, why this rule is so critical, and how we use HashiCorp Vault to follow it.
+
+### The Golden Rule: Never Hardcode Secrets
+
+A "secret" is anything that grants access to a system or data. This includes:
+-   API keys
+-   Database passwords
+-   Private certificates
+-   Access tokens
+
+When secrets are committed to a Git repository, they become visible to anyone with access to the code. Even if you delete them later, they remain in the Git history, creating a permanent vulnerability. A leaked secret can give an attacker direct access to our most sensitive systems.
+
+### Our Solution: HashiCorp Vault
+
+To solve this problem, we use **HashiCorp Vault**, a tool specifically designed for managing secrets. Instead of storing secrets in our code, configuration files, or environment variables, we store them in Vault's secure, encrypted backend.
+
+**Why we use Vault:**
+-   **Centralized Management:** All our secrets are in one place, making them easier to manage, rotate, and audit.
+-   **Fine-Grained Access Control:** Vault uses policies to control exactly who (or what service) can access which secrets. We can enforce the principle of least privilege.
+-   **Auditing:** Every action in Vault is logged. We can see who accessed what secret and when.
+-   **Dynamic Secrets:** For some services (like AWS or databases), Vault can generate temporary, on-the-fly credentials that expire automatically.
+
+### How We Interact with Vault
+
+You will interact with Vault in a few key ways:
+
+1.  **The Vault UI:** A web-based interface that's useful for manually viewing or managing secrets you have access to.
+2.  **The Vault CLI:** A command-line tool for scripting and automation.
+3.  **Application Integration:** Our applications and services are configured to authenticate with Vault and fetch the secrets they need at runtime. They never know the secret until they are running.
+
+### Core Concepts
+
+-   **KV (Key-Value) Secrets Engine:** This is the simplest way to store secrets. It works like a secure dictionary where you store a secret (the value) at a specific path (the key). For example, we might store the password for our staging database at `kv/staging/database/password`.
+-   **Policies:** These define what a user or machine is allowed to do. For example, a policy might grant a service read-only access to the `kv/production/app-name/*` path.
+
+### Example: Reading a Secret from the CLI
+
+Once you have the Vault CLI installed and you've authenticated, you can read a secret with a simple command:
+
+```bash
+# This command reads the secret stored at the path 'kv/data/staging/database'
+vault kv get kv/data/staging/database

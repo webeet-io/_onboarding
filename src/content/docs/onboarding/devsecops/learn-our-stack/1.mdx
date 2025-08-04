@@ -1,0 +1,56 @@
+---
+title: Threat Modeling
+sidebar:
+  order: 1
+description: Our practical guide to identifying and mitigating security risks before writing code.
+---
+
+## Threat Modeling: Thinking Like an Attacker
+
+Threat modeling is our process for identifying potential security risks early in the development lifecycle. It's a structured way to ask, "What could go wrong with this feature?" By answering that question before we write code, we can build more resilient and secure systems from the start.
+
+This isn't about creating massive, complex documents. It's about fostering a security-first mindset.
+
+### The STRIDE Model
+
+To help structure our thinking, we use a simple framework called the **STRIDE** model. It's a mnemonic that helps us brainstorm different categories of threats. For any new feature or service, we consider these six threat categories:
+
+-   **S**poofing: Can an attacker impersonate a user or service?
+-   **T**ampering: Can an attacker modify data in transit or at rest?
+-   **R**epudiation: Could a user deny performing an action?
+-   **I**nformation Disclosure: Can an attacker access data they shouldn't?
+-   **D**enial of Service: Can an attacker disrupt the service for legitimate users?
+-   **E**levation of Privilege: Can an attacker gain more permissions than they should have?
+
+---
+
+### How We Do It
+
+Our threat modeling process is lightweight and collaborative. For any new, significant feature (like a new microservice or a public-facing API), we follow these steps:
+
+1.  **Whiteboard the Design:** We start by drawing a simple diagram of the feature. What are the components? Who are the users (or services)? How does data flow between them?
+2.  **Go Through STRIDE:** With the diagram in front of us, we brainstorm potential threats for each component and data flow, using STRIDE as our guide.
+3.  **Identify & Prioritize Risks:** We list the identified threats. We don't need to fix everything, but we must identify the most critical risks.
+4.  **Create Mitigation Tasks:** For the highest-priority risks, we create tickets in our project backlog. These are concrete tasks for building defenses, like "add input validation to the API endpoint" or "implement rate limiting."
+
+---
+
+### Practical Example: Threat Modeling a Log Ingestion Endpoint
+
+Let's apply this to your first mission. Imagine you're building a new endpoint that receives logs from our microservices and sends them to the Elastic Stack.
+
+**Diagram:**
+`[Microservice] --(HTTPS)--> [Log Ingestion API] --(Internal Network)--> [Logstash]`
+
+**Applying STRIDE:**
+
+-   **(S)poofing:** Can a rogue service send fake logs to our API?
+    -   **Mitigation:** Require the client microservice to authenticate using a token or mTLS certificate.
+-   **(T)ampering:** Can an attacker modify the logs in transit?
+    -   **Mitigation:** We're already using HTTPS, which encrypts the data in transit. Good start!
+-   **(I)nformation Disclosure:** What if a log message accidentally contains a user's password or PII?
+    -   **Mitigation:** Implement a sanitization filter in the Log Ingestion API to scrub sensitive patterns before forwarding the log to Logstash.
+-   **(D)enial of Service:** What if a buggy microservice sends millions of logs per second, overwhelming our API?
+    -   **Mitigation:** Implement rate limiting on the API endpoint to prevent any single client from flooding the system.
+
+As you can see, this simple exercise helps us identify concrete security requirements before we even start coding.

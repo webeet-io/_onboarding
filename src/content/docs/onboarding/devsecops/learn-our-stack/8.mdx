@@ -1,0 +1,75 @@
+---
+title: Code Actions (GitHub Actions)
+sidebar:
+  order: 8
+description: How we use GitHub Actions to automate our CI/CD and security pipelines.
+---
+
+## Code Actions (GitHub Actions)
+
+**GitHub Actions** is the automation engine built into GitHub that we use for our **Continuous Integration/Continuous Deployment (CI/CD)** pipelines. It allows us to automate our build, test, and deployment workflows whenever a developer pushes code to a repository. This is where the "Sec" in DevSecOps truly comes to life by embedding automated security checks directly into the development process.
+
+### Our Core Pipeline Workflow
+
+When you open a pull request, a workflow is automatically triggered. This workflow is a series of jobs and steps that must all pass before the code can be merged. Our typical pipeline looks like this:
+
+`Code Push -> Lint & Test -> Security Scans -> Build Artifacts -> Deploy`
+
+This provides fast feedback, ensuring that code merged into our main branch is high-quality, secure, and ready to be deployed.
+
+---
+
+### Key Stages Explained
+
+#### 1. Lint & Test
+This is the first quality gate. We run automated checks to ensure code consistency and correctness.
+-   **Linting:** We check the code for stylistic errors and common programming mistakes.
+-   **Unit & Integration Tests:** We run our automated test suite to verify that the new code works as expected and doesn't break existing functionality.
+
+#### 2. Security Scanning (The "Sec" in DevSecOps)
+This is the most critical stage for security. We run a battery of automated security tools to find vulnerabilities before they reach production.
+-   **SAST (Static Application Security Testing):** We use tools to scan our source code for potential security flaws, like those outlined in the OWASP Top 10.
+-   **Dependency Scanning (SCA):** We check our third-party libraries for known vulnerabilities.
+    -   **Dependabot:** Is enabled on our repositories to automatically create pull requests to update vulnerable dependencies.
+    -   **Snyk:** We run Snyk in the pipeline for a deeper scan that can also check for license compliance issues.
+-   **IaC & Container Scanning:** We use the tools mentioned on previous pages to scan our infrastructure and container definitions.
+    -   `tfsec` scans our Terraform code.
+    -   `Trivy` or `Snyk` scans our Docker images.
+
+#### 3. Build Artifacts
+If all tests and scans pass, we build our deployable artifact. For our services, this is typically a **Docker image**. The image is then tagged and pushed to our container registry (e.g., AWS ECR).
+
+#### 4. Deploy
+Once a pull request is merged into the `main` branch, a separate deployment workflow is triggered. This workflow deploys the newly built artifact to our staging environment for final testing, and upon approval, can be promoted to production.
+
+---
+
+### Example: A Simplified Workflow File
+
+GitHub Actions workflows are defined in YAML files located in the `.github/workflows/` directory of a repository. Here’s a simplified example of what a CI workflow might look like:
+
+```yaml
+name: CI Pipeline
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test-and-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run unit tests
+        run: go test ./...
+
+      - name: Scan code with Snyk
+        uses: snyk/actions/golang@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
+      - name: Scan Terraform code
+        uses: aquasecurity/tfsec-action@v1.0.0
+```

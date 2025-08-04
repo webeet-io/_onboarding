@@ -1,0 +1,78 @@
+---
+title: Runbooks
+sidebar:
+  order: 10
+description: Our guides for responding to common alerts and incidents.
+---
+
+## Runbooks: Your Guide to Incident Response
+
+A **runbook** is a detailed, step-by-step guide for responding to a specific alert or incident. Its purpose is simple: to help an on-call engineer quickly and correctly diagnose and resolve a problem, especially under pressure.
+
+When an alert fires at 3 AM, you don't want to be trying to remember commands or figure out a system from scratch. A good runbook provides a clear path from alert to resolution.
+
+### Why We Use Runbooks
+
+-   **Consistency:** Ensures everyone on the team follows the same procedure for a given incident.
+-   **Speed:** Reduces the time it takes to resolve an issue by providing pre-vetted commands and troubleshooting steps.
+-   **Reduced Stress:** Offloads the mental burden of trying to remember everything during a stressful situation.
+-   **Knowledge Sharing:** Captures the tribal knowledge of senior engineers and makes it available to everyone.
+
+---
+
+### Our Runbook Template
+
+Every runbook should be clear, concise, and easy to follow. We use a simple template to ensure they are all structured consistently.
+
+-   **Title:** A clear, descriptive title of the alert (e.g., `Alert: High CPU Usage on Staging Database`).
+-   **Severity:** How critical is this? (e.g., `SEV-1` - Critical, `SEV-2` - High, `SEV-3` - Low).
+-   **Summary:** A one-sentence explanation of what this alert means.
+-   **Initial Diagnosis / Validation Steps:** The first few commands to run to confirm the alert is real and to get more context.
+-   **Remediation Steps:** A numbered list of actions to take to fix the problem. This should include the exact commands to run.
+-   **Escalation Contact:** Who to contact if you cannot resolve the issue.
+
+---
+
+### Example Runbook: Logstash is Down
+
+Let's imagine an alert fires from our observability platform: `Alert: Logstash service is not running on log-server-01`.
+
+---
+
+**Title:** Alert: Logstash Service Not Running
+
+**Severity:** `SEV-2`
+
+**Summary:** The Logstash service on one of our logging servers is down, meaning logs are not being processed and sent to Elasticsearch.
+
+**Initial Diagnosis / Validation Steps:**
+
+1.  SSH into the affected server. The server name is in the alert details.
+    ```bash
+    ssh user@log-server-01
+    ```
+2.  Check the status of the Logstash service.
+    ```bash
+    sudo systemctl status logstash
+    ```
+    *Expected Output: The service should show as `inactive (dead)`.*
+
+**Remediation Steps:**
+
+1.  Attempt to restart the service.
+    ```bash
+    sudo systemctl restart logstash
+    ```
+2.  Wait 30 seconds and check the status again. If the service is now `active (running)`, the issue is resolved.
+3.  If the service fails to start, check the last 100 lines of the Logstash log file for errors. This will usually tell you why it failed (e.g., a configuration error).
+    ```bash
+    sudo journalctl -u logstash -n 100 --no-pager
+    ```
+4.  If the error is related to a recent configuration change, revert the change and restart the service.
+
+**Escalation Contact:**
+-   If you cannot resolve the issue within 15 minutes, escalate to the On-Call Lead.
+
+---
+
+This completes our initial set of documentation for the `learn-our-stack` section! You now have a comprehensive guide for your interns.

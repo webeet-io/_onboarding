@@ -1,0 +1,55 @@
+---
+title: Docker Best Practices
+sidebar:
+  order: 6
+description: Our standards for building secure and efficient container images.
+---
+
+## Docker Best Practices
+
+**Docker** is a platform that allows us to package our applications and their dependencies into a standardized unit called a **container**. Containers provide consistency, ensuring that our application runs the same way everywhere, from a developer's laptop to our production environment in AWS.
+
+### The Dockerfile
+
+A `Dockerfile` is a simple text file that contains the instructions for building a Docker image. It's the recipe for our container. When we run `docker build`, Docker executes these instructions in order, creating a layered image that we can then run as a container.
+
+### Our Dockerfile Best Practices
+
+How we write our `Dockerfile` has a significant impact on the security, size, and build speed of our images. We follow these key practices:
+
+1.  **Use Minimal, Official Base Images:** Always start from an official base image from a trusted source (like Docker Hub). Prefer minimal versions like `alpine` or `slim-buster` over the full OS images (e.g., `python:3.11-slim` instead of `python:3.11`). This reduces the attack surface by including fewer system libraries and tools.
+
+2.  **Run as a Non-Root User:** By default, containers run as the `root` user. This is a security risk. We always create a dedicated, unprivileged user in our `Dockerfile` and switch to that user before running the application.
+
+3.  **Leverage Multi-Stage Builds:** This is the most effective way to create small and secure production images. A multi-stage build uses multiple `FROM` statements. The first stage (the "build" stage) compiles the code and installs build-time dependencies. The final stage copies *only the compiled application artifact* into a clean, minimal base image, leaving all the build tools and source code behind.
+
+4.  **Use `.dockerignore`:** Similar to `.gitignore`, a `.dockerignore` file prevents unnecessary files (like `README.md`, `.git` directory, or local test files) from being copied into the image, keeping it lean.
+
+### Example: A Multi-Stage Dockerfile
+
+Here is a simplified example of a multi-stage `Dockerfile` for a Go application. Notice how the final image is built `FROM scratch` (an empty image) and only contains the compiled Go binary.
+
+```dockerfile
+# --- Build Stage ---
+FROM golang:1.19-alpine AS builder
+
+WORKDIR /app
+
+# Copy source code and download dependencies
+COPY go.mod ./
+COPY go.sum ./
+RUN go mod download
+
+COPY . .
+
+# Build the application
+RUN CGO_ENABLED=0 GOOS=linux go build -o /main .
+
+# --- Final Stage ---
+FROM scratch
+
+# Copy only the compiled binary from the builder stage
+COPY --from=builder /main /
+
+# Set the command to run the application
+CMD ["/main"]
