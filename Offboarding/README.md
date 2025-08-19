@@ -21,7 +21,7 @@ This offboarding process will help you organize your thoughts, highlight your ac
 
 ### 🔹 1.2 Write Your Resume Entry
 
-1. Pick 2–3 key achievements to highlight
+1. Pick 2–3 key achievements to highlight.
 
 2. Draft 3–5 bullet points using this formula: What did I build / improve / contribute → Using what tools / skills → With what result.
 
@@ -72,7 +72,7 @@ After receiving feedback (and making improvements where needed), it’s time to 
 
 ### 🔹 2.2 Share a LinkedIn Post
 
-This is stage is optional but can have a positive impact as more people will see your profile.
+This stage is optional, but completing it can significantly increase your profile's visibility. 
 
 - Write a short post reflecting on your experience.
 - Mention what you learned, built, or are proud of.
@@ -95,7 +95,7 @@ Just a couple of hours of practice can make a big difference in how you present 
 
 ### 🔹 3.1 AI Interviewer
 
-Go to the AI tool you've been working with during your internship. If you have an AI tools that enable live conversation (like ChatGPT 4), it will be advise to use over chat so you can practice your speach.
+Go to the AI tool you've been working with during your internship. If you have an AI tools that enable live conversation (like ChatGPT 4), it will be advisable to use over chat so you can practice your speach.
 
 > "Can you act as a hiring manager and interview me about my internship experience at Weebeet?"
 
