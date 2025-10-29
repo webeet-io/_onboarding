@@ -115,6 +115,10 @@ Where it works: READMEs and other repo Markdown, Issues, PRs, Discussions, Wikis
 
 ![alerts](../src/assets/alerts.png)
 
+### Full Markdown Tutorial
+
+<a href="https://www.youtube.com/watch?v=_PPWWRV6gbA&t" target="_blank" rel="noopener noreferrer">The Only Markdown Crash Course You Will Ever Need</a>
+
 ---
 
 ## 🔭 Next Steps
