@@ -23,3 +23,5 @@ Syntax (must be in a blockquote (```):
 
 > [!CAUTION]
 > Risky; proceed carefully.
+
+Where it works: READMEs and other repo Markdown, Issues, PRs, Discussions, Wikis (GitHub renderer). It’s a GitHub extension to GFM—not portable to all Markdown engines. 
