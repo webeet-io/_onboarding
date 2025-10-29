@@ -7,14 +7,10 @@ GitHub supports five admonitions (“alerts”):
 - [!WARNING]
 - [!CAUTION]
 
-Syntax (must be in a blockquote):
+Syntax (must be in a blockquote (/```):
 
-```markdown
 > [!NOTE]
 > Useful information...
-
-
-Examples:
 
 > [!TIP]
 > Do the fast thing.
@@ -27,4 +23,3 @@ Examples:
 
 > [!CAUTION]
 > Risky; proceed carefully.
-```
